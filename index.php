@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="hotspot">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <script defer src="index.js"></script>
-    <title>project1</title>
+    <title>rayngerhotspot</title>
+    
 </head>
 
-<!--Script-->
+<!--Script Starts-->
 <script>
     function openPopup(popupId) {
         const popup = document.getElementById(popupId);
@@ -39,8 +41,9 @@
         body.classList.remove('no-scroll');
     }
 </script>
+<!--Script Ends-->
 
-<!--Style-->
+<!--Style Starts-->
 <style>
 *{
     font-family: 'roboto', sans-serif;
@@ -154,8 +157,14 @@
 }
 #num-error-button-voucher:active{
     background-color: rgb(4, 60, 4);
+}
+.stk-error-button:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+.stk-error-button:active{
+    background-color: rgb(4, 60, 4);
 }</style>
-
 <!--Style Ends-->
 
 <!--Body Starts-->
@@ -249,7 +258,7 @@ align-items: center;">
         </ul>
         <p><strong>Note:</strong> A Subscription Package is Linked to a Single Device/Mac Address and Expires After the Period Stated.</p>
         <p><strong>Incase of any Difficulties, </strong><a onclick="openPopup('contacts-popup')" id="contacts-link" style="color: blue;">Click Here</a><strong> to Contact us.</strong></p>
-        <p><strong>Paid but Haven't been Connected?, Kindly Contact us and </strong><a onclick="openPopup('no-con-popup')" id="no-con-link" style="color: blue;">Click Here</a> <strong>to Enter your Voucher Code.</strong></p>
+        <p><strong>Paid but Haven't been Connected?, Kindly Contact us or </strong><a onclick="openPopup('no-con-popup')" id="no-con-link" style="color: blue;">Click Here</a> <strong>to Enter your Voucher Code.</strong></p>
     </div>
     <!--Active Popup-->
     <div id="active-popup" 
@@ -311,6 +320,7 @@ align-items: center;">
 
     if (!/^254\d{9}$/.test(phone)) {
         openPopup('num-error-pop');
+        setTimeout(() => closePopup('num-error-pop'), 3000);
         return;
     }
     openPopup('num-okay-recon-pop');
@@ -334,6 +344,66 @@ align-items: center;">
                 </div>
 
         </form>
+    </div>
+    <!--Stk Error Popup-->
+    <div id="stk-error-pop" 
+        style="
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 140px;
+    border: 3px rgb(140, 4, 4) solid;
+    color: rgb(220, 4, 4);
+    border-radius: 5px;
+    z-index: 1000;">
+            <div id="h1-num-error-con" 
+                style="
+            padding-top: 10px;
+            padding-bottom: 5px;">
+                <h1 id="h1-text-num-error-con" 
+                    style="
+                font-size: 1.6em;
+                font-weight: 400;
+                margin-top: 5px;
+                margin-bottom: 5px;">Error.<br>❌STK Push Failed❌!!!<br>Please Try Again.</h1>
+            </div>
+    </div>
+    <!--Stk Okay Popup-->
+    <div id="stk-okay-pop" 
+        style="
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+    border: 3px rgb(4, 140, 4) solid;
+    color: rgb(4, 140, 4);
+    border-radius: 5px;
+    z-index: 1000;">
+            <div id="h1-num-error-con" 
+                style="
+            padding-top: 10px;
+            padding-bottom: 5px;">
+                <h1 id="h1-text-num-error-con" 
+                    style="
+                font-size: 1.6em;
+                font-weight: 400;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin.</h1>
+            </div>
     </div>
     <!--Sub-popup-->
     <div id="sub-pop" 
@@ -389,12 +459,13 @@ align-items: center;">
                     <script>
                         
                         async function handlePaymentSubmit(event) {
-    event.preventDefault();
-    closePopup('sub-pop');
+                        event.preventDefault();
+                        closePopup('sub-pop');
 
     const phone = document.getElementById("con-input").value.trim();
     if (!/^254\d{9}$/.test(phone)) {
         openPopup('num-error-pop');
+        setTimeout(() => closePopup('num-error-pop'), 3000);
         return;
     }
 
@@ -407,17 +478,21 @@ align-items: center;">
             body: new URLSearchParams({ phone, amount: selectedAmount, submit: 1 })
         });
 
-        const { ResponseCode, CheckoutRequestID } = await res.json();
+        const { ResponseCode, CheckoutRequestID } = await res.json(); 
 
-        if (ResponseCode === "0" && CheckoutRequestID) {
-            pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
-        } else {
-            displayError("❌ Payment request failed. Please try again.");
-        }
+        setTimeout(() => {
+            closePopup('num-okay-pop');
+            openPopup('stk-okay-pop');
+        }, 3000);
+
     } catch (error) {
-        console.error("STK Push failed❌:", error);
-        displayError("❌ Network Error. Please Try Again!");
-    }
+        setTimeout(() => {
+            closePopup('num-okay-pop');
+            openPopup('stk-error-pop');
+            setTimeout(() => closePopup('stk-error-pop'), 3000);
+    },2000);
+}     
+
 }
 
 async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
@@ -497,7 +572,7 @@ function displayError(message) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 350px;
+    width: 380px;
     height: 150px;
     border: 3px rgb(140, 4, 4) solid;
     color: rgb(220, 4, 4);
@@ -511,23 +586,9 @@ function displayError(message) {
                     style="
                 font-size: 2em;
                 font-weight: 400;
-                margin-top: 5px;
-                margin-bottom: 5px;">Error.<br>Invalid Number!!!</h1>
+                margin-top: 10px;
+                margin-bottom: 5px;">Error.<br>❌Invalid Number❌!!!</h1>
             </div>
-
-                <div>
-                    <button id="num-error-button" type="button" onclick="closePopup('num-error-pop')" 
-                        style="
-                    background-color: rgb(160, 4, 4);
-                    border-radius: 5px;
-                    border: none;
-                    height: 35px;
-                    width: 60px;
-                    font-size: 1em;
-                    font-weight: 500;
-                    color: white;
-                    margin-top: 5px;">Ok</button>
-                </div>
     </div>
 
     <!--Num-format Okay-->
@@ -542,9 +603,9 @@ function displayError(message) {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
-    height: 200px;
-    border: 3px rgb(4, 140, 4) solid;
-    color: rgb(4, 140, 4);
+    height: 230px;
+    border: 3px rgb(4, 4, 140) solid;
+    color: rgb(4, 4, 140);
     border-radius: 5px;
     z-index: 1000;">
             <div class="spinner" 
@@ -553,8 +614,8 @@ function displayError(message) {
             margin-top: 20px;
             width: 40px;
             height: 40px;
-            border: 2px solid rgba(0, 250, 4, 0.2);
-            border-top-color: rgb(4, 100, 4);
+            border: 2px solid rgba(0, 4, 250, 0.2);
+            border-top-color: rgb(4, 4, 100);
             border-radius: 50%;
             animation: spin 1s linear infinite;"></div>
             <div id="h1-num-okay-con" 
@@ -563,11 +624,11 @@ function displayError(message) {
             padding-bottom: 5px;">
                 <h1 id="h1-text-num-okay-con" 
                     style="
-                font-size: 1.7em;
+                font-size: 1.5em;
                 font-weight: 400;
                 margin-top: 5px;
                 padding-right: 10px;
-                padding-left: 10px;">Submitted!<br>Kindly Check your Phone and Input your M-pesa Pin</h1>
+                padding-left: 10px;">Submitted!<br>Kindly Wait as we Check your Phone Number and Send an STK Push to your Phone</h1>
             </div>
     </div>
 
@@ -584,8 +645,8 @@ function displayError(message) {
     transform: translate(-50%, -50%);
     width: 500px;
     height: 240px;
-    border: 3px rgb(4, 140, 4) solid;
-    color: rgb(4, 140, 4);
+    border: 3px rgb(4, 4, 140) solid;
+    color: rgb(4, 4, 140);
     border-radius: 5px;
     z-index: 1000;">
             <div class="spinner" 
@@ -594,8 +655,8 @@ function displayError(message) {
             margin-top: 20px;
             width: 40px;
             height: 40px;
-            border: 2px solid rgba(0, 250, 4, 0.2);
-            border-top-color: rgb(4, 100, 4);
+            border: 2px solid rgba(0, 4, 250, 0.2);
+            border-top-color: rgb(4, 4, 100);
             border-radius: 50%;
             animation: spin 1s linear infinite;"></div>
             <div id="h1-num-okay-recon" 
@@ -1002,15 +1063,14 @@ function displayError(message) {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 30px;
+    height: 25px;
     color: white;
-    font-size: 1.4em;
+    font-size: 1.2em;
     background-color: black;
     width: 100%;
     margin-top: 10px;">
-        <p>Software Provided by Raynger Developers &#124; All Rights Reserved &#124; 2025</p>
+        <p>Software Provided by Raynger Developers © 2025 &#124; All Rights Reserved.</p>
     </footer>
 </body>
-
 <!--Body Ends-->
 </html>

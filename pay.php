@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     // Generate Password and Timestamp
     $Timestamp = date('YmdHis');
     $Password = base64_encode($BusinessShortCode . $Passkey . $Timestamp);
-    $AccountReference = 'Raynger Hotspot';
+    $AccountReference = 'Raymond Njoroge';
     $TransactionDesc = 'Raynger Hotspot';
 
     // Generate Access Token
