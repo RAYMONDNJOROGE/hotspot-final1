@@ -314,62 +314,6 @@ align-items: center;">
         return;
     }
     openPopup('num-okay-recon-pop');
-
-    try {
-        const res = await fetch("pay.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `phone=${encodeURIComponent(phone)}&amount=${encodeURIComponent(selectedAmount)}&submit=1`
-        });
-
-        const data = await res.json();
-        const checkoutID = data.CheckoutRequestID;
-
-
-        // Poll every second for payment status if STK push was successful
-        if (data.ResponseCode === "0" && checkoutID) {
-            const pollInterval = setInterval(async () => {
-                try {
-                    const statusRes = await fetch("check_status.php", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                        body: `CheckoutRequestID=${checkoutID}`
-                    });
-
-                    const stat = await statusRes.json();
-
-                    if (stat.ResultCode === 0) {
-                        clearInterval(pollInterval);
-                        document.getElementById("payments").textContent = `✅ Payment of KES ${selectedAmount} received from ${phone}`;
-                        openPopup("popup5");
-                        setTimeout(() => closePopup("popup5"), 4000);
-
-                        // Save payment to database
-                        await fetch("save_payment.php", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                            body: `phone=${encodeURIComponent(phone)}&amount=${selectedAmount}`
-                        });
-                    } else if (stat.ResultCode === 1032) {
-                        clearInterval(pollInterval);
-                        document.getElementById("failMessage").textContent = "❌ Payment Cancelled by User";
-                        openPopup("popup5");
-                        setTimeout(() => closePopup("popup5"), 4000);
-                    }
-                } catch (err) {
-                    clearInterval(pollInterval);
-                    document.getElementById("failMessage").textContent = "❌ Failed to verify payment";
-                    openPopup("popup5");
-                    setTimeout(() => closePopup("popup5"), 4000);
-                }
-            }, 1000);
-        }
-    } catch (error) {
-        console.error("STK Push failed❌:", error);
-        openPopup('popup4');
-        document.getElementById("stkStatusMessage").textContent = "❌ Network Error. Please Try Again!";
-        setTimeout(() => closePopup('popup4'), 4000);
-    }
 }
                     </script>
                     <button id="res-cancel-button" type="button" onclick="closePopup('active-popup')" 
@@ -443,18 +387,84 @@ align-items: center;">
                     color: white;
                     margin-top: 15px;">pay</button>
                     <script>
+                        
                         async function handlePaymentSubmit(event) {
-                        event.preventDefault();
-                        closePopup('sub-pop');
+    event.preventDefault();
+    closePopup('sub-pop');
 
-                        const phone = document.getElementById("con-input").value.trim();
-
+    const phone = document.getElementById("con-input").value.trim();
     if (!/^254\d{9}$/.test(phone)) {
         openPopup('num-error-pop');
         return;
     }
 
-    openPopup('num-okay-pop');  
+    openPopup('num-okay-pop');
+
+    try {
+        const res = await fetch("pay.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({ phone, amount: selectedAmount, submit: 1 })
+        });
+
+        const { ResponseCode, CheckoutRequestID } = await res.json();
+
+        if (ResponseCode === "0" && CheckoutRequestID) {
+            pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
+        } else {
+            displayError("❌ Payment request failed. Please try again.");
+        }
+    } catch (error) {
+        console.error("STK Push failed❌:", error);
+        displayError("❌ Network Error. Please Try Again!");
+    }
+}
+
+async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
+    const pollInterval = setInterval(async () => {
+        try {
+            const statusRes = await fetch("check_status.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams({ CheckoutRequestID: checkoutID })
+            });
+
+            const { ResultCode } = await statusRes.json();
+
+            if (ResultCode === 0) {
+                clearInterval(pollInterval);
+                processSuccessfulPayment(phone, selectedAmount);
+            } else if (ResultCode === 1032) {
+                clearInterval(pollInterval);
+                displayError("❌ Payment Cancelled by User");
+            }
+        } catch (err) {
+            clearInterval(pollInterval);
+            displayError("❌ Failed to verify payment");
+        }
+    }, 1000);
+}
+
+async function processSuccessfulPayment(phone, selectedAmount) {
+    document.getElementById("payments").textContent = `✅ Payment of KES ${selectedAmount} received from ${phone}`;
+    openPopup("popup5");
+    setTimeout(() => closePopup("popup5"), 4000);
+
+    try {
+        await fetch("save_payment.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({ phone, amount: selectedAmount })
+        });
+    } catch (error) {
+        console.error("❌ Error saving payment:", error);
+    }
+}
+
+function displayError(message) {
+    document.getElementById("failMessage").textContent = message;
+    openPopup("popup5");
+    setTimeout(() => closePopup("popup5"), 4000);
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
