@@ -527,6 +527,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
                 setTimeout(() => closePopup("pay-accepted-pop"), 4000);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
+                closePopup('stk-okay-pop');
                 openPopup("pay-cancel-pop"); // STK push cancelled
                 document.getElementById("pay-cancel-pop").innerText = statusMessage;
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
