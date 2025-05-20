@@ -540,7 +540,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
         } catch (err) {
             clearInterval(pollInterval);
             console.error("Error checking real-time STK status:", err);
-            closePopup("stk-okay-pop");
+            
             openPopup("pay-error-pop");
             setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
