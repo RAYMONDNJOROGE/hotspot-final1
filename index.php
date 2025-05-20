@@ -485,17 +485,19 @@ align-items: center;">
 
     closePopup('num-okay-pop');
 
-    if (ResponseCode === 0 && CheckoutRequestID) {
+    if ((ResponseCode === 0 || ResponseCode === "0") && CheckoutRequestID) {
         openPopup('stk-okay-pop'); // STK push successful
         setTimeout(() => closePopup('stk-okay-pop'), 6000);
 
         // Poll only if the STK push was successful
         pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
     } else {
+        console.error("Unexpected STK Response:", { ResponseCode, CheckoutRequestID });
         openPopup('stk-error-pop'); // STK push failed
         setTimeout(() => closePopup('stk-error-pop'), 3000);
     }
 } catch (error) {
+    console.error("Payment request failed:", error);
     closePopup('num-okay-pop');
     openPopup('stk-error-pop');
     setTimeout(() => closePopup('stk-error-pop'), 3000);
