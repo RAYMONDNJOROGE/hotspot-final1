@@ -1,8 +1,20 @@
 <?php
-require_once 'generate_token.php';
+require_once 'generate_token.php'; // Ensure this gets a valid access token
+
+// Validate input
+if (!isset($_POST['CheckoutRequestID'])) {
+    echo json_encode(['ResultCode' => 1, 'statusMessage' => 'Missing CheckoutRequestID']);
+    exit;
+}
 
 $checkoutID = $_POST['CheckoutRequestID'];
 $accessToken = generateAccessToken(); // Get fresh M-Pesa API token
+
+// Fail if token isn't generated
+if (!$accessToken) {
+    echo json_encode(["ResultCode" => 999, "statusMessage" => "Failed to generate access token"]);
+    exit;
+}
 
 $stkQueryUrl = 'https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query';
 $stkQueryHeader = [
@@ -12,7 +24,7 @@ $stkQueryHeader = [
 
 // Prepare query payload
 $timestamp = date('YmdHis');
-$password = base64_encode('174379' . 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919' . $timestamp);
+$password = base64_encode('174379' . 'your_passkey_here' . $timestamp);
 
 $stkQueryData = [
     'BusinessShortCode' => '174379',
@@ -35,16 +47,36 @@ $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 $error = curl_error($curl);
 curl_close($curl);
 
+// Handle errors
+if ($error || !$response || $httpStatus !== 200) {
+    error_log("STK Query Error: HTTP $httpStatus - $error");
+    echo json_encode([
+        'ResultCode' => 999,
+        'statusMessage' => 'Error querying STK status',
+        'message' => 'Failed to retrieve STK status',
+        'errorDetails' => $error
+    ]);
+    exit;
+}
+
 // Decode response
 $stkResponse = json_decode($response, true);
 
 // Log API response
 file_put_contents('stk_query_response.log', "[" . date('Y-m-d H:i:s') . "] " . json_encode($stkResponse, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
 
+// Validate API response
+if (!isset($stkResponse['ResultCode'])) {
+    echo json_encode(["ResultCode" => 999, "statusMessage" => "Invalid API response"]);
+    exit;
+}
+
 // Determine status
 $statusMessage = match ($stkResponse['ResultCode']) {
-    0     => "STK Push Accepted - Payment Successful",
-    1032  => "STK Push Cancelled by User",
+    0     => "Payment Successful",
+    1032  => "Payment Cancelled by User",
+    1     => "STK Push Timed Out",
+    default => "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available'),
 };
 
 // Return structured response
