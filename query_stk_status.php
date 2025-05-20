@@ -33,7 +33,18 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($stkQueryData));
 $response = curl_exec($curl);
+$httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 curl_close($curl);
+
+// Validate API response
+if ($httpStatus !== 200 || !$response) {
+    echo json_encode([
+        'ResultCode' => 999,
+        'status' => 'error',
+        'message' => 'Failed to query STK status - API response error'
+    ]);
+    exit;
+}
 
 // Decode response
 $stkResponse = json_decode($response, true);
@@ -58,9 +69,11 @@ if (isset($stkResponse['ResultCode'])) {
             $statusMessage = "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available');
             break;
     }
+} else {
+    $statusMessage = "Invalid STK Query Response";
 }
 
-// Return structured response with explicit STK status
+// Return structured response
 echo json_encode([
     'ResultCode' => $stkResponse['ResultCode'] ?? 999,
     'status' => $statusMessage,

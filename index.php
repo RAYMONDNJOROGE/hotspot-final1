@@ -500,11 +500,14 @@ align-items: center;">
     }
 }
 async function pollRealTimeSTKStatus(checkoutID) {
-    let retries = 120; // Poll every second for 60 seconds
+    let retries = 120; // Poll every 0.5 seconds for 60 seconds
 
     const pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
             clearInterval(pollInterval);
+            closePopup("stk-okay-pop");
+            openPopup("stk-error-pop"); // Timeout error popup
+            setTimeout(() => closePopup("stk-error-pop"), 4000);
             return;
         }
 
@@ -517,29 +520,28 @@ async function pollRealTimeSTKStatus(checkoutID) {
 
             const { ResultCode, statusMessage } = await statusRes.json();
 
-           
+            closePopup("stk-okay-pop"); // Close STK popup before showing final result
 
             // Open correct popup based on STK status
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
-                
                 openPopup("pay-accepted-pop"); // STK push accepted
                 setTimeout(() => closePopup("pay-accepted-pop"), 4000);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
-                closePopup("stk-okay-pop");
                 openPopup("pay-cancel-pop"); // STK push cancelled
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
             } else {
-                openPopup("stk-pending-pop"); // Waiting for response
+                openPopup("stk-pending-pop"); // Still waiting for response
                 setTimeout(() => closePopup("stk-pending-pop"), 4000);
             }
         } catch (err) {
             clearInterval(pollInterval);
-        
-          
+            closePopup("stk-okay-pop");
+            openPopup("pay-error-pop"); // Handle fetch error
+            setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
-    }, 500); // Poll every second
+    }, 500); // Poll every 0.5 seconds
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
