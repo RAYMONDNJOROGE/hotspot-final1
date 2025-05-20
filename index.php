@@ -749,7 +749,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
             padding-top: 20px;
             font-size: 1.8em;
             font-weight: 400;">@Ksh. 10</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 10);"
+            <button type="button" class="box-button" onclick="handlePayment(event, 1);"
                 style="
             height: 30px;
             margin-top: 30px;
