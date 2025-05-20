@@ -504,7 +504,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
     const pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
             clearInterval(pollInterval);
-            openPopup("stk-error-pop");
+            openPopup("stk-error-pop"); // Timeout error popup
             document.getElementById("stk-error-pop").innerText = "STK request timeout.";
             setTimeout(() => closePopup("stk-error-pop"), 4000);
             return;
@@ -519,9 +519,10 @@ async function pollRealTimeSTKStatus(checkoutID) {
 
             const { ResultCode, statusMessage } = await statusRes.json();
 
-            // Close stk-okay-pop immediately after receiving response
+            // Close stk-okay-pop immediately upon getting a response
             closePopup("stk-okay-pop");
 
+            // Display only "Paid" or "Cancelled" statuses
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
                 openPopup("pay-okay-pop"); // Payment successful
@@ -530,15 +531,11 @@ async function pollRealTimeSTKStatus(checkoutID) {
                 clearInterval(pollInterval);
                 openPopup("pay-cancel-pop"); // STK push cancelled
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
-            } else {
-                openPopup("stk-pending-pop");
-                document.getElementById("stk-pending-pop").innerText = statusMessage;
-                setTimeout(() => closePopup("stk-pending-pop"), 4000);
             }
         } catch (error) {
             clearInterval(pollInterval);
             console.error("Error retrieving STK status:", error);
-            openPopup("pay-error-pop");
+            openPopup("pay-error-pop"); // Handle fetch error
             document.getElementById("pay-error-pop").innerText = "Error retrieving STK status.";
             setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
