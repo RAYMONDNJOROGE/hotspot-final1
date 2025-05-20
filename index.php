@@ -471,19 +471,6 @@ align-items: center;">
 
     openPopup('num-okay-pop');
 
-    async function handlePaymentSubmit(event) {
-    event.preventDefault();
-    closePopup('sub-pop');
-
-    const phone = document.getElementById("con-input").value.trim();
-    if (!/^254\d{9}$/.test(phone)) {
-        openPopup('num-error-pop');
-        setTimeout(() => closePopup('num-error-pop'), 3000);
-        return;
-    }
-
-    openPopup('num-okay-pop');
-
     try {
         const res = await fetch("pay.php", {
             method: "POST",
@@ -491,19 +478,16 @@ align-items: center;">
             body: new URLSearchParams({ phone, amount: selectedAmount, submit: 1 })
         });
 
-        const { ResponseCode, CheckoutRequestID } = await res.json();
+        const { ResponseCode, CheckoutRequestID } = await res.json(); 
+
+        if (!CheckoutRequestID) throw new Error("Invalid response from server.");
 
         setTimeout(() => {
             closePopup('num-okay-pop');
-
-            if (ResponseCode === 0 && CheckoutRequestID) {
-                openPopup('stk-okay-pop'); // STK push successful
-                pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
-            } else {
-                openPopup('stk-error-pop'); // STK push failed
-                setTimeout(() => closePopup('stk-error-pop'), 3000);
-            }
+            openPopup('stk-okay-pop');
+            pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
         }, 3000);
+
     } catch (error) {
         console.error("Payment request failed:", error);
         setTimeout(() => {
