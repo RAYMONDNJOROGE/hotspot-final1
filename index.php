@@ -510,7 +510,7 @@ async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
             clearInterval(pollInterval);
             console.error("Polling exceeded retry limit.");
             closePopup("stk-okay-pop");
-            openPopup("pay-error-pop"); // Show timeout error
+            openPopup("pay-error-pop"); // Timeout error popup
             setTimeout(() => closePopup("pay-error-pop"), 4000);
             return;
         }
@@ -535,18 +535,14 @@ async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
                 processSuccessfulPayment(phone, selectedAmount);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
-                openPopup("pay-error-pop"); // User cancelled payment
-                setTimeout(() => closePopup("pay-error-pop"), 4000);
-            } else {
-                console.error("Unexpected payment status:", message);
-                openPopup("pay-cancel-pop");
+                openPopup("pay-cancel-pop"); // User cancelled payment
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
             }
         } catch (err) {
             clearInterval(pollInterval);
             console.error("Error checking payment status:", err);
-            openPopup("pay-cancel-pop");
-            setTimeout(() => closePopup("pay-cancel-pop"), 4000);
+            openPopup("pay-error-pop");
+            setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
     }, 1000); // Poll every second
 }
@@ -688,7 +684,7 @@ async function processSuccessfulPayment(phone, selectedAmount) {
     </div>
 
     <!--Pay Error-->
-     <div id="pay-error-pop" 
+     <div id="pay-cancel-pop" 
         style="    
     display: none;
     justify-content: center;
