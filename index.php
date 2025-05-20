@@ -499,14 +499,6 @@ align-items: center;">
     }
 }
 async function pollRealTimeSTKStatus(checkoutID) {
-    let retries = 30;
-
-    const pollInterval = setInterval(async () => {
-        if (retries-- <= 0) {
-            clearInterval(pollInterval);
-            console.error("STK request timeout.");
-            return;
-        }
 
         try {
             const statusRes = await fetch("query_stk_status.php", {
@@ -536,7 +528,6 @@ async function pollRealTimeSTKStatus(checkoutID) {
             console.error("Error fetching STK status:", error);
             clearInterval(pollInterval);
         }
-    }, 1000);
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
@@ -670,8 +661,8 @@ async function pollRealTimeSTKStatus(checkoutID) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    height: 160px;
+    width: 450px;
+    height: 180px;
     border: 3px rgb(250, 4, 4) solid;
     color: rgb(250, 4, 4);
     border-radius: 5px;
@@ -682,11 +673,11 @@ async function pollRealTimeSTKStatus(checkoutID) {
             padding-bottom: 5px;">
                 <h1 id="h1-text-num-okay-con" 
                     style="
-                font-size: 2em;
+                font-size: 2.1em;
                 font-weight: 400;
                 margin-top: 15px;
                 padding-right: 10px;
-                padding-left: 10px;">Payment Cancelled By User!<br>Please Try Again</h1>
+                padding-left: 10px;">Payment Cancelled By User!<br>Please Try Again.</h1>
             </div>
     </div>
     <!--Num-format Okay recon-->
