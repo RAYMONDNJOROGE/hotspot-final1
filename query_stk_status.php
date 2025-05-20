@@ -45,8 +45,6 @@ file_put_contents('stk_query_response.log', "[" . date('Y-m-d H:i:s') . "] " . j
 $statusMessage = match ($stkResponse['ResultCode']) {
     0     => "STK Push Accepted - Payment Successful",
     1032  => "STK Push Cancelled by User",
-    1     => "STK Push Timed Out",
-    default => "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available'),
 };
 
 // Return structured response
