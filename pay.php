@@ -10,10 +10,15 @@ if (isset($_POST['submit'])) {
     $Passkey = $config['passkey'];
     $CallbackURL = $config['callbackUrl'];
 
-    // Allowed fixed button values
+    // Validate phone number and amount
     $allowedAmounts = [10, 20, 30, 50, 80, 200];
     $PartyA = $_POST['phone'];
     $Amount = (int) $_POST['amount'];
+
+    if (!in_array($Amount, $allowedAmounts)) {
+        echo json_encode(["ResponseCode" => 1, "errorMessage" => "Invalid amount selected."]);
+        exit;
+    }
 
     // Generate Password and Timestamp
     $Timestamp = date('YmdHis');
@@ -24,7 +29,7 @@ if (isset($_POST['submit'])) {
     // Generate Access Token
     $accessToken = generateAccessToken();
 
-    // Send STK Push request
+    // STK Push request headers
     $stkheader = [
         'Content-Type: application/json',
         'Authorization: Bearer ' . $accessToken
@@ -44,6 +49,7 @@ if (isset($_POST['submit'])) {
         'TransactionDesc' => $TransactionDesc
     ];
 
+    // Send STK Push request
     $curl = curl_init('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest');
     curl_setopt($curl, CURLOPT_HTTPHEADER, $stkheader);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -52,6 +58,23 @@ if (isset($_POST['submit'])) {
     $response = curl_exec($curl);
     curl_close($curl);
 
+    // Decode response data
     $responseData = json_decode($response, true);
+
+    // Log the API response for debugging
+    file_put_contents('stk_response.log', print_r($responseData, true));
+
+    // Return the correct response to the front-end
+    if (isset($responseData['ResponseCode']) && $responseData['ResponseCode'] == 0 && isset($responseData['CheckoutRequestID'])) {
+        echo json_encode([
+            "ResponseCode" => $responseData['ResponseCode'],
+            "CheckoutRequestID" => $responseData['CheckoutRequestID']
+        ]);
+    } else {
+        echo json_encode([
+            "ResponseCode" => $responseData['ResponseCode'] ?? 1,
+            "errorMessage" => $responseData['errorMessage'] ?? "STK push request failed."
+        ]);
+    }
 }
 ?>
