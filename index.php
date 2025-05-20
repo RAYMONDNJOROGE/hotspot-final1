@@ -489,22 +489,24 @@ align-items: center;">
             openPopup('stk-okay-pop'); // STK push successful
             setTimeout(() => closePopup("stk-okay-pop"), 5000);
 
-            // Start polling STK push status instead of payment status
-            pollSTKPushStatus(CheckoutRequestID);
+            // Start polling real-time STK push status
+            pollRealTimeSTKStatus(CheckoutRequestID);
         } else {
             console.error("Unexpected STK Response:", { ResponseCode, CheckoutRequestID });
+            closePopup("stk-okay-pop");
             openPopup('stk-error-pop'); // STK push failed
             setTimeout(() => closePopup('stk-error-pop'), 3000);
         }
     } catch (error) {
         console.error("Payment request failed:", error);
         closePopup('num-okay-pop');
+        closePopup("stk-okay-pop");
         openPopup('stk-error-pop');
         setTimeout(() => closePopup('stk-error-pop'), 3000);
     }
 }
 
-async function pollSTKPushStatus(checkoutID) {
+async function pollRealTimeSTKStatus(checkoutID) {
     let retries = 30; // Poll every second for 30 seconds
 
     const pollInterval = setInterval(async () => {
@@ -518,7 +520,7 @@ async function pollSTKPushStatus(checkoutID) {
         }
 
         try {
-            const statusRes = await fetch("check_stk_status.php", {
+            const statusRes = await fetch("query_stk_status.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams({ CheckoutRequestID: checkoutID })
@@ -531,20 +533,20 @@ async function pollSTKPushStatus(checkoutID) {
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
                 closePopup("stk-okay-pop");
-                openPopup("pay-accepted-pop"); // STK push accepted
-                setTimeout(() => closePopup("pay-accepted-pop"), 4000);
+                openPopup("stk-accepted-pop"); // STK push accepted
+                setTimeout(() => closePopup("stk-accepted-pop"), 4000);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
                 closePopup("stk-okay-pop");
-                openPopup("pay-cancel-pop"); // STK push cancelled
-                setTimeout(() => closePopup("pay-cancel-pop"), 4000);
+                openPopup("stk-cancel-pop"); // STK push cancelled
+                setTimeout(() => closePopup("stk-cancel-pop"), 4000);
             }
         } catch (err) {
             clearInterval(pollInterval);
-            console.error("Error checking STK push status:", err);
+            console.error("Error checking real-time STK status:", err);
             closePopup("stk-okay-pop");
-            openPopup("pay-error-pop");
-            setTimeout(() => closePopup("pay-error-pop"), 4000);
+            openPopup("stk-error-pop");
+            setTimeout(() => closePopup("stk-error-pop"), 4000);
         }
     }, 1000); // Poll every second
 }
