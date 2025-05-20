@@ -526,12 +526,12 @@ async function pollRealTimeSTKStatus(checkoutID) {
             // Open correct popup based on STK status
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
-                closePopup("stk-okay-pop");
+           
                 openPopup("pay-accepted-pop"); // STK push accepted
                 setTimeout(() => closePopup("pay-accepted-pop"), 4000);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
-                closePopup("stk-okay-pop");
+               
                 openPopup("pay-cancel-pop"); // STK push cancelled
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
             } else {
