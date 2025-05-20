@@ -519,20 +519,17 @@ async function pollRealTimeSTKStatus(checkoutID) {
 
             const { ResultCode, statusMessage } = await statusRes.json();
           
-
-            if (ResultCode === 0) {
-    clearInterval(pollInterval);
+            if ((ResponseCode === 0 || ResponseCode === "0") && ResultCode) {
+                clearInterval(pollInterval);
     closePopup("stk-okay-pop");
     openPopup("pay-okay-pop"); // Force open popup
     setTimeout(() => closePopup("pay-okay-pop"), 4000);
-} else if (ResultCode === 1032) {
-    clearInterval(pollInterval);
-    closePopup("stk-okay-pop");
-    openPopup("pay-cancel-pop"); // Force open popup
-    setTimeout(() => closePopup("pay-cancel-pop"), 4000);
-} else {
-    console.error("Unexpected STK response:", ResultCode); // Debugging log
-}
+        } else {
+            clearInterval(pollInterval);
+            closePopup("stk-okay-pop");
+            openPopup("pay-cancel-pop"); // Force open popup
+            setTimeout(() => closePopup("pay-cancel-pop"), 4000);
+        }
         } catch (error) {
             clearInterval(pollInterval);
             console.error("Error retrieving STK status:", error);
