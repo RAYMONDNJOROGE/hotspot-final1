@@ -472,34 +472,36 @@ align-items: center;">
     openPopup('num-okay-pop');
 
     try {
-    const res = await fetch("pay.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({ phone, amount: selectedAmount, submit: 1 })
-    });
+        const res = await fetch("pay.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({ phone, amount: selectedAmount, submit: 1 })
+        });
 
-    const { ResponseCode, CheckoutRequestID } = await res.json();
+        const { ResponseCode, CheckoutRequestID } = await res.json();
 
-    console.log("ResponseCode:", ResponseCode);
-    console.log("CheckoutRequestID:", CheckoutRequestID);
+        console.log("ResponseCode:", ResponseCode);
+        console.log("CheckoutRequestID:", CheckoutRequestID);
 
-    closePopup('num-okay-pop');
+        closePopup('num-okay-pop');
 
-    if ((ResponseCode === 0 || ResponseCode === "0") && CheckoutRequestID) {
-        openPopup('stk-okay-pop'); // STK push successful
+        if ((ResponseCode === 0 || ResponseCode === "0") && CheckoutRequestID) {
+            openPopup('stk-okay-pop'); // STK push successful
+            setTimeout(() => closePopup("stk-okay-pop"), 5000);
 
-        // Poll only if the STK push was successful
-        pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
-    } else {
-        console.error("Unexpected STK Response:", { ResponseCode, CheckoutRequestID });
-        openPopup('stk-error-pop'); // STK push failed
+            // Start polling STK push status instead of payment status
+            pollSTKPushStatus(CheckoutRequestID);
+        } else {
+            console.error("Unexpected STK Response:", { ResponseCode, CheckoutRequestID });
+            openPopup('stk-error-pop'); // STK push failed
+            setTimeout(() => closePopup('stk-error-pop'), 3000);
+        }
+    } catch (error) {
+        console.error("Payment request failed:", error);
+        closePopup('num-okay-pop');
+        openPopup('stk-error-pop');
         setTimeout(() => closePopup('stk-error-pop'), 3000);
     }
-} catch (error) {
-    console.error("Payment request failed:", error);
-    closePopup('num-okay-pop');
-    openPopup('stk-error-pop');
-    setTimeout(() => closePopup('stk-error-pop'), 3000);
 }
 
 async function pollSTKPushStatus(checkoutID) {
@@ -526,40 +528,25 @@ async function pollSTKPushStatus(checkoutID) {
 
             console.log(`Polling attempt ${30 - retries + 1}: ResultCode = ${ResultCode}, Message = ${message}`);
 
-            closePopup("stk-okay-pop");
-
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
-                openPopup("pay-okay-pop"); // STK push accepted
-                setTimeout(() => closePopup("pay-okay-pop"), 4000);
+                closePopup("stk-okay-pop");
+                openPopup("pay-accepted-pop"); // STK push accepted
+                setTimeout(() => closePopup("pay-accepted-pop"), 4000);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
+                closePopup("stk-okay-pop");
                 openPopup("pay-cancel-pop"); // STK push cancelled
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
             }
         } catch (err) {
             clearInterval(pollInterval);
             console.error("Error checking STK push status:", err);
-            openPopup("stk-error-pop");
-            setTimeout(() => closePopup("stk-error-pop"), 4000);
+            closePopup("stk-okay-pop");
+            openPopup("pay-error-pop");
+            setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
     }, 1000); // Poll every second
-}
-
-async function processSuccessfulPayment(phone, selectedAmount) {
-    openPopup('pay-okay-pop');
-    setTimeout(() => closePopup("pay-okay-pop"), 4000);
-
-    try {
-        await fetch("save_payment.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams({ phone, amount: selectedAmount })
-        });
-    } catch (error) {
-        console.error("Failed to save payment:", error);
-    }
-}
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
@@ -652,7 +639,7 @@ async function processSuccessfulPayment(phone, selectedAmount) {
             </div>
     </div>
      <!--Pay Okay-->
-     <div id="pay-okay-pop" 
+     <div id="pay-accepted-pop" 
         style="    
     display: none;
     justify-content: center;
