@@ -507,10 +507,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
     const pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
             clearInterval(pollInterval);
-            console.error("Polling exceeded retry limit.");
             closePopup("stk-okay-pop");
-            openPopup("stk-error-pop"); // Timeout error popup
-            setTimeout(() => closePopup("stk-error-pop"), 4000);
             return;
         }
 
@@ -521,26 +518,25 @@ async function pollRealTimeSTKStatus(checkoutID) {
                 body: new URLSearchParams({ CheckoutRequestID: checkoutID })
             });
 
-            const { ResultCode, status, message } = await statusRes.json();
+            const { ResultCode, statusMessage } = await statusRes.json();
 
-            console.log(`Polling attempt ${30 - retries + 1}: ResultCode = ${ResultCode}, Status = ${status}, Message = ${message}`);
+            closePopup("stk-okay-pop"); // Close STK okay popup before showing final result
 
+            // Open correct popup based on STK status
             if (ResultCode === 0) {
-    clearInterval(pollInterval);
-    closePopup("stk-okay-pop");
-    console.log("Opening pay-accepted-pop");
-    openPopup("pay-accepted-pop"); // Try forcing it
-    setTimeout(() => closePopup("pay-accepted-pop"), 4000);
-} else if (ResultCode === 1032) {
-    clearInterval(pollInterval);
-    closePopup("stk-okay-pop");
-    console.log("Opening pay-cancel-pop");
-    openPopup("pay-cancel-pop");
-    setTimeout(() => closePopup("pay-cancel-pop"), 4000);
-}
+                clearInterval(pollInterval);
+                openPopup("pay-accepted-pop"); // STK push accepted
+                setTimeout(() => closePopup("pay-accepted-pop"), 4000);
+            } else if (ResultCode === 1032) {
+                clearInterval(pollInterval);
+                openPopup("pay-cancel-pop"); // STK push cancelled
+                setTimeout(() => closePopup("pay-cancel-pop"), 4000);
+            } else {
+                openPopup("stk-pending-pop"); // Waiting for response
+                setTimeout(() => closePopup("stk-pending-pop"), 4000);
+            }
         } catch (err) {
             clearInterval(pollInterval);
-            console.error("Error checking real-time STK status:", err);
             closePopup("stk-okay-pop");
             openPopup("pay-error-pop");
             setTimeout(() => closePopup("pay-error-pop"), 4000);
