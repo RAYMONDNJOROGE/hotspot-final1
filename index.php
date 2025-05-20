@@ -493,7 +493,7 @@ align-items: center;">
         }
     } catch (error) {
         closePopup('num-okay-pop');
-       
+        closePopup("stk-okay-pop");
         openPopup('stk-error-pop');
         setTimeout(() => closePopup('stk-error-pop'), 3000);
     }
@@ -518,6 +518,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
 
             const { ResultCode, statusMessage } = await statusRes.json();
             closePopup('stk-okay-pop');
+            setTimeout(() => closePopup('stk-okay-pop'), 6000);
 
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
