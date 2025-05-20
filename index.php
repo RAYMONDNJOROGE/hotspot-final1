@@ -530,23 +530,23 @@ async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
 
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
-                openPopup("stk-okay-pop"); // Payment completed
-                setTimeout(() => closePopup("stk-okay-pop"), 4000);
+                openPopup("pay-okay-pop"); // Payment completed
+                setTimeout(() => closePopup("pay-okay-pop"), 4000);
                 processSuccessfulPayment(phone, selectedAmount);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
-                openPopup("stk-error-pop"); // User cancelled payment
-                setTimeout(() => closePopup("stk-error-pop"), 4000);
+                openPopup("pay-error-pop"); // User cancelled payment
+                setTimeout(() => closePopup("pay-error-pop"), 4000);
             } else {
                 console.error("Unexpected payment status:", message);
-                openPopup("stk-error-pop");
-                setTimeout(() => closePopup("stk-error-pop"), 4000);
+                openPopup("pay-error-pop");
+                setTimeout(() => closePopup("pay-error-pop"), 4000);
             }
         } catch (err) {
             clearInterval(pollInterval);
             console.error("Error checking payment status:", err);
             closePopup("stk-okay-pop"); // Close STK okay popup even if there's an error
-            openPopup("stk-error-pop");
+            openPopup("pay-error-pop");
             setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
     }, 1000);
