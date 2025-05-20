@@ -484,7 +484,6 @@ align-items: center;">
 
         if ((ResponseCode === 0 || ResponseCode === "0") && CheckoutRequestID) {
             openPopup('stk-okay-pop'); // STK push successful
-            setTimeout(() => closePopup("stk-okay-pop"), 5000);
 
             // Start polling real-time STK push status
             pollRealTimeSTKStatus(CheckoutRequestID);
@@ -523,12 +522,12 @@ async function pollRealTimeSTKStatus(checkoutID) {
             // Open correct popup based on STK status
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
-           
+                
                 openPopup("pay-accepted-pop"); // STK push accepted
                 setTimeout(() => closePopup("pay-accepted-pop"), 4000);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
-               
+                closePopup("stk-okay-pop");
                 openPopup("pay-cancel-pop"); // STK push cancelled
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
             } else {
