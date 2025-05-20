@@ -503,14 +503,14 @@ align-items: center;">
 }
 
 async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
-    let retries = 10; // Limit polling attempts
+    let retries = 30; // Poll every second for 30 seconds
 
     const pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
             clearInterval(pollInterval);
             console.error("Polling exceeded retry limit.");
-            closePopup("stk-okay-pop"); // Ensure STK okay popup closes
-            openPopup("pay-error-pop");
+            closePopup("stk-okay-pop");
+            openPopup("pay-error-pop"); // Show timeout error
             setTimeout(() => closePopup("pay-error-pop"), 4000);
             return;
         }
@@ -524,33 +524,31 @@ async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
 
             const { ResultCode, message } = await statusRes.json();
 
-            console.log("Payment Status Polling - ResultCode:", ResultCode, "Message:", message);
+            console.log(`Polling attempt ${30 - retries + 1}: ResultCode = ${ResultCode}, Message = ${message}`);
 
-            closePopup("stk-okay-pop"); // Close STK okay popup before showing final payment popup
+            closePopup("stk-okay-pop");
 
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
-                openPopup("pay-okay-pop"); // Payment completed
+                openPopup("pay-okay-pop"); // Payment successful
                 setTimeout(() => closePopup("pay-okay-pop"), 4000);
                 processSuccessfulPayment(phone, selectedAmount);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
                 openPopup("pay-error-pop"); // User cancelled payment
-                console.log("Payment Cancelled by Ann");
                 setTimeout(() => closePopup("pay-error-pop"), 4000);
             } else {
                 console.error("Unexpected payment status:", message);
-                openPopup("pay-error-pop");
-                setTimeout(() => closePopup("pay-error-pop"), 4000);
+                openPopup("pay-cancel-pop");
+                setTimeout(() => closePopup("pay-cancel-pop"), 4000);
             }
         } catch (err) {
             clearInterval(pollInterval);
             console.error("Error checking payment status:", err);
-            closePopup("stk-okay-pop"); // Close STK okay popup even if there's an error
-            openPopup("pay-error-pop");
-            setTimeout(() => closePopup("pay-error-pop"), 4000);
+            openPopup("pay-cancel-pop");
+            setTimeout(() => closePopup("pay-cancel-pop"), 4000);
         }
-    }, 1000);
+    }, 1000); // Poll every second
 }
 
 async function processSuccessfulPayment(phone, selectedAmount) {
