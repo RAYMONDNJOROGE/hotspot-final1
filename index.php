@@ -518,30 +518,27 @@ async function pollRealTimeSTKStatus(checkoutID) {
             });
 
             const { ResultCode, statusMessage } = await statusRes.json();
+            closePopup('num-okay-pop');
 
-
-            if (ResultCode === 0) {
+            if ((ResponseCode === 0 || ResponseCode === "0") && ResultCode) {
                 clearInterval(pollInterval);
-                openPopup("pay-accepted-pop"); // STK push accepted
-                document.getElementById("pay-accepted-pop").innerText = statusMessage;
-                setTimeout(() => closePopup("pay-accepted-pop"), 4000);
-            } else if (ResultCode === 1032) {
+            openPopup('pay-okay-pop'); // Pay successful
+            setTimeout(() => closePopup('pay-okay-pop'), 3000);
+        } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
-                closePopup('stk-okay-pop');
                 openPopup("pay-cancel-pop"); // STK push cancelled
-                document.getElementById("pay-cancel-pop").innerText = statusMessage;
-                setTimeout(() => closePopup("pay-cancel-pop"), 4000);
-            } else {
+                setTimeout(() => closePopup("pay-cancel-pop"), 3000);
+            }else {
                 openPopup("stk-pending-pop"); // Still waiting for response
                 document.getElementById("stk-pending-pop").innerText = statusMessage;
                 setTimeout(() => closePopup("stk-pending-pop"), 4000);
             }
-        } catch (err) {
-            clearInterval(pollInterval);
+    } catch (error) {
+        clearInterval(pollInterval);
             openPopup("pay-error-pop"); // Handle fetch error
             document.getElementById("pay-error-pop").innerText = "Error retrieving STK status.";
             setTimeout(() => closePopup("pay-error-pop"), 4000);
-        }
+    }
     }, 500); // Poll every 0.5 seconds
 }
                     </script>
