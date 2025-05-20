@@ -538,8 +538,8 @@ async function pollRealTimeSTKStatus(checkoutID) {
         } catch (err) {
             clearInterval(pollInterval);
             closePopup("stk-okay-pop");
-            openPopup("pay-error-pop");
-            setTimeout(() => closePopup("pay-error-pop"), 4000);
+            openPopup("stk-error-pop");
+            setTimeout(() => closePopup("stk-error-pop"), 4000);
         }
     }, 1000); // Poll every second
 }
