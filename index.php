@@ -479,13 +479,12 @@ align-items: center;">
         });
 
         const { ResponseCode, CheckoutRequestID } = await res.json(); 
+        pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
 
         if (ResponseCode === 0 && CheckoutRequestID) {
         closePopup('num-okay-pop');
-        setTimeout(() => closePopup('num-okay-pop'), 3000);
         openPopup('stk-okay-pop'); // STK push successful
         setTimeout(() => closePopup('stk-okay-pop'), 6000);
-        pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
     } else {
         closePopup('num-okay-pop');
         openPopup('stk-error-pop'); // STK push failed
