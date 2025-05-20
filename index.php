@@ -493,9 +493,6 @@ align-items: center;">
     }
 } catch (error) {
     closePopup('num-okay-pop');
-    setTimeout(() => closePopup('num-okay-pop'), 3000);
-    openPopup('stk-error-pop');
-    setTimeout(() => closePopup('stk-error-pop'), 4000);
 }
 
 async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
