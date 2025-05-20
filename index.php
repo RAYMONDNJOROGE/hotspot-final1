@@ -459,8 +459,8 @@ align-items: center;">
                     <script>
                         
                         async function handlePaymentSubmit(event) {
-                        event.preventDefault();
-                        closePopup('sub-pop');
+    event.preventDefault();
+    closePopup('sub-pop');
 
     const phone = document.getElementById("con-input").value.trim();
     if (!/^254\d{9}$/.test(phone)) {
@@ -480,23 +480,34 @@ align-items: center;">
 
         const { ResponseCode, CheckoutRequestID } = await res.json(); 
 
+        if (!CheckoutRequestID) throw new Error("Invalid response from server.");
+
         setTimeout(() => {
             closePopup('num-okay-pop');
             openPopup('stk-okay-pop');
+            pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
         }, 3000);
 
     } catch (error) {
+        console.error("Payment request failed:", error);
         setTimeout(() => {
             closePopup('num-okay-pop');
             openPopup('stk-error-pop');
             setTimeout(() => closePopup('stk-error-pop'), 3000);
-    },2000);
-}     
-
+        }, 2000);
+    }
 }
 
 async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
+    let retries = 10; // Limit polling attempts to 10
+
     const pollInterval = setInterval(async () => {
+        if (retries-- <= 0) {
+            clearInterval(pollInterval);
+            console.error("Polling exceeded retry limit.");
+            return;
+        }
+
         try {
             const statusRes = await fetch("check_status.php", {
                 method: "POST",
@@ -511,19 +522,19 @@ async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
                 processSuccessfulPayment(phone, selectedAmount);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
-                displayError("❌ Payment Cancelled by User");
+                openPopup('pay-error-pop');
+                setTimeout(() => closePopup("pay-error-pop"), 4000);
             }
         } catch (err) {
             clearInterval(pollInterval);
-            displayError("❌ Failed to verify payment");
+            console.error("Error checking payment status:", err);
         }
     }, 1000);
 }
 
 async function processSuccessfulPayment(phone, selectedAmount) {
-    document.getElementById("payments").textContent = `✅ Payment of KES ${selectedAmount} received from ${phone}`;
-    openPopup("popup5");
-    setTimeout(() => closePopup("popup5"), 4000);
+    openPopup('pay-okay-pop');
+    setTimeout(() => closePopup("pay-okay-pop"), 4000);
 
     try {
         await fetch("save_payment.php", {
@@ -532,14 +543,8 @@ async function processSuccessfulPayment(phone, selectedAmount) {
             body: new URLSearchParams({ phone, amount: selectedAmount })
         });
     } catch (error) {
-        console.error("❌ Error saving payment:", error);
+        console.error("Failed to save payment:", error);
     }
-}
-
-function displayError(message) {
-    document.getElementById("failMessage").textContent = message;
-    openPopup("popup5");
-    setTimeout(() => closePopup("popup5"), 4000);
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
@@ -631,7 +636,67 @@ function displayError(message) {
                 padding-left: 10px;">Submitted!<br>Kindly Wait as we Check your Phone Number and Send an STK Push to your Phone</h1>
             </div>
     </div>
+     <!--Pay Okay-->
+     <div id="pay-okay-pop" 
+        style="    
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 170px;
+    border: 3px rgb(4, 140, 4) solid;
+    color: rgb(4, 140, 4);
+    border-radius: 5px;
+    z-index: 1000;">
+            <div id="h1-num-okay-con" 
+                style="
+            padding-top: 10px;
+            padding-bottom: 5px;">
+                <h1 id="h1-text-num-okay-con" 
+                    style="
+                font-size: 1.8em;
+                font-weight: 400;
+                margin-top: 15px;
+                padding-right: 10px;
+                padding-left: 10px;">Payment Received Successfully!<br>Kindly Wait as we Connect you Automatically</h1>
+            </div>
+    </div>
 
+    <!--Pay Error-->
+     <div id="pay-error-pop" 
+        style="    
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 160px;
+    border: 3px rgb(250, 4, 4) solid;
+    color: rgb(250, 4, 4);
+    border-radius: 5px;
+    z-index: 1000;">
+            <div id="h1-num-okay-con" 
+                style="
+            padding-top: 10px;
+            padding-bottom: 5px;">
+                <h1 id="h1-text-num-okay-con" 
+                    style="
+                font-size: 2em;
+                font-weight: 400;
+                margin-top: 15px;
+                padding-right: 10px;
+                padding-left: 10px;">Payment Cancelled By User!<br>Please Try Again</h1>
+            </div>
+    </div>
     <!--Num-format Okay recon-->
     <div id="num-okay-recon-pop" 
         style="
