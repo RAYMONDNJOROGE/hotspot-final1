@@ -501,14 +501,11 @@ align-items: center;">
     }
 }
 async function pollRealTimeSTKStatus(checkoutID) {
-    let retries = 30; // Poll every second for 30 seconds
+    let retries = 120; // Poll every second for 60 seconds
 
     const pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
             clearInterval(pollInterval);
-            closePopup("stk-okay-pop");
-            openPopup("stk-error-pop"); // Timeout error popup
-            setTimeout(() => closePopup("stk-error-pop"), 4000);
             return;
         }
 
@@ -543,7 +540,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
         
           
         }
-    }, 1000); // Poll every second
+    }, 500); // Poll every second
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
