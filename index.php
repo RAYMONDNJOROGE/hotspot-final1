@@ -523,6 +523,9 @@ async function pollRealTimeSTKStatus(checkoutID) {
             } else if (ResultCode === 1032) { // 1032 is usually used for user cancellation in STK responses
                 console.warn("Payment cancelled by user:", ResultCode);
                 clearInterval(pollInterval);
+            } else {
+                console.warn("Payment failed:", statusMessage);
+                clearInterval(pollInterval);
             }
         } catch (error) {
             console.error("Error fetching STK status:", error);
@@ -747,7 +750,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
             padding-top: 20px;
             font-size: 1.8em;
             font-weight: 400;">@Ksh. 10</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 10);"
+            <button type="button" class="box-button" onclick="handlePayment(event, 1);"
                 style="
             height: 30px;
             margin-top: 30px;
