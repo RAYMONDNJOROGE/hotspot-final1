@@ -472,30 +472,31 @@ align-items: center;">
     openPopup('num-okay-pop');
 
     try {
-        const res = await fetch("pay.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams({ phone, amount: selectedAmount, submit: 1 })
-        });
+    const res = await fetch("pay.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ phone, amount: selectedAmount, submit: 1 })
+    });
 
-        const { ResponseCode, CheckoutRequestID } = await res.json(); 
+    const { ResponseCode, CheckoutRequestID } = await res.json();
 
-        if (!CheckoutRequestID) throw new Error("Invalid response from server.");
+    console.log("ResponseCode:", ResponseCode);
+    console.log("CheckoutRequestID:", CheckoutRequestID);
 
-        setTimeout(() => {
-            closePopup('num-okay-pop');
-            openPopup('stk-okay-pop');
-            pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
-        }, 3000);
+    closePopup('num-okay-pop');
 
-    } catch (error) {
-        console.error("Payment request failed:", error);
-        setTimeout(() => {
-            closePopup('num-okay-pop');
-            openPopup('stk-error-pop');
-            setTimeout(() => closePopup('stk-error-pop'), 3000);
-        }, 2000);
+    if (ResponseCode === 0 && CheckoutRequestID) {
+        openPopup('stk-okay-pop'); // STK push successful
+        pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
+    } else {
+        openPopup('stk-error-pop'); // STK push failed
+        setTimeout(() => closePopup('stk-error-pop'), 3000);
     }
+} catch (error) {
+    console.error("Payment request failed:", error);
+    closePopup('num-okay-pop');
+    openPopup('stk-error-pop');
+    setTimeout(() => closePopup('stk-error-pop'), 3000);
 }
 
 async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
