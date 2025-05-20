@@ -481,16 +481,21 @@ align-items: center;">
         const { ResponseCode, CheckoutRequestID } = await res.json(); 
 
         if (ResponseCode === 0 && CheckoutRequestID) {
+        closePopup('num-okay-pop');
+        setTimeout(() => closePopup('num-okay-pop'), 3000);
         openPopup('stk-okay-pop'); // STK push successful
+        setTimeout(() => closePopup('stk-okay-pop'), 6000);
         pollPaymentStatus(CheckoutRequestID, phone, selectedAmount);
     } else {
+        closePopup('num-okay-pop');
         openPopup('stk-error-pop'); // STK push failed
         setTimeout(() => closePopup('stk-error-pop'), 3000);
     }
 } catch (error) {
     closePopup('num-okay-pop');
+    setTimeout(() => closePopup('num-okay-pop'), 3000);
     openPopup('stk-error-pop');
-    setTimeout(() => closePopup('stk-error-pop'), 3000);
+    setTimeout(() => closePopup('stk-error-pop'), 4000);
 }
 
 async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
