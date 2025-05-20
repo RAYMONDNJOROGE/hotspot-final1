@@ -2,7 +2,7 @@
 require_once 'generate_token.php';
 
 if (!isset($_POST['CheckoutRequestID'])) {
-    echo json_encode(['ResultCode' => 1, 'message' => 'Missing CheckoutRequestID']);
+    echo json_encode(['ResultCode' => 1, 'status' => 'error', 'message' => 'Missing CheckoutRequestID']);
     exit;
 }
 
@@ -35,4 +35,32 @@ curl_close($curl);
 // Decode response
 $stkResponse = json_decode($response, true);
 
-// Return the live STK status
+// Log response for debugging
+file_put_contents('stk_query_response.log', print_r($stkResponse, true));
+
+// Determine the STK push status
+$statusMessage = "Pending";
+if (isset($stkResponse['ResultCode'])) {
+    switch ($stkResponse['ResultCode']) {
+        case 0:
+            $statusMessage = "STK Push Accepted - Payment Successful";
+            break;
+        case 1032:
+            $statusMessage = "STK Push Cancelled by User";
+            break;
+        case 1:
+            $statusMessage = "STK Push Timed Out";
+            break;
+        default:
+            $statusMessage = "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available');
+            break;
+    }
+}
+
+// Return structured response with explicit STK status
+echo json_encode([
+    'ResultCode' => $stkResponse['ResultCode'] ?? 999,
+    'status' => $statusMessage,
+    'message' => $stkResponse['ResultDesc'] ?? 'Unable to retrieve STK status'
+]);
+?>

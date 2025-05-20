@@ -509,6 +509,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
     const pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
             clearInterval(pollInterval);
+            console.error("Polling exceeded retry limit.");
             closePopup("stk-okay-pop");
             openPopup("stk-error-pop"); // Timeout error popup
             setTimeout(() => closePopup("stk-error-pop"), 4000);
@@ -522,9 +523,9 @@ async function pollRealTimeSTKStatus(checkoutID) {
                 body: new URLSearchParams({ CheckoutRequestID: checkoutID })
             });
 
-            const { ResultCode, message } = await statusRes.json();
+            const { ResultCode, status, message } = await statusRes.json();
 
-            console.log(`Polling attempt ${30 - retries + 1}: ResultCode = ${ResultCode}, Message = ${message}`);
+            console.log(`Polling attempt ${30 - retries + 1}: ResultCode = ${ResultCode}, Status = ${status}, Message = ${message}`);
 
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
@@ -536,11 +537,13 @@ async function pollRealTimeSTKStatus(checkoutID) {
                 closePopup("stk-okay-pop");
                 openPopup("pay-cancel-pop"); // STK push cancelled
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
+            } else {
+                console.warn("Still waiting for STK push confirmation...", status);
             }
         } catch (err) {
             clearInterval(pollInterval);
             console.error("Error checking real-time STK status:", err);
-            
+            closePopup("stk-okay-pop");
             openPopup("pay-error-pop");
             setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
