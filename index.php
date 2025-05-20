@@ -493,7 +493,7 @@ align-items: center;">
         }
     } catch (error) {
         closePopup('num-okay-pop');
-        closePopup('stk-okay-pop');
+        closePopup("stk-okay-pop");
         openPopup('stk-error-pop');
         setTimeout(() => closePopup('stk-error-pop'), 3000);
     }
@@ -518,12 +518,10 @@ async function pollRealTimeSTKStatus(checkoutID) {
             const { ResultCode, statusMessage } = await statusRes.json();
 
             if (ResultCode === 0 || ResultCode === "0") {
-                openPopup('pay-accepted-pop');
-                setTimeout(() => closePopup('pay-accepted-pop'), 5000);
+                console.log("Payment successful:", statusMessage);
                 clearInterval(pollInterval);
             } else if (ResultCode === 1032) { // 1032 is usually used for user cancellation in STK responses
-                openPopup('pay-cancel-pop');
-                setTimeout(() => closePopup('pay-cancel-pop'), 5000);
+                console.warn("Payment cancelled by user.");
                 clearInterval(pollInterval);
             } else {
                 clearInterval(pollInterval);
