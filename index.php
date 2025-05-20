@@ -504,8 +504,9 @@ async function pollRealTimeSTKStatus(checkoutID) {
     const pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
             clearInterval(pollInterval);
-            openPopup("pay-accepted-pop"); // Timeout error popup
-            setTimeout(() => closePopup("pay-accepted-pop"), 4000);
+            openPopup("stk-error-pop"); // Timeout error popup
+            document.getElementById("stk-error-pop").innerText = "STK request timeout.";
+            setTimeout(() => closePopup("stk-error-pop"), 4000);
             return;
         }
 
@@ -517,22 +518,27 @@ async function pollRealTimeSTKStatus(checkoutID) {
             });
 
             const { ResultCode, statusMessage } = await statusRes.json();
-            closePopup('stk-okay-pop');
-            setTimeout(() => closePopup('stk-okay-pop'), 6000);
 
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
                 openPopup("pay-accepted-pop"); // STK push accepted
+                document.getElementById("pay-accepted-pop").innerText = statusMessage;
                 setTimeout(() => closePopup("pay-accepted-pop"), 4000);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
                 openPopup("pay-cancel-pop"); // STK push cancelled
+                document.getElementById("pay-cancel-pop").innerText = statusMessage;
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
+            } else {
+                openPopup("stk-pending-pop"); // Still waiting for response
+                document.getElementById("stk-pending-pop").innerText = statusMessage;
+                setTimeout(() => closePopup("stk-pending-pop"), 4000);
             }
         } catch (err) {
             clearInterval(pollInterval);
-            openPopup("pay-accepted-pop"); // Handle fetch error
-            setTimeout(() => closePopup("pay-accepted-pop"), 4000);
+            openPopup("pay-error-pop"); // Handle fetch error
+            document.getElementById("pay-error-pop").innerText = "Error retrieving STK status.";
+            setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
     }, 500); // Poll every 0.5 seconds
 }

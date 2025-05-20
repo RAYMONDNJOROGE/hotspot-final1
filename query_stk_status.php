@@ -76,7 +76,7 @@ if (isset($stkResponse['ResultCode'])) {
 // Return structured response
 echo json_encode([
     'ResultCode' => $stkResponse['ResultCode'] ?? 999,
-    'status' => $statusMessage,
+    'statusMessage' => $statusMessage,
     'message' => $stkResponse['ResultDesc'] ?? 'Unable to retrieve STK status'
 ]);
 ?>
