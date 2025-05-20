@@ -499,6 +499,14 @@ align-items: center;">
     }
 }
 async function pollRealTimeSTKStatus(checkoutID) {
+    let retries = 30;
+
+    const pollInterval = setInterval(async () => {
+        if (retries-- <= 0) {
+            clearInterval(pollInterval);
+            console.error("STK request timeout.");
+            return;
+        }
 
         try {
             const statusRes = await fetch("query_stk_status.php", {
@@ -509,25 +517,25 @@ async function pollRealTimeSTKStatus(checkoutID) {
 
             const { ResultCode, statusMessage } = await statusRes.json();
             closePopup('stk-okay-pop');
+            clearInterval(pollInterval);
 
             if (ResultCode === 0 || ResultCode === "0") {
                 openPopup('pay-accepted-pop');
                 setTimeout(() => closePopup('pay-accepted-pop'), 3000);
-                clearInterval(pollInterval);
             } else if (ResultCode === 1032 || ResultCode === "1032") { // 1032 is usually used for user cancellation in STK responses
                 openPopup('pay-cancel-pop');
                 setTimeout(() => closePopup('pay-cancel-pop'), 3000);
-                clearInterval(pollInterval);
             } else if (ResultCode === 1 || ResultCode === "1") {
-                clearInterval(pollInterval);
+                closePopup('stk-okay-pop');
             }  
             else {
-                clearInterval(pollInterval);
+                closePopup('stk-okay-pop');
             }
         } catch (error) {
             console.error("Error fetching STK status:", error);
-            clearInterval(pollInterval);
+            closePopup('stk-okay-pop');
         }
+    }, 1000);
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
