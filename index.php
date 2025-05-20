@@ -503,7 +503,7 @@ align-items: center;">
     }
 }
 
-async function pollRealTimeSTKStatus(checkoutRequestID) {
+async function pollRealTimeSTKStatus(checkoutID) {
     let retries = 30; // Poll every second for 30 seconds
 
     const pollInterval = setInterval(async () => {
