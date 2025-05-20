@@ -526,18 +526,18 @@ async function pollRealTimeSTKStatus(checkoutID) {
             console.log(`Polling attempt ${30 - retries + 1}: ResultCode = ${ResultCode}, Status = ${status}, Message = ${message}`);
 
             if (ResultCode === 0) {
-                clearInterval(pollInterval);
-                closePopup("stk-okay-pop");
-                openPopup("pay-accepted-pop"); // STK push accepted
-                setTimeout(() => closePopup("pay-accepted-pop"), 4000);
-            } else if (ResultCode === 1032) {
-                clearInterval(pollInterval);
-                closePopup("stk-okay-pop");
-                openPopup("pay-cancel-pop"); // STK push cancelled
-                setTimeout(() => closePopup("pay-cancel-pop"), 4000);
-            } else {
-                console.warn("Still waiting for STK push confirmation...", status);
-            }
+    clearInterval(pollInterval);
+    closePopup("stk-okay-pop");
+    console.log("Opening pay-accepted-pop");
+    openPopup("pay-accepted-pop"); // Try forcing it
+    setTimeout(() => closePopup("pay-accepted-pop"), 4000);
+} else if (ResultCode === 1032) {
+    clearInterval(pollInterval);
+    closePopup("stk-okay-pop");
+    console.log("Opening pay-cancel-pop");
+    openPopup("pay-cancel-pop");
+    setTimeout(() => closePopup("pay-cancel-pop"), 4000);
+}
         } catch (err) {
             clearInterval(pollInterval);
             console.error("Error checking real-time STK status:", err);
