@@ -1,20 +1,8 @@
 <?php
 require_once 'generate_token.php';
 
-if (!isset($_POST['CheckoutRequestID'])) {
-    echo json_encode(['ResultCode' => 1, 'statusMessage' => 'Missing CheckoutRequestID']);
-    exit;
-}
-
 $checkoutID = $_POST['CheckoutRequestID'];
 $accessToken = generateAccessToken(); // Get fresh M-Pesa API token
-
-// Fail if token isn't generated
-if (!$accessToken) {
-    echo json_encode(["ResultCode" => 999, "statusMessage" => "Failed to generate access token"]);
-    error_log("Access token generation failed.");
-    exit;
-}
 
 $stkQueryUrl = 'https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query';
 $stkQueryHeader = [
@@ -47,36 +35,11 @@ $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 $error = curl_error($curl);
 curl_close($curl);
 
-// Validate API response
-if ($httpStatus !== 200 || !$response) {
-    error_log("STK Query Error: HTTP $httpStatus - $error");
-    echo json_encode([
-        'ResultCode' => 999,
-        'statusMessage' => 'Error querying STK status',
-        'message' => 'Failed to retrieve STK status',
-        'errorDetails' => $error
-    ]);
-    exit;
-}
-
-// Handle cURL errors
-if ($error) {
-    error_log("CURL Error: " . $error);
-    echo json_encode(["ResultCode" => 999, "statusMessage" => "Network Error", "errorDetails" => $error]);
-    exit;
-}
-
 // Decode response
 $stkResponse = json_decode($response, true);
 
 // Log API response
 file_put_contents('stk_query_response.log', "[" . date('Y-m-d H:i:s') . "] " . json_encode($stkResponse, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
-
-// Validate API response
-if (!isset($stkResponse['ResultCode'])) {
-    echo json_encode(["ResultCode" => 999, "statusMessage" => "Invalid API response"]);
-    exit;
-}
 
 // Determine status
 $statusMessage = match ($stkResponse['ResultCode']) {
