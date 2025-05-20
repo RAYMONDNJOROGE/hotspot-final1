@@ -498,8 +498,7 @@ align-items: center;">
 } catch (error) {
     console.error("Payment request failed:", error);
     closePopup('num-okay-pop');
-    openPopup('stk-error-pop');
-    setTimeout(() => closePopup('stk-error-pop'), 3000);
+   
 }
 
 async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
