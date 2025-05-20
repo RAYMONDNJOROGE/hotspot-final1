@@ -522,10 +522,12 @@ async function pollRealTimeSTKStatus(checkoutID) {
 
             if ((ResponseCode === 0 || ResponseCode === "0") && ResultCode) {
                 clearInterval(pollInterval);
+                console.log("Paid")
             openPopup('pay-okay-pop'); // Pay successful
             setTimeout(() => closePopup('pay-okay-pop'), 3000);
         } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
+                console.log("Cancelled");
                 openPopup("pay-cancel-pop"); // STK push cancelled
                 setTimeout(() => closePopup("pay-cancel-pop"), 3000);
             }else {
