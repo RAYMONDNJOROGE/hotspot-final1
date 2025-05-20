@@ -12,6 +12,7 @@ $accessToken = generateAccessToken(); // Get fresh M-Pesa API token
 // Fail if token isn't generated
 if (!$accessToken) {
     echo json_encode(["ResultCode" => 999, "statusMessage" => "Failed to generate access token"]);
+    error_log("Access token generation failed.");
     exit;
 }
 
