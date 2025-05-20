@@ -43,7 +43,8 @@ if ($httpStatus !== 200 || !$response) {
     echo json_encode([
         'ResultCode' => 999,
         'statusMessage' => 'Error querying STK status',
-        'message' => 'Failed to retrieve STK status'
+        'message' => 'Failed to retrieve STK status',
+        'errorDetails' => $error
     ]);
     exit;
 }
@@ -51,8 +52,12 @@ if ($httpStatus !== 200 || !$response) {
 // Decode response
 $stkResponse = json_decode($response, true);
 
-// Append log
-file_put_contents('stk_query_response.log', print_r($stkResponse, true), FILE_APPEND);
+// Append log with timestamp
+file_put_contents(
+    'stk_query_response.log',
+    "[" . date('Y-m-d H:i:s') . "] " . json_encode($stkResponse, JSON_PRETTY_PRINT) . "\n",
+    FILE_APPEND
+);
 
 // Determine status
 $statusMessage = "Pending";
