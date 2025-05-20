@@ -520,24 +520,22 @@ async function pollRealTimeSTKStatus(checkoutID) {
             const { ResultCode, statusMessage } = await statusRes.json();
           
 
-            // Display only "Paid" or "Cancelled" statuses
             if (ResultCode === 0) {
-                clearInterval(pollInterval);
-                closePopup("stk-okay-pop");
-                openPopup("pay-okay-pop"); // Payment successful
-                setTimeout(() => closePopup("pay-okay-pop"), 4000);
-            } else if (ResultCode === 1032) {
-                clearInterval(pollInterval);
-                closePopup("stk-okay-pop");
-                openPopup("pay-cancel-pop"); // STK push cancelled
-                setTimeout(() => closePopup("pay-cancel-pop"), 4000);
-            }
+    clearInterval(pollInterval);
+    closePopup("stk-okay-pop");
+    openPopup("pay-okay-pop"); // Force open popup
+    setTimeout(() => closePopup("pay-okay-pop"), 4000);
+} else if (ResultCode === 1032) {
+    clearInterval(pollInterval);
+    closePopup("stk-okay-pop");
+    openPopup("pay-cancel-pop"); // Force open popup
+    setTimeout(() => closePopup("pay-cancel-pop"), 4000);
+} else {
+    console.error("Unexpected STK response:", ResultCode); // Debugging log
+}
         } catch (error) {
             clearInterval(pollInterval);
             console.error("Error retrieving STK status:", error);
-            openPopup("pay-error-pop"); // Handle fetch error
-            document.getElementById("pay-error-pop").innerText = "Error retrieving STK status.";
-            setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
     }, 500);
 }
