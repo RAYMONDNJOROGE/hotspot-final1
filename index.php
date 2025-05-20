@@ -516,15 +516,17 @@ async function pollRealTimeSTKStatus(checkoutID) {
             });
 
             const { ResultCode, statusMessage } = await statusRes.json();
-
+            closePopup('stk-okay-pop');
+            
             if (ResultCode === 0 || ResultCode === "0") {
-                console.log("Payment successful:", statusMessage);
+                openPopup('pay-accepted-pop');
+                setTimeout(() => closePopup('pay-accepted-pop'), 3000);
                 clearInterval(pollInterval);
             } else if (ResultCode === 1032) { // 1032 is usually used for user cancellation in STK responses
-                console.warn("Payment cancelled by user.");
+                openPopup('pay-cancel-pop');
+                setTimeout(() => closePopup('pay-cancel-pop'), 3000);
                 clearInterval(pollInterval);
             } else {
-                console.warn("Payment failed:", statusMessage);
                 clearInterval(pollInterval);
             }
         } catch (error) {
