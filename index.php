@@ -536,6 +536,7 @@ async function pollPaymentStatus(checkoutID, phone, selectedAmount) {
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
                 openPopup("pay-error-pop"); // User cancelled payment
+                console.log("Payment Cancelled by Ann");
                 setTimeout(() => closePopup("pay-error-pop"), 4000);
             } else {
                 console.error("Unexpected payment status:", message);
