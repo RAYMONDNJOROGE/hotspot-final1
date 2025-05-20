@@ -524,6 +524,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
                 console.warn("Payment cancelled by user.");
                 clearInterval(pollInterval);
             } else {
+                console.warn("Payment failed:", statusMessage);
                 clearInterval(pollInterval);
             }
         } catch (error) {
