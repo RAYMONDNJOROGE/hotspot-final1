@@ -541,6 +541,7 @@ async function processSuccessfulPayment(phone, selectedAmount) {
         console.error("Failed to save payment:", error);
     }
 }
+}
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
                         style="
