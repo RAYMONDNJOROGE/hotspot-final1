@@ -504,7 +504,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
     const pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
             clearInterval(pollInterval);
-            openPopup("stk-error-pop"); // Timeout error popup
+            openPopup("stk-error-pop");
             document.getElementById("stk-error-pop").innerText = "STK request timeout.";
             setTimeout(() => closePopup("stk-error-pop"), 4000);
             return;
@@ -518,30 +518,31 @@ async function pollRealTimeSTKStatus(checkoutID) {
             });
 
             const { ResultCode, statusMessage } = await statusRes.json();
-            closePopup('num-okay-pop');
 
-            if ((ResponseCode === 0 || ResponseCode === "0") && ResultCode) {
+            // Close stk-okay-pop immediately after receiving response
+            closePopup("stk-okay-pop");
+
+            if (ResultCode === 0) {
                 clearInterval(pollInterval);
-                console.log("Paid")
-            openPopup('pay-okay-pop'); // Pay successful
-            setTimeout(() => closePopup('pay-okay-pop'), 3000);
-        } else if (ResultCode === 1032) {
+                openPopup("pay-okay-pop"); // Payment successful
+                setTimeout(() => closePopup("pay-okay-pop"), 4000);
+            } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
-                console.log("Cancelled");
                 openPopup("pay-cancel-pop"); // STK push cancelled
-                setTimeout(() => closePopup("pay-cancel-pop"), 3000);
-            }else {
-                openPopup("stk-pending-pop"); // Still waiting for response
+                setTimeout(() => closePopup("pay-cancel-pop"), 4000);
+            } else {
+                openPopup("stk-pending-pop");
                 document.getElementById("stk-pending-pop").innerText = statusMessage;
                 setTimeout(() => closePopup("stk-pending-pop"), 4000);
             }
-    } catch (error) {
-        clearInterval(pollInterval);
-            openPopup("pay-error-pop"); // Handle fetch error
+        } catch (error) {
+            clearInterval(pollInterval);
+            console.error("Error retrieving STK status:", error);
+            openPopup("pay-error-pop");
             document.getElementById("pay-error-pop").innerText = "Error retrieving STK status.";
             setTimeout(() => closePopup("pay-error-pop"), 4000);
-    }
-    }, 500); // Poll every 0.5 seconds
+        }
+    }, 500);
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 

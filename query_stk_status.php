@@ -34,14 +34,16 @@ curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($stkQueryData));
 $response = curl_exec($curl);
 $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+$error = curl_error($curl);
 curl_close($curl);
 
 // Validate API response
 if ($httpStatus !== 200 || !$response) {
+    error_log("STK Query Error: HTTP $httpStatus - $error");
     echo json_encode([
         'ResultCode' => 999,
-        'status' => 'error',
-        'message' => 'Failed to query STK status - API response error'
+        'statusMessage' => 'Error querying STK status',
+        'message' => 'Failed to retrieve STK status'
     ]);
     exit;
 }
@@ -49,10 +51,10 @@ if ($httpStatus !== 200 || !$response) {
 // Decode response
 $stkResponse = json_decode($response, true);
 
-// Log response for debugging
-file_put_contents('stk_query_response.log', print_r($stkResponse, true));
+// Append log
+file_put_contents('stk_query_response.log', print_r($stkResponse, true), FILE_APPEND);
 
-// Determine the STK push status
+// Determine status
 $statusMessage = "Pending";
 if (isset($stkResponse['ResultCode'])) {
     switch ($stkResponse['ResultCode']) {
