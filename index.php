@@ -518,7 +518,6 @@ async function pollRealTimeSTKStatus(checkoutID) {
             });
 
             const { ResultCode, statusMessage } = await statusRes.json();
-            closePopup('stk-okay-pop');
 
 
             if (ResultCode === 0) {
