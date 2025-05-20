@@ -2,12 +2,18 @@
 require_once 'generate_token.php';
 
 if (!isset($_POST['CheckoutRequestID'])) {
-    echo json_encode(['ResultCode' => 1, 'status' => 'error', 'message' => 'Missing CheckoutRequestID']);
+    echo json_encode(['ResultCode' => 1, 'statusMessage' => 'Missing CheckoutRequestID']);
     exit;
 }
 
 $checkoutID = $_POST['CheckoutRequestID'];
 $accessToken = generateAccessToken(); // Get fresh M-Pesa API token
+
+// Fail if token isn't generated
+if (!$accessToken) {
+    echo json_encode(["ResultCode" => 999, "statusMessage" => "Failed to generate access token"]);
+    exit;
+}
 
 $stkQueryUrl = 'https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query';
 $stkQueryHeader = [
@@ -25,6 +31,9 @@ $stkQueryData = [
     'Timestamp' => $timestamp,
     'CheckoutRequestID' => $checkoutID
 ];
+
+// Log request payload
+file_put_contents('stk_query_request.log', json_encode($stkQueryData, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
 
 // Send request to Safaricom
 $curl = curl_init($stkQueryUrl);
@@ -49,40 +58,36 @@ if ($httpStatus !== 200 || !$response) {
     exit;
 }
 
+// Handle cURL errors
+if ($error) {
+    error_log("CURL Error: " . $error);
+    echo json_encode(["ResultCode" => 999, "statusMessage" => "Network Error", "errorDetails" => $error]);
+    exit;
+}
+
 // Decode response
 $stkResponse = json_decode($response, true);
 
-// Append log with timestamp
-file_put_contents(
-    'stk_query_response.log',
-    "[" . date('Y-m-d H:i:s') . "] " . json_encode($stkResponse, JSON_PRETTY_PRINT) . "\n",
-    FILE_APPEND
-);
+// Log API response
+file_put_contents('stk_query_response.log', "[" . date('Y-m-d H:i:s') . "] " . json_encode($stkResponse, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
+
+// Validate API response
+if (!isset($stkResponse['ResultCode'])) {
+    echo json_encode(["ResultCode" => 999, "statusMessage" => "Invalid API response"]);
+    exit;
+}
 
 // Determine status
-$statusMessage = "Pending";
-if (isset($stkResponse['ResultCode'])) {
-    switch ($stkResponse['ResultCode']) {
-        case 0:
-            $statusMessage = "STK Push Accepted - Payment Successful";
-            break;
-        case 1032:
-            $statusMessage = "STK Push Cancelled by User";
-            break;
-        case 1:
-            $statusMessage = "STK Push Timed Out";
-            break;
-        default:
-            $statusMessage = "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available');
-            break;
-    }
-} else {
-    $statusMessage = "Invalid STK Query Response";
-}
+$statusMessage = match ($stkResponse['ResultCode']) {
+    0     => "STK Push Accepted - Payment Successful",
+    1032  => "STK Push Cancelled by User",
+    1     => "STK Push Timed Out",
+    default => "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available'),
+};
 
 // Return structured response
 echo json_encode([
-    'ResultCode' => $stkResponse['ResultCode'] ?? 999,
+    'ResultCode' => $stkResponse['ResultCode'],
     'statusMessage' => $statusMessage,
     'message' => $stkResponse['ResultDesc'] ?? 'Unable to retrieve STK status'
 ]);
