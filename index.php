@@ -521,26 +521,23 @@ async function pollRealTimeSTKStatus(checkoutID) {
 
             const { ResultCode, statusMessage } = await statusRes.json();
 
-            closePopup("stk-okay-pop"); // Close STK okay popup before showing final result
 
             // Open correct popup based on STK status
             if (ResultCode === 0) {
                 clearInterval(pollInterval);
+                closePopup("stk-okay-pop");
                 openPopup("pay-accepted-pop"); // STK push accepted
                 setTimeout(() => closePopup("pay-accepted-pop"), 4000);
             } else if (ResultCode === 1032) {
                 clearInterval(pollInterval);
+                closePopup("stk-okay-pop");
                 openPopup("pay-cancel-pop"); // STK push cancelled
                 setTimeout(() => closePopup("pay-cancel-pop"), 4000);
             } else {
-                openPopup("stk-pending-pop"); // Waiting for response
-                setTimeout(() => closePopup("stk-pending-pop"), 4000);
+                clearInterval(pollInterval);
             }
         } catch (err) {
             clearInterval(pollInterval);
-            closePopup("stk-okay-pop");
-            openPopup("pay-error-pop");
-            setTimeout(() => closePopup("pay-error-pop"), 4000);
         }
     }, 1000); // Poll every second
 }
