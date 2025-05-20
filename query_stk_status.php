@@ -1,7 +1,6 @@
 <?php
-require_once 'generate_token.php'; // Ensure this gets a valid access token
+require_once 'generate_token.php';
 
-// Validate input
 if (!isset($_POST['CheckoutRequestID'])) {
     echo json_encode(['ResultCode' => 1, 'statusMessage' => 'Missing CheckoutRequestID']);
     exit;
@@ -24,7 +23,7 @@ $stkQueryHeader = [
 
 // Prepare query payload
 $timestamp = date('YmdHis');
-$password = base64_encode('174379' . 'your_passkey_here' . $timestamp);
+$password = base64_encode('174379' . 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919' . $timestamp);
 
 $stkQueryData = [
     'BusinessShortCode' => '174379',
@@ -32,9 +31,6 @@ $stkQueryData = [
     'Timestamp' => $timestamp,
     'CheckoutRequestID' => $checkoutID
 ];
-
-// Log request payload
-file_put_contents('stk_query_request.log', json_encode($stkQueryData, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
 
 // Send request to Safaricom
 $curl = curl_init($stkQueryUrl);
@@ -62,16 +58,7 @@ if ($error || !$response || $httpStatus !== 200) {
 // Decode response
 $stkResponse = json_decode($response, true);
 
-// Log API response
-file_put_contents('stk_query_response.log', "[" . date('Y-m-d H:i:s') . "] " . json_encode($stkResponse, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
-
-// Validate API response
-if (!isset($stkResponse['ResultCode'])) {
-    echo json_encode(["ResultCode" => 999, "statusMessage" => "Invalid API response"]);
-    exit;
-}
-
-// Determine status
+// Determine payment status
 $statusMessage = match ($stkResponse['ResultCode']) {
     0     => "Payment Successful",
     1032  => "Payment Cancelled by User",
