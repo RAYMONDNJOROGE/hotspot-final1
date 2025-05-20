@@ -487,12 +487,10 @@ align-items: center;">
 
         if ((ResponseCode === 0 || ResponseCode === "0") && CheckoutRequestID) {
             openPopup('stk-okay-pop'); // STK push successful
-            setTimeout(() => closePopup("stk-okay-pop"), 5000);
 
             // Start polling real-time STK push status
             pollRealTimeSTKStatus(CheckoutRequestID);
         } else {
-            closePopup("stk-okay-pop");
             openPopup('stk-error-pop'); // STK push failed
             setTimeout(() => closePopup('stk-error-pop'), 3000);
         }
