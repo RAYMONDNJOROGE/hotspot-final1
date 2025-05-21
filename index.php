@@ -1132,11 +1132,11 @@
 }
 
 //Poll Stk Status
-        const timeout = setTimeout(() => {
+        async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
+        if (retries <= 0) {
         return;
-        }, 7000); // Stops after 30 seconds
+        }
 
-        async function pollRealTimeSTKStatus(checkoutID) {
         try {
         const statusRes = await fetch("query_stk_status.php", {
             method: "POST",
@@ -1146,30 +1146,29 @@
 
         const { ResultCode } = await statusRes.json();
 
+        //Denoting Response Codes
         switch (String(ResultCode)) {
             case "0":
-                clearTimeout(timeout);
                 closePopup('stk-okay-pop');
                 openPopup('pay-accepted-pop');
-                return;
+                return; // Stop polling
             case "1032":
-                clearTimeout(timeout);
                 closePopup('stk-okay-pop');
                 openPopup('pay-cancel-pop');
                 setTimeout(() => closePopup('pay-cancel-pop'), 3000);
-                return;
+                return; // Stop polling
             case "1":
-                clearTimeout(timeout);
                 closePopup('stk-okay-pop');
                 openPopup('pay-timeout-pop');
                 setTimeout(() => closePopup('pay-timeout-pop'), 3000);
-                return;
+                return; // Stop polling
         }
-        } catch (error) {
+    } catch (error) {
         console.error("Error fetching STK status:", error);
-        }
+    }
 
-    setTimeout(() => pollRealTimeSTKStatus(checkoutID), 1000); // Retry every second
+        // Retry after 1 second
+        setTimeout(() => pollRealTimeSTKStatus(checkoutID, retries - 1), 1000);
 }
 
                         async function checkActive(event) {
