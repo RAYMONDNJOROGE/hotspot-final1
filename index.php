@@ -417,7 +417,8 @@ align-items: center;">
                 margin-top: 5px;
                 padding-left: 5px;
                 padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin in the Next 20 Seconds.</h1>
-                <div id="timer" style="    font-size: 1.8em;
+                <div id="timer" 
+                style="font-size: 1.8em;
                 font-weight: bold;
                 color: rgb(140, 4, 4);
                 text-align: center;
@@ -509,7 +510,22 @@ align-items: center;">
                     color: white;
                     margin-top: 15px;">pay</button>
                     <script>
+                        function startCountdown() {
+    let timeLeft = 20;
+    const timerElement = document.getElementById("timer");
 
+    timerElement.textContent = timeLeft; // Set initial value
+
+    const countdown = setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+        } else {
+            clearInterval(countdown);
+            timerElement.textContent = "Time's up!";
+        }
+    }, 1000);
+}
                         
     async function handlePaymentSubmit(event) {
     event.preventDefault();
