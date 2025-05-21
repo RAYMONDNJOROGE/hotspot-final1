@@ -13,6 +13,10 @@
 
 <!--Script Starts-->
 <script>
+    function showPopup() {
+    document.getElementById("stk-okay-pop").style.display = "block";
+    startCountdown(); // Start the countdown when the popup appears
+}
     function openPopup(popupId) {
         const popup = document.getElementById(popupId);
         const overlay = document.getElementById('overlay');
@@ -105,6 +109,19 @@
       transform: rotate(360deg);
     }
 }
+@keyframes timer-scale {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Blinking effect */
+@keyframes blink-animation {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 .box-button:hover{
     cursor: pointer;
     opacity: 0.7;
@@ -375,7 +392,7 @@ align-items: center;">
     <!--Stk Okay Popup-->
     <div id="stk-okay-pop" 
         style="
-    display: block;
+    display: none;
     justify-content: center;
     background-color: white;
     text-align: center;
@@ -400,12 +417,13 @@ align-items: center;">
                 margin-top: 5px;
                 padding-left: 5px;
                 padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin in the Next 20 Seconds.</h1>
-                <div id="timer" style="
-    font-size: 1.8em;
-    font-weight: bold;
-    color: rgb(140, 4, 4);
-    text-align: center;
-    margin-top: 20px;">20</div>
+                <div id="timer" style="    font-size: 1.8em;
+                font-weight: bold;
+                color: rgb(140, 4, 4);
+                text-align: center;
+                margin-top: 20px;
+                animation: timer-scale 1s infinite;
+            ">20</div>
 
             </div>
     </div>
@@ -491,32 +509,7 @@ align-items: center;">
                     color: white;
                     margin-top: 15px;">pay</button>
                     <script>
-function startCountdown() {
-    let timeLeft = 30;
-    const timerElement = document.getElementById("timer");
 
-
-    timerElement.textContent = timeLeft; // Set initial value
-
-    const countdown = setInterval(() => {
-        timeLeft--;
-        timerElement.textContent = timeLeft;
-
-        if (timeLeft <= 0) {
-            clearInterval(countdown);
-            timerElement.textContent = "Time's up!";
-        }
-    }, 1000);
-}
-
-// Show STK popup & start countdown immediately
-function showSTKPopup() {
-    openPopup('stk-okay-pop'); // Open popup
-
-    setTimeout(() => {
-        startCountdown(); // Start countdown after popup appears
-    }, 300); // Slight delay to ensure popup is shown before countdown starts
-}
                         
     async function handlePaymentSubmit(event) {
     event.preventDefault();
