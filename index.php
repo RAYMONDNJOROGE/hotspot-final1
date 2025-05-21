@@ -516,6 +516,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
             });
 
             const { ResultCode } = await statusRes.json();
+            closePopup('stk-okay-pop');
 
             // Stop polling when a valid response is received
             if (["0", "1032", "1"].includes(ResultCode)) {
