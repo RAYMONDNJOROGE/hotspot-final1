@@ -501,7 +501,6 @@ align-items: center;">
 
 async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
     if (retries <= 0) {
-        console.error("STK request timeout.");
         return;
     }
 
@@ -515,23 +514,19 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
         const { ResultCode } = await statusRes.json();
 
 
-        console.log("Received STK status:", ResultCode);
-
         switch (String(ResultCode)) {
             case "0":
-                console.log("Stopping polling: Payment successful.");
                 closePopup('stk-okay-pop');
                 openPopup('pay-accepted-pop');
                 setTimeout(() => closePopup('pay-accepted-pop'), 3000);
                 return; // Stop polling
             case "1032":
-                console.log("Stopping polling: Payment canceled.");
                 closePopup('stk-okay-pop');
                 openPopup('pay-cancel-pop');
                 setTimeout(() => closePopup('pay-cancel-pop'), 3000);
                 return; // Stop polling
             default:
-                console.log("Polling continues, waiting for final status...");
+            closePopup('stk-okay-pop');
         }
     } catch (error) {
         console.error("Error fetching STK status:", error);
@@ -633,7 +628,7 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
      <!--Pay Okay-->
      <div id="pay-accepted-pop" 
         style="    
-    display: flex;
+    display: none;
     justify-content: center;
     background-color: white;
     text-align: center;
@@ -641,8 +636,8 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 450px;
-    height: 180px;
+    width: 500px;
+    height: 200px;
     border: 3px rgb(4, 140, 4) solid;
     color: rgb(4, 140, 4);
     border-radius: 5px;
@@ -653,11 +648,11 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
             padding-bottom: 5px;">
                 <h1 id="h1-text-num-okay-con" 
                     style="
-                font-size: 2em;
+                font-size: 1.9em;
                 font-weight: 400;
-                margin-top: 15px;
+                margin-top: 5px;
                 padding-right: 10px;
-                padding-left: 10px;">✅<br>Payment Received Successfully!<br>Kindly Wait as we Connect you Automatically</h1>
+                padding-left: 10px;">✅<br>Payment Received Successfully!<br>Kindly Wait as we Connect you Automatically.</h1>
             </div>
     </div>
 
