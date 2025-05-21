@@ -1134,7 +1134,7 @@
 //Poll Stk Status
         const timeout = setTimeout(() => {
         return;
-        }, 5000); // Stops after 30 seconds
+        }, 7000); // Stops after 30 seconds
 
         async function pollRealTimeSTKStatus(checkoutID) {
         try {
