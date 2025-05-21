@@ -501,16 +501,15 @@ align-items: center;">
 let pollInterval; // Declare at a higher scope
 
 async function pollRealTimeSTKStatus(checkoutID) {
-    let retries = 20;
-
+    let retries = 30;
     if (pollInterval) {
-        clearInterval(pollInterval); // Ensure no duplicate polling instances
+        clearInterval(pollInterval); // Stop previous polling instance
     }
 
     pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
-            console.error("STK request timeout.");
             clearInterval(pollInterval);
+            console.error("STK request timeout.");
             return;
         }
 
@@ -522,16 +521,13 @@ async function pollRealTimeSTKStatus(checkoutID) {
             });
 
             const { ResultCode } = await statusRes.json();
-            const resultCodeStr = String(ResultCode); // Ensure it's a string
 
-            console.log("Received STK status:", resultCodeStr);
-
-            if (["0", "1032", "1"].includes(resultCodeStr)) {
-                console.log("Stopping polling due to valid ResultCode:", resultCodeStr);
+            if (["0", "1032", "1"].includes(String(ResultCode))) {
+                console.log("Stopping polling due to valid ResultCode:", ResultCode);
                 clearInterval(pollInterval);
             }
 
-            switch (resultCodeStr) {
+            switch (ResultCode) {
                 case "0":
                     openPopup('pay-accepted-pop');
                     setTimeout(() => closePopup('pay-accepted-pop'), 3000);
