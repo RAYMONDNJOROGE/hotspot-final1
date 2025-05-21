@@ -513,18 +513,20 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
         });
 
         const { ResultCode } = await statusRes.json();
-        closePopup('stk-okay-pop');
+
 
         console.log("Received STK status:", ResultCode);
 
         switch (String(ResultCode)) {
             case "0":
                 console.log("Stopping polling: Payment successful.");
+                closePopup('stk-okay-pop');
                 openPopup('pay-accepted-pop');
                 setTimeout(() => closePopup('pay-accepted-pop'), 3000);
                 return; // Stop polling
             case "1032":
                 console.log("Stopping polling: Payment canceled.");
+                closePopup('stk-okay-pop');
                 openPopup('pay-cancel-pop');
                 setTimeout(() => closePopup('pay-cancel-pop'), 3000);
                 return; // Stop polling
