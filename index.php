@@ -633,7 +633,7 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
      <!--Pay Okay-->
      <div id="pay-accepted-pop" 
         style="    
-    display: none;
+    display: flex;
     justify-content: center;
     background-color: white;
     text-align: center;
@@ -642,7 +642,7 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 450px;
-    height: 170px;
+    height: 180px;
     border: 3px rgb(4, 140, 4) solid;
     color: rgb(4, 140, 4);
     border-radius: 5px;
@@ -653,11 +653,11 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
             padding-bottom: 5px;">
                 <h1 id="h1-text-num-okay-con" 
                     style="
-                font-size: 1.8em;
+                font-size: 2em;
                 font-weight: 400;
                 margin-top: 15px;
                 padding-right: 10px;
-                padding-left: 10px;">Payment Received Successfully!<br>Kindly Wait as we Connect you Automatically</h1>
+                padding-left: 10px;">✅<br>Payment Received Successfully!<br>Kindly Wait as we Connect you Automatically</h1>
             </div>
     </div>
 
@@ -757,7 +757,7 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
             padding-top: 20px;
             font-size: 1.8em;
             font-weight: 400;">@Ksh. 10</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 1);"
+            <button type="button" class="box-button" onclick="handlePayment(event, 10);"
                 style="
             height: 30px;
             margin-top: 30px;
