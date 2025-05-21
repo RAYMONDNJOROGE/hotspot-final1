@@ -13,10 +13,6 @@
 
 <!--Script Starts-->
 <script>
-    function showPopup() {
-    document.getElementById("stk-okay-pop").style.display = "block";
-    startCountdown(); // Start the countdown when the popup appears
-}
     function openPopup(popupId) {
         const popup = document.getElementById(popupId);
         const overlay = document.getElementById('overlay');
@@ -108,17 +104,6 @@
     to {
       transform: rotate(360deg);
     }
-}
-@keyframes timer-scale {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-@keyframes number-fade {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
 }
 
 .box-button:hover{
@@ -400,7 +385,7 @@ align-items: center;">
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
-    height: 220px;
+    height: 200px;
     border: 3px rgb(4, 4, 140) solid;
     color: rgb(4, 4, 140);
     border-radius: 5px;
@@ -415,15 +400,7 @@ align-items: center;">
                 font-weight: 400;
                 margin-top: 5px;
                 padding-left: 5px;
-                padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin in the Next 20 Seconds.</h1>
-                <div id="timer" 
-                style="font-size: 1.8em;
-                font-weight: bold;
-                color: rgb(140, 4, 4);
-                text-align: center;
-                margin-top: 20px;
-                animation: timer-scale 1s infinite;
-            ">20</div>
+                padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin.</h1>
 
             </div>
     </div>
@@ -509,28 +486,6 @@ align-items: center;">
                     color: white;
                     margin-top: 15px;">pay</button>
                     <script>
-function startCountdown() {
-    let timeLeft = 20;
-    const timerElement = document.getElementById("timer");
-
-    timerElement.textContent = timeLeft;
-
-    const countdown = setInterval(() => {
-        if (timeLeft > 0) {
-            timeLeft--;
-
-            // Reset animation each time
-            timerElement.style.animation = "none";
-            timerElement.offsetHeight; // Trigger reflow
-            timerElement.style.animation = "number-fade 0.5s, timer-scale 1s infinite";
-
-            timerElement.textContent = timeLeft;
-        } else {
-            clearInterval(countdown);
-            timerElement.textContent = "Time's up!";
-        }
-    }, 1000);
-}
                         
     async function handlePaymentSubmit(event) {
     event.preventDefault();
