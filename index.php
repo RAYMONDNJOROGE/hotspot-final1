@@ -499,35 +499,44 @@ align-items: center;">
     }
 }
 
-async function pollRealTimeSTKStatus(checkoutID) {
+async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
+    if (retries <= 0) {
+        console.error("STK request timeout.");
+        return;
+    }
 
-        try {
-            const statusRes = await fetch("query_stk_status.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams({ CheckoutRequestID: checkoutID })
-            });
+    try {
+        const statusRes = await fetch("query_stk_status.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({ CheckoutRequestID: checkoutID })
+        });
 
-            const { ResultCode } = await statusRes.json();
-            closePopup('stk-okay-pop');
+        const { ResultCode } = await statusRes.json();
+        closePopup('stk-okay-pop');
 
-            if (["0", "1032", "1"].includes(String(ResultCode))) {
-                console.log("Stopping polling due to valid ResultCode:", ResultCode);
-            }
+        console.log("Received STK status:", ResultCode);
 
-            switch (ResultCode) {
-                case "0":
-                    openPopup('pay-accepted-pop');
-                    setTimeout(() => closePopup('pay-accepted-pop'), 3000);
-                    break;
-                case "1032":
-                    openPopup('pay-cancel-pop');
-                    setTimeout(() => closePopup('pay-cancel-pop'), 3000);
-                    break;     
-            }
-        } catch (error) {
-            console.error("Error fetching STK status:", error);
+        switch (String(ResultCode)) {
+            case "0":
+                console.log("Stopping polling: Payment successful.");
+                openPopup('pay-accepted-pop');
+                setTimeout(() => closePopup('pay-accepted-pop'), 3000);
+                return; // Stop polling
+            case "1032":
+                console.log("Stopping polling: Payment canceled.");
+                openPopup('pay-cancel-pop');
+                setTimeout(() => closePopup('pay-cancel-pop'), 3000);
+                return; // Stop polling
+            default:
+                console.log("Polling continues, waiting for final status...");
         }
+    } catch (error) {
+        console.error("Error fetching STK status:", error);
+    }
+
+    // Retry after 1 second
+    setTimeout(() => pollRealTimeSTKStatus(checkoutID, retries - 1), 1000);
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
