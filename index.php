@@ -679,7 +679,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 450px;
-    height: 180px;
+    height: 170px;
     border: 3px rgb(250, 4, 4) solid;
     color: rgb(250, 4, 4);
     border-radius: 5px;
