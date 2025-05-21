@@ -375,7 +375,7 @@ align-items: center;">
     <!--Stk Okay Popup-->
     <div id="stk-okay-pop" 
         style="
-    display: none;
+    display: block;
     justify-content: center;
     background-color: white;
     text-align: center;
@@ -491,9 +491,12 @@ align-items: center;">
                     color: white;
                     margin-top: 15px;">pay</button>
                     <script>
-        function startCountdown() {
+function startCountdown() {
     let timeLeft = 30;
     const timerElement = document.getElementById("timer");
+
+
+    timerElement.textContent = timeLeft; // Set initial value
 
     const countdown = setInterval(() => {
         timeLeft--;
@@ -501,7 +504,7 @@ align-items: center;">
 
         if (timeLeft <= 0) {
             clearInterval(countdown);
-            timerElement.textContent = "Time's up!"; // Timer ends but popup remains open
+            timerElement.textContent = "Time's up!";
         }
     }, 1000);
 }
@@ -509,7 +512,10 @@ align-items: center;">
 // Show STK popup & start countdown immediately
 function showSTKPopup() {
     openPopup('stk-okay-pop'); // Open popup
-    startCountdown(); // Start countdown IMMEDIATELY after popup appears
+
+    setTimeout(() => {
+        startCountdown(); // Start countdown after popup appears
+    }, 300); // Slight delay to ensure popup is shown before countdown starts
 }
                         
     async function handlePaymentSubmit(event) {
