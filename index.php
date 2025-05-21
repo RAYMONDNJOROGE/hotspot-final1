@@ -524,7 +524,7 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
                 setTimeout(() => closePopup('pay-cancel-pop'), 3000);
                 return; // Stop polling
             default:
-            closePopup('stk-okay-pop');
+            debugLogs.push("Keep Polling....");
         }
     } catch (error) {
         console.error("Error fetching STK status:", error);
