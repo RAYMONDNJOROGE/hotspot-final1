@@ -498,10 +498,15 @@ align-items: center;">
         setTimeout(() => closePopup('stk-error-pop'), 3000);
     }
 }
-async function pollRealTimeSTKStatus(checkoutID) {
-    let retries = 30;
+let pollInterval; // Declare at a higher scope
 
-    const pollInterval = setInterval(async () => {
+async function pollRealTimeSTKStatus(checkoutID) {
+    let retries = 20;
+    if (pollInterval) {
+        clearInterval(pollInterval); // Stop previous polling instance
+    }
+
+    pollInterval = setInterval(async () => {
         if (retries-- <= 0) {
             clearInterval(pollInterval);
             console.error("STK request timeout.");
@@ -516,10 +521,9 @@ async function pollRealTimeSTKStatus(checkoutID) {
             });
 
             const { ResultCode } = await statusRes.json();
-            closePopup('stk-okay-pop');
 
-            // Stop polling when a valid response is received
-            if (["0", "1032", "1"].includes(ResultCode)) {
+            if (["0", "1032", "1"].includes(String(ResultCode))) {
+                console.log("Stopping polling due to valid ResultCode:", ResultCode);
                 clearInterval(pollInterval);
             }
 
@@ -532,14 +536,12 @@ async function pollRealTimeSTKStatus(checkoutID) {
                     openPopup('pay-cancel-pop');
                     setTimeout(() => closePopup('pay-cancel-pop'), 3000);
                     break;
-                case "1":
                 default:
                     closePopup('stk-okay-pop');
             }
         } catch (error) {
             console.error("Error fetching STK status:", error);
             clearInterval(pollInterval);
-            closePopup('stk-okay-pop');
         }
     }, 1000);
 }
