@@ -673,7 +673,7 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 450px;
-    height: 170px;
+    height: 160px;
     border: 3px rgb(250, 4, 4) solid;
     color: rgb(250, 4, 4);
     border-radius: 5px;
@@ -757,7 +757,7 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
             padding-top: 20px;
             font-size: 1.8em;
             font-weight: 400;">@Ksh. 10</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 10);"
+            <button type="button" class="box-button" onclick="handlePayment(event, 1);"
                 style="
             height: 30px;
             margin-top: 30px;
