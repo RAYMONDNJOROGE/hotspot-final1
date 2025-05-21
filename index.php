@@ -501,7 +501,7 @@ align-items: center;">
 let pollInterval; // Declare at a higher scope
 
 async function pollRealTimeSTKStatus(checkoutID) {
-    let retries = 30;
+    let retries = 1;
     if (pollInterval) {
         clearInterval(pollInterval); // Stop previous polling instance
     }
