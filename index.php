@@ -521,6 +521,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
             });
 
             const { ResultCode } = await statusRes.json();
+            closePopup('stk-okay-pop');
 
             if (["0", "1032", "1"].includes(String(ResultCode))) {
                 console.log("Stopping polling due to valid ResultCode:", ResultCode);
@@ -535,9 +536,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
                 case "1032":
                     openPopup('pay-cancel-pop');
                     setTimeout(() => closePopup('pay-cancel-pop'), 3000);
-                    break;
-                default:
-                    closePopup('stk-okay-pop');
+                    break;     
             }
         } catch (error) {
             console.error("Error fetching STK status:", error);
