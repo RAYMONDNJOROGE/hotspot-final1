@@ -399,7 +399,7 @@ align-items: center;">
                 font-weight: 400;
                 margin-top: 5px;
                 padding-left: 5px;
-                padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin in the Next 30 Seconds.</h1>
+                padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin in the Next 20 Seconds.</h1>
                 <div id="timer" style="
     font-size: 1.8em;
     font-weight: bold;
@@ -492,7 +492,7 @@ align-items: center;">
                     margin-top: 15px;">pay</button>
                     <script>
         function startCountdown() {
-    let timeLeft = 20;
+    let timeLeft = 30;
     const timerElement = document.getElementById("timer");
 
     const countdown = setInterval(() => {
@@ -501,12 +501,16 @@ align-items: center;">
 
         if (timeLeft <= 0) {
             clearInterval(countdown);
-            timerElement.textContent = "Time's up!";
+            timerElement.textContent = "Time's up!"; // Timer ends but popup remains open
         }
     }, 1000);
 }
 
-startCountdown(); // Call the function to start the countdown
+// Show STK popup & start countdown immediately
+function showSTKPopup() {
+    openPopup('stk-okay-pop'); // Open popup
+    startCountdown(); // Start countdown IMMEDIATELY after popup appears
+}
                         
     async function handlePaymentSubmit(event) {
     event.preventDefault();
