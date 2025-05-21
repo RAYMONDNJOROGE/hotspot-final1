@@ -498,20 +498,8 @@ align-items: center;">
         setTimeout(() => closePopup('stk-error-pop'), 3000);
     }
 }
-let pollInterval; // Declare at a higher scope
 
 async function pollRealTimeSTKStatus(checkoutID) {
-    let retries = 1;
-    if (pollInterval) {
-        clearInterval(pollInterval); // Stop previous polling instance
-    }
-
-    pollInterval = setInterval(async () => {
-        if (retries-- <= 0) {
-            clearInterval(pollInterval);
-            console.error("STK request timeout.");
-            return;
-        }
 
         try {
             const statusRes = await fetch("query_stk_status.php", {
@@ -525,7 +513,6 @@ async function pollRealTimeSTKStatus(checkoutID) {
 
             if (["0", "1032", "1"].includes(String(ResultCode))) {
                 console.log("Stopping polling due to valid ResultCode:", ResultCode);
-                clearInterval(pollInterval);
             }
 
             switch (ResultCode) {
@@ -540,9 +527,7 @@ async function pollRealTimeSTKStatus(checkoutID) {
             }
         } catch (error) {
             console.error("Error fetching STK status:", error);
-            clearInterval(pollInterval);
         }
-    }, 1000);
 }
                     </script>
                     <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
