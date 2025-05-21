@@ -384,9 +384,9 @@ align-items: center;">
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
-    height: 200px;
-    border: 3px rgb(4, 140, 4) solid;
-    color: rgb(4, 140, 4);
+    height: 220px;
+    border: 3px rgb(4, 4, 140) solid;
+    color: rgb(4, 4, 140);
     border-radius: 5px;
     z-index: 1000;">
             <div id="h1-num-error-con" 
@@ -395,12 +395,48 @@ align-items: center;">
             padding-bottom: 5px;">
                 <h1 id="h1-text-num-error-con" 
                     style="
-                font-size: 1.6em;
+                font-size: 1.7em;
                 font-weight: 400;
-                margin-top: 10px;
-                margin-bottom: 5px;
+                margin-top: 5px;
                 padding-left: 5px;
-                padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin.</h1>
+                padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin in the Next 30 Seconds.</h1>
+                <div id="timer" style="
+    font-size: 1.8em;
+    font-weight: bold;
+    color: rgb(140, 4, 4);
+    text-align: center;
+    margin-top: 20px;">20</div>
+
+            </div>
+    </div>
+
+    <!--Pay Timeout Popup-->
+    <div id="pay-timeout-pop" 
+        style="
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 180px;
+    border: 3px rgb(140, 4, 4) solid;
+    color: rgb(220, 4, 4);
+    border-radius: 5px;
+    z-index: 1000;">
+            <div id="h1-num-error-con" 
+                style="
+            padding-top: 10px;
+            padding-bottom: 5px;">
+                <h1 id="h1-text-num-error-con" 
+                    style="
+                font-size: 2em;
+                font-weight: 500;
+                margin-top: 5px;
+                margin-bottom: 5px;">Request Timeout.<br>❌No Action from User❌!!!<br>Please Try Again.</h1>
             </div>
     </div>
     <!--Sub-popup-->
@@ -455,8 +491,24 @@ align-items: center;">
                     color: white;
                     margin-top: 15px;">pay</button>
                     <script>
+        function startCountdown() {
+    let timeLeft = 20;
+    const timerElement = document.getElementById("timer");
+
+    const countdown = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            timerElement.textContent = "Time's up!";
+        }
+    }, 1000);
+}
+
+startCountdown(); // Call the function to start the countdown
                         
-                        async function handlePaymentSubmit(event) {
+    async function handlePaymentSubmit(event) {
     event.preventDefault();
     closePopup('sub-pop');
 
@@ -516,12 +568,16 @@ async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
             case "0":
                 closePopup('stk-okay-pop');
                 openPopup('pay-accepted-pop');
-                setTimeout(() => closePopup('pay-accepted-pop'), 3000);
                 return; // Stop polling
             case "1032":
                 closePopup('stk-okay-pop');
                 openPopup('pay-cancel-pop');
                 setTimeout(() => closePopup('pay-cancel-pop'), 3000);
+                return; // Stop polling
+            case "1":
+                closePopup('stk-okay-pop');
+                openPopup('pay-timeout-pop');
+                setTimeout(() => closePopup('pay-timeout-pop'), 3000);
                 return; // Stop polling
         }
     } catch (error) {
