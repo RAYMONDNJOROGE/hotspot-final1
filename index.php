@@ -115,10 +115,9 @@
     100% { transform: scale(1); }
 }
 
-/* Blinking effect */
-@keyframes blink-animation {
+@keyframes number-fade {
     0% { opacity: 1; }
-    50% { opacity: 0; }
+    50% { opacity: 0.5; }
     100% { opacity: 1; }
 }
 
@@ -510,15 +509,21 @@ align-items: center;">
                     color: white;
                     margin-top: 15px;">pay</button>
                     <script>
-                        function startCountdown() {
+function startCountdown() {
     let timeLeft = 20;
     const timerElement = document.getElementById("timer");
 
-    timerElement.textContent = timeLeft; // Set initial value
+    timerElement.textContent = timeLeft;
 
     const countdown = setInterval(() => {
         if (timeLeft > 0) {
             timeLeft--;
+
+            // Reset animation each time
+            timerElement.style.animation = "none";
+            timerElement.offsetHeight; // Trigger reflow
+            timerElement.style.animation = "number-fade 0.5s, timer-scale 1s infinite";
+
             timerElement.textContent = timeLeft;
         } else {
             clearInterval(countdown);
