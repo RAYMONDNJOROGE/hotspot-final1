@@ -464,7 +464,7 @@ header{
     font-size: 1.1em;
 }
 #pay-accepted-pop{
-    display: none;
+    display: block;
     justify-content: center;
     background-color: white;
     text-align: center;
@@ -489,7 +489,7 @@ header{
 }
 #p1-pay-accepted{
     font-size: 1.5em; 
-    color: blue;
+    color: green;
 }
 #p2-pay-accepted{
     color: black; 
