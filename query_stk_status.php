@@ -91,6 +91,7 @@ $statusMessage = match ($stkResponse['ResultCode']) {
     2001  => "Incorrect Pin",
     1     => "Insufficient funds",
     1019 => "Transaction Expired",
+    1001 => "Another Transaction in Progress",
     default => "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available'),
 };
 
