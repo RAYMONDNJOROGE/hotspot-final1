@@ -286,7 +286,7 @@
             padding-top: 20px;
             font-size: 1.8em;
             font-weight: 400;">@Ksh. 200</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 200);"
+            <button type="button" class="box-button" onclick="handlePayment(event, 1000);"
                 style="
             height: 30px;
             margin-top: 30px;

@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $CallbackURL = $config['callbackUrl'];
 
     // Validate phone number and amount
-    $allowedAmounts = [10, 20, 30, 50, 80, 200];
+    $allowedAmounts = [10, 20, 30, 50, 80, 1000];
     $PartyA = $_POST['phone'];
     $Amount = (int) $_POST['amount'];
 
