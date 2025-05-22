@@ -64,7 +64,6 @@ if (isset($_POST['submit'])) {
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($postData));
-    curl_setopt($curl, CURLOPT_TIMEOUT, 30); // Timeout after 30 seconds
     $response = curl_exec($curl);
     $curlError = curl_error($curl);
     curl_close($curl);

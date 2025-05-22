@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="description" content="hotspot">
-    <link rel="stylesheet" href="index.css">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>rayngerhotspot</title>
-    
 </head>
 
 <!--Body Starts-->
@@ -18,14 +13,14 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;">
-    <div id="overlay" style="
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
-    display: none;
-    transition: opacity 0.3s ease;
-    z-index: 999;"></div>
+        <div id="overlay" style="
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        transition: opacity 0.3s ease;
+        z-index: 999;"></div>
     <!--Header-->
     <header 
     style="
@@ -35,7 +30,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    height: 35px;
+    height: 30px;
     background-color: black;
     width: 100%;">
         <div id="h1-header" 
@@ -58,13 +53,13 @@
                     <p id="link-description" 
                     style="
                     color: white;
-                    font-size: 1.1em;">Active Subscription?</p>
+                    font-size: 1.3em;">Active Subscription?</p>
                 </div>
                 <div>
                     <a id="active-link" onclick="openPopup('active-popup')" style="
                     padding-left: 5px;
                     color: blue;
-                    font-size: 1.1em;
+                    font-size: 1.3em;
                     font-weight: 400;">Click Here</a>
                 </div>
         </div>
@@ -74,16 +69,16 @@
     <div id="intro1" 
      style="
     color: black;
-    margin-top: 40px;
+    margin-top: 30px;
     display: block;
     text-align: center;">
         <h1 id="intro1-h1" 
         style="
-    font-size: 1.6em;
+    font-size: 1.8em;
     padding-bottom: 5px;">Welcome to Raynger Hotspot Services</h1>
         <h2 id="intro1-h2" 
         style="
-    font-size: 1.4em;"><u>Instructions:</u></h2>
+    font-size: 1.5em;"><u>Instructions:</u></h2>
     </div>
     
     <div id="intro2" 
@@ -91,9 +86,9 @@
     width: 90%;
     display: block;
     color: black;
-    font-size: 1.2em;
+    font-size: 1.3em;
     padding-bottom: 20px;">
-        <ul>
+        <ul style="list-style-type:square">
             <li>Decide on your Prefered Subscription Package and Click on the 'connect' Button and Follow the given Instructions to Pay.</li>
             <li>Wait for a Few Seconds as we Confrim your Payment and Connect you Automatically.</li>
             <li>If you Already have an Active Subscription and have not been Automatically Reconnected once Back, Kindly Click on Link at the Top Right Section of the Page and Follow the given Instructions to Reconnect.</li>
@@ -929,10 +924,11 @@
     </footer>
 </body>
 <!--Body Ends-->
+
 <!--Style Starts-->
 <style>
 *{
-    font-family: 'roboto', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -941,7 +937,6 @@
 }
 #active-link:hover{
     cursor: pointer;
-    color: red;
 }
 #active-link:active{
     color: red;
@@ -1050,7 +1045,8 @@
 }
 .stk-error-button:active{
     background-color: rgb(4, 60, 4);
-}</style>
+}
+</style>
 <!--Style Ends-->
 
 <!--Script Starts-->
@@ -1132,7 +1128,7 @@
 }
 
 //Poll Stk Status
-        async function pollRealTimeSTKStatus(checkoutID, retries = 20) {
+        async function pollRealTimeSTKStatus(checkoutID, retries = 100) {
         if (retries <= 0) {
         return;
         }
