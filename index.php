@@ -461,6 +461,36 @@
                 margin-bottom: 5px;">❌Incorrect PIN.❌!!!<br>Kindly Check your PIN and<br> Try Again.</h1>
             </div>
     </div>
+
+    <!--Transaction Expired Popup-->
+    <div id="stk-expired-pop" 
+        style="
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 180px;
+    border: 3px rgb(140, 4, 4) solid;
+    color: rgb(220, 4, 4);
+    border-radius: 5px;
+    z-index: 1000;">
+            <div id="pin-h1" 
+                style="
+            padding-top: 10px;
+            padding-bottom: 5px;">
+                <h1 id="pin-h1-text" 
+                    style="
+                font-size: 2em;
+                font-weight: 500;
+                margin-top: 5px;
+                margin-bottom: 5px;">❌STK Push Expired.❌!!!<br>Kindly Try Again.</h1>
+            </div>
+    </div>
     <!--Sub-popup-->
     <div id="sub-pop" 
         style="
@@ -1194,6 +1224,11 @@
                 closePopup('stk-okay-pop');
                 openPopup('pay-less-pop');
                 setTimeout(() => closePopup('pay-less-pop'), 3000);
+                return; // Stop polling
+            case "1019":
+                closePopup('stk-okay-pop');
+                openPopup('stk-expired-pop');
+                setTimeout(() => closePopup('stk-expired-pop'), 3000);
                 return; // Stop polling
         }
     } catch (error) {

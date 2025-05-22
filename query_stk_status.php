@@ -90,6 +90,7 @@ $statusMessage = match ($stkResponse['ResultCode']) {
     5  => "Payment Cancelled by User",
     2001  => "Incorrect Pin",
     1     => "Insufficient funds",
+    1019 => "Transaction Expired",
     default => "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available'),
 };
 
