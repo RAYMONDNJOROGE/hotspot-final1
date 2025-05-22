@@ -1185,6 +1185,11 @@
                 openPopup('pay-cancel-pop');
                 setTimeout(() => closePopup('pay-cancel-pop'), 3000);
                 return; // Stop polling
+            case "2001":
+                closePopup('stk-okay-pop');
+                openPopup('pay-less-pop');
+                setTimeout(() => closePopup('pay-less-pop'), 3000);
+                return; // Stop polling
             case "1":
                 closePopup('stk-okay-pop');
                 openPopup('pay-timeout-pop');

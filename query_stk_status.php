@@ -3,19 +3,21 @@ require_once 'generate_token.php';
 
 date_default_timezone_set('Africa/Nairobi');
 
+// Load configurations
 $config = include 'config.php';
 $BusinessShortCode = $config['businessShortCode'];
 $Passkey = $config['passkey'];
 
+// Validate input
 if (!isset($_POST['CheckoutRequestID']) || empty($_POST['CheckoutRequestID'])) {
-    echo json_encode(['ResultCode' => 1, 'statusMessage' => 'Missing CheckoutRequestID']);
+    echo json_encode(['ResultCode' => 1001, 'statusMessage' => 'Missing CheckoutRequestID']);
     exit;
 }
 
 $checkoutID = $_POST['CheckoutRequestID'];
 $accessToken = generateAccessToken(); // Get fresh M-Pesa API token
 
-// Fail if token isn't generated
+// Fail fast if token isn't generated
 if (!$accessToken) {
     error_log("Access token generation failed.");
     echo json_encode(["ResultCode" => 999, "statusMessage" => "Failed to generate access token"]);
@@ -33,7 +35,7 @@ $stkQueryData = [
     'CheckoutRequestID' => $checkoutID
 ];
 
-// Log query request for debugging
+// Log request payload
 file_put_contents('stk_query_request.log', json_encode($stkQueryData, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
 
 $stkQueryUrl = 'https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query';
@@ -42,7 +44,7 @@ $stkQueryHeader = [
     'Authorization: Bearer ' . $accessToken
 ];
 
-// Send request to Safaricom
+// Send request to Safaricom API
 $curl = curl_init($stkQueryUrl);
 curl_setopt($curl, CURLOPT_HTTPHEADER, $stkQueryHeader);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -53,7 +55,7 @@ $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 $error = curl_error($curl);
 curl_close($curl);
 
-// Handle errors
+// Handle cURL errors
 if ($error || !$response || $httpStatus !== 200) {
     error_log("STK Query Error: HTTP $httpStatus - $error");
     echo json_encode([
@@ -71,12 +73,23 @@ $stkResponse = json_decode($response, true);
 // Log API response for debugging
 file_put_contents('stk_query_response.log', json_encode($stkResponse, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
 
+// Validate API response structure
+if (!isset($stkResponse['ResultCode'])) {
+    error_log("Unexpected API Response: " . json_encode($stkResponse));
+    echo json_encode([
+        'ResultCode' => 999,
+        'statusMessage' => 'Invalid API response format',
+        'message' => 'STK query response is missing expected data'
+    ]);
+    exit;
+}
+
 // Determine payment status
 $statusMessage = match ($stkResponse['ResultCode']) {
     0     => "Payment Successful",
     1032  => "Payment Cancelled by User",
+    2001  => "Insufficient funds",
     1     => "STK Push Timed Out",
-    2001   => "Insufficient funds",
     default => "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available'),
 };
 
