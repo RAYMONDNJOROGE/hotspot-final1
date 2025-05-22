@@ -382,10 +382,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    height: 140px;
-    border: 3px rgb(140, 4, 4) solid;
-    color: rgb(220, 4, 4);
+    width: 450px;
+    height: 200px;
+    border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;">
             <div id="h1-stk-error-con" 
@@ -394,10 +393,8 @@
             padding-bottom: 5px;">
                 <h1 id="h1-text-stk-error-con" 
                     style="
-                font-size: 1.6em;
                 font-weight: 400;
-                margin-top: 5px;
-                margin-bottom: 5px;">Error.<br>❌STK Push Failed❌!!!<br>Please Try Again.</h1>
+                margin-bottom: 5px;"><p style="color: red; font-size: 1.5em; padding-left: 5px;">Error!</p><p style="font-size: 1.1em;">STK Push Failed,<br>Please Try Again.</p></h1>
             </div>
     </div>
     <!--Stk Okay Popup-->
@@ -427,7 +424,7 @@
                 font-weight: 400;
                 margin-top: 5px;
                 padding-left: 5px;
-                padding-right: 5px;"><p style="padding-bottom: 20px; font-size: 1.5em;">✅</p>Kindly Check your Phone and Input your M-PESA Pin.</h1>
+                padding-right: 5px;"><p style="font-size: 1.1em;">Kindly Check your Phone and Input your M-PESA Pin.</p></h1>
 
             </div>
     </div>
@@ -444,21 +441,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 450px;
-    height: 180px;
-    border: 3px rgb(140, 4, 4) solid;
-    color: rgb(220, 4, 4);
+    height: 200px;
+    border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;">
-            <div id="pin-h1" 
+            <div id="pin-error-h1" 
                 style="
             padding-top: 10px;
             padding-bottom: 5px;">
-                <h1 id="pin-h1-text" 
+                <h1 id="pin-error-h1-text" 
                     style="
-                font-size: 2em;
                 font-weight: 500;
                 margin-top: 5px;
-                margin-bottom: 5px;">❌Incorrect PIN.❌!!!<br>Kindly Check your PIN and<br> Try Again.</h1>
+                margin-bottom: 5px;"><p style="color: red; font-size: 1.5em;">Incorrect PIN!</p><p style="font-size: 1.1; color: black;">Kindly Check your PIN and<br> Try Again.</p></h1>
             </div>
     </div>
 
@@ -473,10 +468,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: 3px red solid;
     width: 450px;
-    height: 180px;
-    border: 3px rgb(140, 4, 4) solid;
-    color: rgb(220, 4, 4);
+    height: 200px;
     border-radius: 5px;
     z-index: 1000;">
             <div id="pin-h1" 
@@ -488,7 +482,7 @@
                 font-size: 2em;
                 font-weight: 500;
                 margin-top: 5px;
-                margin-bottom: 5px;">❌STK Push Expired.❌!!!<br>Kindly Try Again.</h1>
+                margin-bottom: 5px;"><p style="font-size: 1.5em; color: red;">STK Push Expired!</p><p style="font-size: 1.1em; padding-top: 20px;">Please Try Again.</p></h1>
             </div>
     </div>
     <!--Sub-popup-->
