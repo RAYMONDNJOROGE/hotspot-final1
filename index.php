@@ -432,8 +432,8 @@
             </div>
     </div>
 
-    <!--Pay Timeout Popup-->
-    <div id="pay-timeout-pop" 
+    <!--Pin error Popup-->
+    <div id="pin-error-pop" 
         style="
     display: none;
     justify-content: center;
@@ -449,16 +449,16 @@
     color: rgb(220, 4, 4);
     border-radius: 5px;
     z-index: 1000;">
-            <div id="timeout-h1" 
+            <div id="pin-h1" 
                 style="
             padding-top: 10px;
             padding-bottom: 5px;">
-                <h1 id="timeout-h1-text" 
+                <h1 id="pin-h1-text" 
                     style="
                 font-size: 2em;
                 font-weight: 500;
                 margin-top: 5px;
-                margin-bottom: 5px;">Request Timeout.<br>❌No Action from User❌!!!<br>Please Try Again.</h1>
+                margin-bottom: 5px;">❌Incorrect PIN.❌!!!<br>Kindly Check your PIN and<br> Try Again.</h1>
             </div>
     </div>
     <!--Sub-popup-->
@@ -667,7 +667,7 @@
     </div>
 
     <!--Insufficient Funds-->
-    <div id="funds-less-pop" 
+    <div id="pay-less-pop" 
         style="    
     display: none;
     justify-content: center;
@@ -1187,13 +1187,13 @@
                 return; // Stop polling
             case "2001":
                 closePopup('stk-okay-pop');
-                openPopup('pay-less-pop');
-                setTimeout(() => closePopup('pay-less-pop'), 3000);
+                openPopup('pin-error-pop');
+                setTimeout(() => closePopup('pin-error-pop'), 3000);
                 return; // Stop polling
             case "1":
                 closePopup('stk-okay-pop');
-                openPopup('pay-timeout-pop');
-                setTimeout(() => closePopup('pay-timeout-pop'), 3000);
+                openPopup('pay-less-pop');
+                setTimeout(() => closePopup('pay-less-pop'), 3000);
                 return; // Stop polling
         }
     } catch (error) {

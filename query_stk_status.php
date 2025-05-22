@@ -87,9 +87,9 @@ if (!isset($stkResponse['ResultCode'])) {
 // Determine payment status
 $statusMessage = match ($stkResponse['ResultCode']) {
     0     => "Payment Successful",
-    1032  => "Payment Cancelled by User",
-    2001  => "Insufficient funds",
-    1     => "STK Push Timed Out",
+    5  => "Payment Cancelled by User",
+    2001  => "Incorrect Pin",
+    1     => "Insufficient funds",
     default => "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available'),
 };
 
