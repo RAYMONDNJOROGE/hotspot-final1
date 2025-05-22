@@ -126,7 +126,7 @@
             padding-top: 20px;
             font-size: 1.8em;
             font-weight: 400;">@Ksh. 10</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 1);"
+            <button type="button" class="box-button" onclick="handlePayment(event, 10);"
                 style="
             height: 30px;
             margin-top: 30px;
@@ -665,6 +665,38 @@
                 padding-left: 10px;">Payment Cancelled By User!<br>Please Try Again.</h1>
             </div>
     </div>
+
+    <!--Insufficient Funds-->
+    <div id="funds-less-pop" 
+        style="    
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+    border: 3px rgb(140, 4, 4) solid;
+    color: rgb(140, 4, 4);
+    border-radius: 5px;
+    z-index: 1000;">
+            <div id="h1-funds-less" 
+                style="
+            padding-top: 10px;
+            padding-bottom: 5px;">
+                <h1 id="h1-text-funds-less" 
+                    style="
+                font-size: 1.9em;
+                font-weight: 400;
+                margin-top: 5px;
+                padding-right: 10px;
+                padding-left: 10px;">Insufficient Funds!<br>Recharge your Mobile Money Wallet and Try Again.</h1>
+            </div>
+    </div>
+
     <!--Num-format Okay recon-->
     <div id="num-okay-recon-pop" 
         style="

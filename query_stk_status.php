@@ -76,6 +76,7 @@ $statusMessage = match ($stkResponse['ResultCode']) {
     0     => "Payment Successful",
     1032  => "Payment Cancelled by User",
     1     => "STK Push Timed Out",
+    2001   => "Insufficient funds",
     default => "Unknown Status - " . ($stkResponse['ResultDesc'] ?? 'No details available'),
 };
 
