@@ -7,24 +7,15 @@
     <title>rayngerhotspot</title>
 </head>
 
-<!--Body Starts-->
-<body style=" 
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;">
-        <div id="overlay" style="
-        position: fixed;
-        top: 0; left: 0;
-        width: 100vw; height: 100vh;
-        background: rgba(0, 0, 0, 0.8);
-        display: none;
-        transition: opacity 0.3s ease;
-        z-index: 999;"></div>
-    <!--Header-->
-    <header 
-    style="
-    position: fixed; 
+<!--Style Starts-->
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    position: fixed;
+    box-shadow: 2px 2px 2px blue;
     top: 0;
     display: flex;
     flex-wrap: wrap;
@@ -32,964 +23,33 @@
     align-content: center;
     height: 30px;
     background-color: black;
-    width: 100%;">
-        <div id="h1-header" 
-        style="
-        font-size: 1.3em;
-        font-weight: 500;
-        color: white;
-        padding-left: 10px;">
-            RAYNGER HOTSPOT
-        </div>
-        <div id="link-header" 
-            style="
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: auto;
-        justify-content: center;
-        align-items: center;
-        padding-right: 10px;">
-                <div>
-                    <p id="link-description" 
-                    style="
-                    color: white;
-                    font-size: 1.3em;">Active Subscription?</p>
-                </div>
-                <div>
-                    <a id="active-link" onclick="openPopup('active-popup')" style="
-                    padding-left: 5px;
-                    color: blue;
-                    font-size: 1.3em;
-                    font-weight: 400;">Click Here</a>
-                </div>
-        </div>
-    </header>
-
-    <!--Intro-->
-    <div id="intro1" 
-     style="
-    color: black;
-    margin-top: 30px;
-    display: block;
-    text-align: center;">
-        <h1 id="intro1-h1" 
-        style="
-    font-size: 1.8em;
-    padding-bottom: 5px;">Welcome to Raynger Hotspot Services</h1>
-        <h2 id="intro1-h2" 
-        style="
-    font-size: 1.5em;"><u>Instructions:</u></h2>
-    </div>
-    
-    <div id="intro2" 
-        style="
-    width: 90%;
-    display: block;
-    color: black;
+    width: 100%;
+}
+#h1-header{
     font-size: 1.3em;
-    padding-bottom: 20px;">
-        <ul style="list-style-type:square">
-            <li>Decide on your Prefered Subscription Package and Click on the 'connect' Button and Follow the given Instructions to Pay.</li>
-            <li>Wait for a Few Seconds as we Confrim your Payment and Connect you Automatically.</li>
-            <li>If you Already have an Active Subscription and have not been Automatically Reconnected once Back, Kindly Click on Link at the Top Right Section of the Page and Follow the given Instructions to Reconnect.</li>
-        </ul>
-        <p><strong>Note:</strong> A Subscription Package is Linked to a Single Device/Mac Address and Expires After the Period Stated.</p>
-        <p><strong>Incase of any Difficulties, </strong><a onclick="openPopup('contacts-popup')" id="contacts-link" style="color: blue;">Click Here</a><strong> to Contact us.</strong></p>
-        <p><strong>Paid but Haven't been Connected?, Kindly Contact us or </strong><a onclick="openPopup('no-con-popup')" id="no-con-link" style="color: blue;">Click Here</a> <strong>to Enter your Voucher Code.</strong></p>
-    </div>
-
-        <!--Main Box Con-->
-        <div id="main-container" 
-        style="
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;">
-
-        <!--First box-->
-        <div class="boxes" 
-            style="
-        text-align: center;
-        width: 230px;
-        height: 190px;
-        background-color: black;
-        color: white;
-        border-radius: 20px;">
-            <h1 class="h1-box" 
-                style="
-            font-size: 2em;
-            padding-top: 10px;">1-Hour Vybz</h1>
-            <h2 class="h2-box"
-                style="
-            padding-top: 20px;
-            font-size: 1.8em;
-            font-weight: 400;">@Ksh. 10</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 10);"
-                style="
-            height: 30px;
-            margin-top: 30px;
-            border-radius: 5px;
-            border: none;
-            color: white;
-            background-color: rgb(4, 4, 140);
-            width: 80px;
-            font-size: 1.2em;
-            font-weight: 400;">connect</button>
-
-        </div>
-
-        <!--Second box-->
-        <div class="boxes" 
-            style="
-        text-align: center;
-        width: 230px;
-        height: 190px;
-        background-color: black;
-        color: white;
-        border-radius: 20px;">
-            <h1 class="h1-box" 
-                style="
-            font-size: 2em;
-            padding-top: 10px;">3-Hour Vybz</h1>
-            <h2 class="h2-box"
-                style="
-            padding-top: 20px;
-            font-size: 1.8em;
-            font-weight: 400;">@Ksh. 20</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 20);"
-                style="
-            height: 30px;
-            margin-top: 30px;
-            border-radius: 5px;
-            border: none;
-            color: white;
-            background-color: rgb(4, 4, 140);
-            width: 80px;
-            font-size: 1.2em;
-            font-weight: 400;">connect</button>
-
-        </div>
-        
-        <!--Third box-->
-        <div class="boxes" 
-            style="
-        text-align: center;
-        width: 230px;
-        height: 190px;
-        background-color: black;
-        color: white;
-        border-radius: 20px;">
-            <h1 class="h1-box" 
-                style="
-            font-size: 2em;
-            padding-top: 10px;">8-Hour Vybz</h1>
-            <h2 class="h2-box"
-                style="
-            padding-top: 20px;
-            font-size: 1.8em;
-            font-weight: 400;">@Ksh. 30</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 30);"
-                style="
-            height: 30px;
-            margin-top: 30px;
-            border-radius: 5px;
-            border: none;
-            color: white;
-            background-color: rgb(4, 4, 140);
-            width: 80px;
-            font-size: 1.2em;
-            font-weight: 400;">connect</button>
-
-        </div>
-        
-        <!--Fourth box-->
-        <div class="boxes" 
-            style="
-        text-align: center;
-        width: 230px;
-        height: 190px;
-        background-color: black;
-        color: white;
-        border-radius: 20px;">
-            <h1 class="h1-box" 
-                style="
-            font-size: 2em;
-            padding-top: 10px;">24-Hour Vybz</h1>
-            <h2 class="h2-box"
-                style="
-            padding-top: 20px;
-            font-size: 1.8em;
-            font-weight: 400;">@Ksh. 50</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 50);"
-                style="
-            height: 30px;
-            margin-top: 30px;
-            border-radius: 5px;
-            border: none;
-            color: white;
-            background-color: rgb(4, 4, 140);
-            width: 80px;
-            font-size: 1.2em;
-            font-weight: 400;">connect</button>
-
-        </div>
-    
-        <!--Fifth box-->
-        <div class="boxes" 
-            style="
-        text-align: center;
-        width: 230px;
-        height: 190px;
-        background-color: black;
-        color: white;
-        border-radius: 20px;">
-            <h1 class="h1-box" 
-                style="
-            font-size: 2em;
-            padding-top: 10px;">2-Day Vybz</h1>
-            <h2 class="h2-box"
-                style="
-            padding-top: 20px;
-            font-size: 1.8em;
-            font-weight: 400;">@Ksh. 80</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 80);"
-                style="
-            height: 30px;
-            margin-top: 30px;
-            border-radius: 5px;
-            border: none;
-            color: white;
-            background-color: rgb(4, 4, 140);
-            width: 80px;
-            font-size: 1.2em;
-            font-weight: 400;">connect</button>
-
-        </div>
-        
-        <!--Sixth box-->
-        <div class="boxes" 
-            style="
-        text-align: center;
-        width: 230px;
-        height: 190px;
-        background-color: black;
-        color: white;
-        border-radius: 20px;">
-            <h1 class="h1-box" 
-                style="
-            font-size: 2em;
-            padding-top: 10px;">1-Week Vybz</h1>
-            <h2 class="h2-box"
-                style="
-            padding-top: 20px;
-            font-size: 1.8em;
-            font-weight: 400;">@Ksh. 200</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 200);"
-                style="
-            height: 30px;
-            margin-top: 30px;
-            border-radius: 5px;
-            border: none;
-            color: white;
-            background-color: rgb(4, 4, 140);
-            width: 80px;
-            font-size: 1.2em;
-            font-weight: 400;">connect</button>
-
-        </div>
-
-
-    <!--Active Popup-->
-    <div id="active-popup" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 200px;
-    border: 3px black solid;
-    border-radius: 5px;
-    z-index: 1000;">
-        <form type="submit" autocomplete="off" onsubmit="return checkActive(event)">
-
-            <div id="h1-div" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text"
-                    style="
-                font-size: 1.4em;
-                font-weight: 400;
-                margin-top: 5px;
-                margin-bottom: 5px;">Kindly Input the Phone Number you Paid with Including your Country Code e.g 254...</h1>
-            </div>
-
-                <label for="active-input" id="label-rec" style="font-size: 1.4em;">Phone Number:</label><br>
-                <input type="number" placeholder="e.g 254123456789" id="active-input" required 
-                    style="
-                text-align: center;
-                width: 300px;
-                height: 35px;
-                font-size: 1.4em;
-                border: 2px solid black;">
-         
-                <div>
-                    <button id="recon-button" type="submit" 
-                        style="
-                    background-color: rgb(4, 140, 4);
-                    border-radius: 5px;
-                    border: none;
-                    height: 35px;
-                    width: 80px;
-                    font-size: 1em;
-                    font-weight: 500;
-                    color: white;
-                    margin-top: 15px;">reconnect</button>
-                    <button id="res-cancel-button" type="button" onclick="closePopup('active-popup')" 
-                        style="
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    background-color: rgb(140, 4, 4);
-                    border: none;
-                    font-weight: 500;
-                    height: 20px;
-                    width: 25px;
-                    font-size: 1em;
-                    color: white;">x</button>
-                </div>
-
-        </form>
-    </div>
-    <!--Stk Error Popup-->
-    <div id="stk-error-pop" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    height: 200px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;">
-            <div id="h1-stk-error-con" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text-stk-error-con" 
-                    style="
-                font-weight: 400;
-                margin-bottom: 5px;"><p style="color: red; font-size: 1.5em; padding-left: 5px;">Error!</p><p style="font-size: 1.1em;">STK Push Failed,<br>Please Try Again.</p></h1>
-            </div>
-    </div>
-    <!--Stk Okay Popup-->
-    <div id="stk-okay-pop" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 200px;
-    border: 3px rgb(4, 4, 140) solid;
-    color: rgb(4, 4, 140);
-    border-radius: 5px;
-    z-index: 1000;">
-            <div id="h1-stk-okay" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text-stk-okay" 
-                    style="
-                font-size: 1.7em;
-                font-weight: 400;
-                margin-top: 5px;
-                padding-left: 5px;
-                padding-right: 5px;"><p style="font-size: 1.1em;">Kindly Check your Phone and Input your M-PESA Pin.</p></h1>
-
-            </div>
-    </div>
-
-    <!--Pin error Popup-->
-    <div id="pin-error-pop" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    height: 200px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;">
-            <div id="pin-error-h1" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="pin-error-h1-text" 
-                    style="
-                font-weight: 500;
-                margin-top: 5px;
-                margin-bottom: 5px;"><p style="color: red; font-size: 1.5em;">Incorrect PIN!</p><p style="font-size: 1.1; color: black;">Kindly Check your PIN and<br> Try Again.</p></h1>
-            </div>
-    </div>
-
-    <!--Transaction Expired Popup-->
-    <div id="stk-expired-pop" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px red solid;
-    width: 450px;
-    height: 200px;
-    border-radius: 5px;
-    z-index: 1000;">
-            <div id="pin-h1" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="pin-h1-text" 
-                    style="
-                font-size: 2em;
-                font-weight: 500;
-                margin-top: 5px;
-                margin-bottom: 5px;"><p style="font-size: 1.5em; color: red;">STK Push Expired!</p><p style="font-size: 1.1em; padding-top: 20px;">Please Try Again.</p></h1>
-            </div>
-    </div>
-    <!--Sub-popup-->
-    <div id="sub-pop" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 210px;
-    border: 3px black solid;
-    border-radius: 5px;
-    z-index: 1000;">
-        <form type="submit" autocomplete="off" onsubmit="return handlePaymentSubmit(event)">
-
-            <div id="h1-div-con" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text-con" 
-                    style="
-                font-size: 1.4em;
-                font-weight: 400;
-                margin-top: 5px;
-                margin-bottom: 5px;">Kindly Input your Phone Number (Including your Country Code e.g 254...) to Pay</h1>
-            </div>
-
-                <label for="con-input" id="label-con" style="font-size: 1.5em;">Phone Number:</label><br>
-                <input type="number" placeholder="e.g 254123456789" id="con-input" required 
-                    style="
-                text-align: center;
-                width: 300px;
-                height: 35px;
-                font-size: 1.4em;
-                border: 2px solid black;">
-         
-                <div>
-                    <button id="con-button" type="submit" 
-                        style="
-                    background-color: rgb(4, 140, 4);
-                    border-radius: 5px;
-                    border: none;
-                    height: 35px;
-                    width: 50px;
-                    font-size: 1em;
-                    font-weight: 500;
-                    color: white;
-                    margin-top: 15px;">pay</button>
-                    <script>
- 
-                    </script>
-                    <button id="con-cancel-button" type="button" onclick="closePopup('sub-pop')" 
-                        style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    background-color: rgb(140, 4, 4);
-                    border: none;
-                    font-weight: 500;
-                    height: 20px;
-                    width: 25px;
-                    font-size: 1em;
-                    color: white;">x</button>
-                </div>
-
-        </form>
-    </div>
-    <!--Num-format Error-->
-    <div id="num-error-pop" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 150px;
-    border: 3px rgb(140, 4, 4) solid;
-    color: rgb(220, 4, 4);
-    border-radius: 5px;
-    z-index: 1000;">
-            <div id="h1-num-error-con" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text-num-error-con" 
-                    style="
-                font-size: 2em;
-                font-weight: 400;
-                margin-top: 10px;
-                margin-bottom: 5px;">Error.<br>❌Invalid Number❌!!!</h1>
-            </div>
-    </div>
-
-    <!--Num-format Okay-->
-    <div id="num-okay-pop" 
-        style="    
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 230px;
-    border: 3px rgb(4, 4, 140) solid;
-    color: rgb(4, 4, 140);
-    border-radius: 5px;
-    z-index: 1000;">
-            <div class="spinner" 
-                style="
-            margin: 10px auto;
-            margin-top: 20px;
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(0, 4, 250, 0.2);
-            border-top-color: rgb(4, 4, 100);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;"></div>
-            <div id="h1-num-okay-con" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text-num-okay-con" 
-                    style="
-                font-size: 1.5em;
-                font-weight: 400;
-                margin-top: 5px;
-                padding-right: 10px;
-                padding-left: 10px;">Submitted!<br>Kindly Wait as we Check your Phone Number and Send an STK Push to your Phone</h1>
-            </div>
-    </div>
-     <!--Pay Okay-->
-     <div id="pay-accepted-pop" 
-        style="    
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 200px;
-    border: 3px rgb(4, 140, 4) solid;
-    color: rgb(4, 140, 4);
-    border-radius: 5px;
-    z-index: 1000;">
-            <div id="h1-pay-okay" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text-pay-okay" 
-                    style="
-                font-size: 1.9em;
-                font-weight: 400;
-                margin-top: 5px;
-                padding-right: 10px;
-                padding-left: 10px;">✅<br>Payment Received Successfully!<br>Kindly Wait as we Connect you Automatically.</h1>
-            </div>
-    </div>
-
-    <!--Pay Error-->
-     <div id="pay-cancel-pop" 
-        style="    
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    height: 160px;
-    border: 3px rgb(250, 4, 4) solid;
-    color: rgb(250, 4, 4);
-    border-radius: 5px;
-    z-index: 1000;">
-            <div id="h1-pay-cancel" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text-pay-cancel" 
-                    style="
-                font-size: 2.1em;
-                font-weight: 400;
-                margin-top: 15px;
-                padding-right: 10px;
-                padding-left: 10px;">Payment Cancelled By User!<br>Please Try Again.</h1>
-            </div>
-    </div>
-
-    <!--Insufficient Funds-->
-    <div id="pay-less-pop" 
-        style="    
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 200px;
-    border: 3px rgb(140, 4, 4) solid;
-    color: rgb(140, 4, 4);
-    border-radius: 5px;
-    z-index: 1000;">
-            <div id="h1-funds-less" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text-funds-less" 
-                    style="
-                font-size: 1.9em;
-                font-weight: 400;
-                margin-top: 5px;
-                padding-right: 10px;
-                padding-left: 10px;">Insufficient Funds!<br>Recharge your Mobile Money Wallet and Try Again.</h1>
-            </div>
-    </div>
-
-    <!--Num-format Okay recon-->
-    <div id="num-okay-recon-pop" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 240px;
-    border: 3px rgb(4, 4, 140) solid;
-    color: rgb(4, 4, 140);
-    border-radius: 5px;
-    z-index: 1000;">
-            <div class="spinner" 
-                style="
-            margin: 10px auto;
-            margin-top: 20px;
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(0, 4, 250, 0.2);
-            border-top-color: rgb(4, 4, 100);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;"></div>
-            <div id="h1-num-okay-recon" 
-                style="
-            padding-top: 10px;
-            padding-bottom: 5px;">
-                <h1 id="h1-text-num-okay-recon"
-                    style="
-                font-size: 1.7em;
-                font-weight: 400;
-                padding-right: 10px;
-                padding-left: 10px;">Submitted!<br>Kindly Wait as we Confirm your Subscription Against our Database and Automatically Reconnect you</h1>
-            </div>
-    </div>
-    
-    <!--Contacts-->
-    <div id="contacts-popup" 
-        style="
-    display: none;
-    background-color: white;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 130px;
-    border: 3px black solid;
-    border-radius: 5px;
-    padding-left: 10px;
-    z-index: 1000;">
-        <h1 id="contacts-h1" 
-            style="
-        font-size: 1.7em;
-        padding-top: 5px;
-        padding-bottom: 10px;"><u>Contacts:</u></h1>
-        <li class="contacts" style="font-size: 1.4em;">Phone Number: <a href="">(254)717888783</a></li>
-        <li class="contacts" style="font-size: 1.4em;">Email: <a href="mailto:rayngernetworks@gmail.com" onclick="closePopup('contacts-popup')">rayngernetworks@gmail.com</a></li>
-        <div><button id="contacts-button" type="button" onclick="closePopup('contacts-popup')" 
-                style="
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: rgb(140, 4, 4);
-            border: none;
-            font-weight: 500;
-            height: 20px;
-            width: 25px;
-            font-size: 1em;
-            color: white;">x</button>
-        </div>
-    </div>
-
-    <!--No Conn-->
-    <div id="no-con-popup" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 200px;
-    border: 3px black solid;
-    border-radius: 5px;
-    z-index: 1000;">
-        <form type="submit" autocomplete="off" onsubmit="return checkVoucher(event)">
-
-            <div id="h1-no-con" 
-                style="
-            padding-top: 5px;
-            padding-bottom: 2px;">
-                <h1 id="h1-no-con-text" 
-                    style="
-                font-size: 1.4em;
-                font-weight: 400;
-                margin-top: 20px;
-                margin-bottom: 5px;">Kindly Input the Voucher Code Provided by the Administrator</h1>
-            </div>
-
-                <label for="no-con-input" id="no-con-label" 
-                    style="
-                  font-size: 1.2em;">Voucher Code:</label><br>
-                <input type="text" placeholder="e.g EDFK25" id="no-con-input" required    
-                    style=" 
-                text-align: center;
-                width: 200px;
-                height: 30px;
-                font-size: 1.4em;
-                border: 2px solid black;">
-         
-                <div>
-                    <button id="no-con-button" type="submit" 
-                        style="
-                    background-color: rgb(4, 140, 4);
-                    border-radius: 5px;
-                    border: none;
-                    height: 30px;
-                    width: 80px;
-                    font-size: 1em;
-                    font-weight: 500;
-                    color: white;
-                    margin-top: 15px;">connect</button>
-                    <script>
-                    async function checkVoucher(event) {
-                        event.preventDefault();
-                        closePopup('no-con-popup');
-                    
-                         const voucher = document.getElementById("no-con-input").value.trim();
-                    
-            if (!/^abc\d{6}/.test(voucher)) {
-            openPopup('voucher-num-error-pop');
-            return;
-                        }
-                    
-                        openPopup('validate-vou-popup');
-                    }</script>
-                    <button id="no-con-cancel-button" type="button" onclick="closePopup('no-con-popup')" 
-                        style="
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    background-color: rgb(140, 4, 4);
-                    border: none;
-                    font-weight: 500;
-                    height: 20px;
-                    width: 25px;
-                    font-size: 1em;
-                    color: white;">x</button>
-                </div>
-
-        </form>
-    </div>
-
-    <!--Voucher Check-->
-    <div id="validate-vou-popup" 
-        style=" 
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 210px;
-    border: 3px rgb(4, 140, 4) solid;
-    color: rgb(4, 140, 4);
-    border-radius: 5px;
-    z-index: 1000;">
-        <div class="spinner"></div>
-        <div id="h1-validate-vou" 
-            style="
-        padding-top: 10px;
-        padding-bottom: 5px;">
-            <h1 id="h1-text-validate-vou" 
-                style="
-            font-size: 1.5em;
-            font-weight: 400;
-            padding-right: 10px;
-            padding-left: 10px;">Submitted!<br>Kindly Wait as we Validate your Voucher Code Against our Database and Automatically Connect you</h1>
-        </div>
-    </div>
-
-    <!--Voucher Num Error-->
-    <div id="voucher-num-error-pop" 
-        style="
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    height: 150px;
-    border: 3px rgb(140, 4, 4) solid;
-    color: rgb(220, 4, 4);
-    border-radius: 5px;
-    z-index: 1000;">
-        <div id="h1-num-error-voucher" 
-            style="
-        padding-top: 10px;
-        padding-bottom: 5px;">
-            <h1 id="h1-text-num-error-voucher" 
-                style="
-            font-size: 2em;
-            font-weight: 400;
-            margin-top: 5px;
-            margin-bottom: 5px;">Error.<br>Invalid Voucher!!!</h1>
-        </div>
-
-            <div>
-                <button id="num-error-button-voucher" type="button" onclick="closePopup('voucher-num-error-pop')" 
-                    style="
-                background-color: rgb(160, 4, 4);
-                border-radius: 5px;
-                border: none;
-                height: 35px;
-                width: 60px;
-                font-size: 1em;
-                font-weight: 500;
-                color: white;
-                margin-top: 5px;">Ok</button>
-            </div>
-</div>
-
-    <!--Footer-->
-    <footer 
-        style="
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 25px;
+    font-weight: 500;
     color: white;
-    font-size: 1.2em;
-    background-color: black;
-    width: 100%;
-    margin-top: 10px;">
-        <p>Software Provided by Raynger Developers © 2025 &#124; All Rights Reserved.</p>
-    </footer>
-</body>
-<!--Body Ends-->
-
-<!--Style Starts-->
-<style>
-*{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
+    padding-left: 10px;
+}
+#link-header{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+}
+#link-description{
+    color: white;
+    font-size: 1.1em;
 }
 .no-scroll {
     overflow: hidden;
+}
+#active-link{
+    padding-left: 5px;
+    color: blue;
+    font-size: 1.1em;
 }
 #active-link:hover{
     cursor: pointer;
@@ -997,23 +57,152 @@
 #active-link:active{
     color: red;
 }
+#intro1{
+    color: black;
+    margin-top: 38px;
+    display: block;
+    text-align: center
+}
+#intro1-h1{
+    font-size: 1.8em;
+    padding-bottom: 5px;
+}
+#intro1-h2{
+    font-size: 1.5em;
+}
+#intro2{
+    width: 90%;
+    display: block;
+    color: black;
+    font-size: 1.3em;
+    padding-bottom: 20px;
+}
+#contacts-link{
+    color: blue;
+}
+#contacts-link:hover{
+    cursor: pointer;
+}
+#contacts-link:active{
+    color: red;
+}
+#main-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.boxes{
+    text-align: center;
+    width: 230px;
+    height: 190px;
+    background-color: black;
+    box-shadow: 2px 2px 2px blue;
+    color: white;
+}
+.h1-box{
+    font-size: 2em;
+    padding-top: 10px;
+}
+.h2-box{
+    padding-top: 20px;
+    font-size: 1.8em;
+    font-weight: 400;
+}
+.box-button{
+    height: 30px;
+    margin-top: 30px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px blue;
+    width: 80px;
+    font-size: 1.2em;
+    font-weight: 400;
+}
 #active-input::placeholder{
     padding-left: 10px;
     font-size: 1em;
+}
+#active-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-active-pop{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-active-pop{
+    font-size: 1.4em;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#label-rec{
+    font-size: 1.4em;
+}
+#active-input{
+    text-align: center;
+    width: 300px;
+    height: 35px;
+    font-size: 1.4em;
+    border: 2px solid black;
+}
+#recon-button{
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px black;
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    width: 80px;
+    font-size: 1em;
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+}
+#recon-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
 }
 #recon-button:hover{
     cursor: pointer;
     opacity: 0.7;
 }
 #recon-button:active{
-    background-color: rgb(4, 4, 60);
+    background-color: red;
 }
-#res-cancel-button:hover{
+#recon-cancel-button:hover{
     cursor: pointer;
     opacity: 0.7;
 }
-#res-cancel-button:active{
-    background-color: rgb(4, 60, 4);
+#recon-cancel-button:active{
+    background-color: green;
 }
 #con-input::placeholder{
     padding-left: 10px;
@@ -1024,7 +213,7 @@
     opacity: 0.7;
 }
 #con-button:active{
-    background-color: rgb(4, 4, 60);
+    background-color: red;
 }
 #con-cancel-button:hover{
     cursor: pointer;
@@ -1039,54 +228,470 @@
 }
 #num-error-button:active{
     background-color: rgb(4, 60, 4);
-}@keyframes spin {
+}
+#stk-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 200px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-stk-error{
+    color: red; 
+    font-size: 1.5em; 
+}
+#p2-stk-error{
+    color: black;
+    font-size: 1.1em;
+}
+#stk-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+    border: 3px rgb(4, 4, 140) solid;
+    color: rgb(4, 4, 140);
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-okay{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-okay{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#p1-stk-okay{
+    font-size: 1.3em;
+}
+#pin-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 200px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#pin-error-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#pin-error-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#p1-pin-error{
+    color: red; 
+    font-size: 1.5em; 
+}
+#p2-pin-error{
+    color: black;
+    font-size: 1.1em;
+}
+#stk-expired-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px red solid;
+    width: 450px;
+    height: 200px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#stk-expired-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#stk-expired-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#p1-stk-expired{
+    color: red; 
+    font-size: 1.5em; 
+}
+#p2-stk-expired{
+    color: black;
+    font-size: 1.1em;
+    margin-top: 20px;
+}
+#pay-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 220px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-pay{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#h1-text-pay{
+    font-size: 1.7em;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#label-pay{
+    font-size: 1.6em;
+}
+#pay-input{
+    text-align: center;
+    width: 350px;
+    height: 40px;
+    font-size: 1.7em;
+    border: 2px solid black;
+}
+#pay-button{
+    background-color: rgb(4, 140, 4);
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    width: 50px;
+    font-size: 1.3em;
+    box-shadow: 2px 2px 2px black;
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+}
+#pay-button:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+#pay-button:active{
+    background-color: red;
+}
+#pay-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+#pay-cancel-button:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+#pay-cancel-button:active{
+    background-color: green;
+}
+#num-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 220px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-con{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-con{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#p1-num-okay{
+    font-size: 1.5em; 
+    color: blue;
+}
+#p2-num-okay{
+    color: black; 
+    font-size: 1.1em;
+}
+#pay-accepted-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 220px;
+    border: 3px green solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-accepted{
+    padding-bottom: 5px;
+}
+#h1-text-pay-accepted{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#p1-pay-accepted{
+    font-size: 1.5em; 
+    color: blue;
+}
+#p2-pay-accepted{
+    color: black; 
+    font-size: 1.1em;
+}
+#pay-cancel-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 200px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-cancel{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-cancel{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-cancel{
+    color: red; 
+    font-size: 1.5em; 
+}
+#p2-pay-cancel{
+    color: black;
+    font-size: 1.1em;
+}
+#pay-less-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 200px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-less{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-less{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-less{
+    color: red; 
+    font-size: 1.5em; 
+}
+#p2-pay-less{
+    color: black;
+    font-size: 1.1em;
+}
+#num-okay-recon-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 220px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-recon{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-recon{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#p1-num-okay-recon{
+    font-size: 1.5em; 
+    color: blue;
+}
+#p2-num-okay-recon{
+    color: black; 
+    font-size: 1.1em;
+}
+#contacts-popup{
+     display: none;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+    border: 3px black solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    z-index: 1000;
+}
+#contacts-h1{
+    font-size: 2em;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.list2{
+    font-size: 1.7em;
+}
+#contacts-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+@keyframes spin {
     to {
       transform: rotate(360deg);
     }
+}
+.spinner{
+    margin: 10px auto;
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(0, 0, 255, 0.2);
+    border-top-color: blue;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+#num-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 200px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-num-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-num-error{
+    color: red; 
+    font-size: 1.5em; 
+}
+#p2-num-error{
+    color: black;
+    font-size: 1.1em;
 }
 .box-button:hover{
     cursor: pointer;
     opacity: 0.7;
 }
 .box-button:active{
-    background-color: rgb(4, 140, 4);
+    background-color: red;
 }
 #contacts-button:hover{
     cursor: pointer;
     opacity: 0.7;
 }
 #contacts-button:active{
-    background-color: rgb(4, 60, 4);
+    background-color: green;
 }
 #contacts-link:hover{
     cursor: pointer;
 }
 #contacts-link:active{
     color: red;
-}
-#no-con-link:hover{
-    cursor: pointer;
-}
-#no-con-link:active{
-    color: red;
-}
-#no-con-input::placeholder{
-    padding-left: 10px;
-    font-size: 1em;
-}
-#no-con-button:hover{
-    cursor: pointer;
-    opacity: 0.7;
-}
-#no-con-button:active{
-    background-color: rgb(4, 4, 60);
-}
-#no-con-cancel-button:hover{
-    cursor: pointer;
-    opacity: 0.7;
-}
-#no-con-cancel-button:active{
-    background-color: rgb(4, 60, 4);
 }
 #num-error-button-voucher:hover{
     cursor: pointer;
@@ -1102,8 +707,248 @@
 .stk-error-button:active{
     background-color: rgb(4, 60, 4);
 }
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    color: white;
+    font-size: 1.2em;
+    background-color: black;
+    box-shadow: 2px 2px 2px 3px blue;
+    width: 100%;
+    margin-top: 10px;
+}
 </style>
 <!--Style Ends-->
+
+<!--Body Starts-->
+<body style="
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;">
+        <div id="overlay" style="
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        transition: opacity 0.3s ease;
+        z-index: 999;"></div>
+    <!--Header-->
+    <header>
+        <div id="h1-header">
+            RAYNGER HOTSPOT
+        </div>
+        <div id="link-header">
+                <div>
+                    <p id="link-description" >Active Subscription?</p>
+                </div>
+                <div>
+                    <a id="active-link" onclick="openPopup('active-popup')">Click Here</a>
+                </div>
+        </div>
+    </header>
+
+    <!--Intro-->
+    <div id="intro1" >
+        <h1 id="intro1-h1">Welcome to Raynger Hotspot Services</h1>
+        <h2 id="intro1-h2"><u>Instructions:</u></h2>
+    </div>
+    
+    <div id="intro2" >
+        <ul style="list-style-type:square">
+            <li>Decide on your Prefered Subscription Package and Click on the 'connect' Button and Follow the given Instructions to Pay.</li>
+            <li>Wait for a Few Seconds as we Confrim your Payment and Connect you Automatically.</li>
+            <li>If you Already have an Active Subscription and have not been Automatically Reconnected once Back, Kindly Click on Link at the Top Right Section of the Page and Follow the given Instructions to Reconnect.</li>
+        </ul>
+        <p><strong>Note:</strong> A Subscription Package is Linked to a Single Device/Mac Address and Expires After the Period Stated.</p>
+        <p><strong>Incase of any Difficulties, </strong><a onclick="openPopup('contacts-popup')" id="contacts-link">Click Here</a><strong> to Contact us.</strong></p>
+    </div>
+
+        <!--Main Box Con-->
+        <div id="main-container">
+        <!--First box-->
+        <div class="boxes" >
+            <h1 class="h1-box" >1-Hour Vybz</h1>
+            <h2 class="h2-box">@Ksh. 10</h2>
+            <button type="button" class="box-button" onclick="handlePayment(event, 10);">connect</button>
+
+        </div>
+
+        <!--Second box-->
+        <div class="boxes">
+            <h1 class="h1-box" >3-Hour Vybz</h1>
+            <h2 class="h2-box">@Ksh. 20</h2>
+            <button type="button" class="box-button" onclick="handlePayment(event, 20);">connect</button>
+
+        </div>
+        
+        <!--Third box-->
+        <div class="boxes">
+            <h1 class="h1-box" >8-Hour Vybz</h1>
+            <h2 class="h2-box">@Ksh. 30</h2>
+            <button type="button" class="box-button" onclick="handlePayment(event, 30);">connect</button>
+
+        </div>
+        
+        <!--Fourth box-->
+        <div class="boxes">
+            <h1 class="h1-box">24-Hour Vybz</h1>
+            <h2 class="h2-box">@Ksh. 50</h2>
+            <button type="button" class="box-button" onclick="handlePayment(event, 50);">connect</button>
+
+        </div>
+    
+        <!--Fifth box-->
+        <div class="boxes">
+            <h1 class="h1-box">2-Day Vybz</h1>
+            <h2 class="h2-box">@Ksh. 80</h2>
+            <button type="button" class="box-button" onclick="handlePayment(event, 80);">connect</button>
+
+        </div>
+        
+        <!--Sixth box-->
+        <div class="boxes">
+            <h1 class="h1-box">1-Week Vybz</h1>
+            <h2 class="h2-box">@Ksh. 200</h2>
+            <button type="button" class="box-button" onclick="handlePayment(event, 200);">connect</button>
+
+        </div>
+
+
+    <!--Active Popup-->
+    <div id="active-popup" >
+        <form type="submit" autocomplete="off" onsubmit="return checkActive(event)">
+
+            <div id="h1-div-active-pop">
+                <h1 id="h1-text-active-pop">Kindly Input the Phone Number you Paid with Including your Country Code e.g 254...</h1>
+            </div>
+
+                <label for="active-input" id="label-rec">Phone Number:</label><br>
+                <input type="number" placeholder="e.g 254123456789" id="active-input" required>
+         
+                <div>
+                    <button id="recon-button" type="submit">reconnect</button>
+                    <button id="recon-cancel-button" type="button" onclick="closePopup('active-popup')">x</button>
+                </div>
+
+        </form>
+    </div>
+
+    <!--Stk Error Popup-->
+    <div id="stk-error-pop">
+            <div id="h1-stk-error-con">
+                <h1 id="h1-text-stk-error-con"><p id="p1-stk-error">STK Error!</p><p id="p2-stk-error">Transaction Failed,<br>Please Try Again.</p></h1>
+            </div>
+    </div>
+
+    <!--Stk Okay Popup-->
+    <div id="stk-okay-pop">
+            <div id="h1-stk-okay">
+                <h1 id="h1-text-stk-okay"><p id="p1-stk-okay">Kindly Check your Phone and Input your M-PESA Pin.</p></h1>
+
+            </div>
+    </div>
+
+    <!--Pin error Popup-->
+    <div id="pin-error-pop" >
+            <div id="pin-error-h1">
+                <h1 id="pin-error-h1-text"><p id="p1-pin-error">Incorrect PIN!</p><p id="p2-pin-error">Kindly Check your PIN and<br> Try Again.</p></h1>
+            </div>
+    </div>
+
+    <!--Transaction Expired Popup-->
+    <div id="stk-expired-pop">
+            <div id="stk-expired-h1">
+                <h1 id="stk-expired-h1-text"><p id="p1-stk-expired">Transaction Expired!</p><p id="p2-stk-expired">Please Try Again.</p></h1>
+            </div>
+    </div>
+
+    <!--Sub-popup-->
+    <div id="pay-popup">
+        <form type="submit" autocomplete="off" onsubmit="return handlePaymentSubmit(event)">
+
+            <div id="h1-div-pay">
+                <h1 id="h1-text-pay">Kindly Input your Phone Number (Including your Country Code e.g 254...) to Pay</h1>
+            </div>
+
+                <label for="pay-input" id="label-pay">Phone Number:</label><br>
+                <input type="number" placeholder="e.g 254123456789" id="pay-input" required>
+         
+                <div>
+                    <button id="pay-button" type="submit">pay</button>
+                    <script>
+ 
+                    </script>
+                    <button id="pay-cancel-button" type="button" onclick="closePopup('pay-popup')">x</button>
+                </div>
+
+        </form>
+    </div>
+
+    <!--Num-format Error-->
+    <div id="num-error-pop">
+            <div id="h1-num-error-con">
+                <h1 id="h1-text-num-error-con"><p id="p1-num-error">Format Error!</p><p id="p2-num-error">Invalid Number, <br>Please Try Again.</p></h1>
+            </div>
+    </div>
+
+    <!--Num-format Okay-->
+    <div id="num-okay-pop">
+            <div class="spinner"></div>
+            <div id="h1-num-okay-con">
+                <h1 id="h1-text-num-okay-con"><p id="p1-num-okay">Submitted!</p><p id="p2-num-okay">Please Wait as we Process the Payment Request.</p></h1>
+            </div>
+    </div>
+
+     <!--Pay Okay-->
+     <div id="pay-accepted-pop">
+            <div id="h1-pay-accepted">
+                <h1 id="h1-text-pay-accepted"><p id="p1-pay-accepted">Payment Received Successfully!</p><p id="p2-pay-accepted">Kindly Wait as we Connect you Automatically.</p></h1>
+            </div>
+    </div>
+
+    <!--Pay Error-->
+     <div id="pay-cancel-pop">
+            <div id="h1-pay-cancel">
+                <h1 id="h1-text-pay-cancel"><p id="p1-pay-cancel">Payment Cancelled By User!</p><p id="p2-pay-cancel">Please Try Again.</p></h1>
+            </div>
+    </div>
+
+    <!--Insufficient Funds-->
+    <div id="pay-less-pop">
+            <div id="h1-pay-less">
+                <h1 id="h1-text-pay-less"><p id="p1-pay-less">Insufficient Funds!</p><p id="p2-pay-less">Please Recharge your<br>M-PESA Wallet<br>and Try Again.</p></h1>
+            </div>
+    </div>
+
+    <!--Num-format Okay recon-->
+    <div id="num-okay-recon-pop">
+            <div class="spinner"></div>
+            <div id="h1-num-okay-recon">
+                <h1 id="h1-text-num-okay-recon"><p id="p1-num-okay-recon">Submitted!</p><p id="p2-num-okay-recon">Kindly Wait as we Confirm your Subscription.</p></h1>
+            </div>
+    </div>
+    
+    <!--Contacts-->
+    <div id="contacts-popup">
+        <h1 id="contacts-h1"><u>Contacts:</u></h1>
+            <li class="list2">Phone Number: <a href="">(254)717888783</a></li>
+            <li class="list2">Email: <a href="mailto:rayngernetworks@gmail.com" onclick="closePopup('contacts-popup')">rayngernetworks@gmail.com</a></li>
+        <div><button id="contacts-button" type="button" onclick="closePopup('contacts-popup')">x</button>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer>
+        <p>Software Provided by Raynger Developers © 2025 &#124; All Rights Reserved.</p>
+    </footer>
+</body>
+<!--Body Ends-->
 
 <!--Script Starts-->
 <script>
@@ -1117,7 +962,7 @@
         overlay.style.display = 'block';
     
         body.classList.add('no-scroll');
-        const phoneInput = document.getElementById("con-input");
+        const phoneInput = document.getElementById("pay-input");
         if (phoneInput) phoneInput.value = "";
         const phoneInput2 = document.getElementById("active-input");
         if (phoneInput2) phoneInput2.value = "";
@@ -1139,14 +984,14 @@
     function handlePayment(event, amount) {
     event.preventDefault();
     selectedAmount = amount;
-    openPopup('sub-pop');
+    openPopup('pay-popup');
     }
     //Handle Payment Submit                    
             async function handlePaymentSubmit(event) {
             event.preventDefault();
-            closePopup('sub-pop');
+            closePopup('pay-popup');
 
-    const phone = document.getElementById("con-input").value.trim();
+    const phone = document.getElementById("pay-input").value.trim();
     if (!/^254\d{9}$/.test(phone)) {
         openPopup('num-error-pop');
         setTimeout(() => closePopup('num-error-pop'), 3000);
