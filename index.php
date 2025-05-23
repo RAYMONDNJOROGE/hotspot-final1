@@ -1042,6 +1042,7 @@ footer{
         });
 
         const { ResultCode } = await statusRes.json();
+         setTimeout(() => closePopup('stk-okay-pop'), 300000);
 
         //Denoting Response Codes
         switch (String(ResultCode)) {
