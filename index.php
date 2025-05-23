@@ -1029,7 +1029,7 @@ footer{
 }
 
 //Poll Stk Status
-        async function pollRealTimeSTKStatus(checkoutID, retries = 100) {
+        async function pollRealTimeSTKStatus(checkoutID, retries = 300) {
         if (retries <= 0) {
         return;
         }
