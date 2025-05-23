@@ -761,9 +761,9 @@ footer{
     
     <div id="intro2" >
         <ul style="list-style-type:square">
-            <li>Decide on your Prefered Subscription Package and Click on the 'connect' Button and Follow the given Instructions to Pay.</li>
-            <li>Wait for a Few Seconds as we Confrim your Payment and Connect you Automatically.</li>
-            <li>If you Already have an Active Subscription and have not been Automatically Reconnected once Back, Kindly Click on Link at the Top Right Section of the Page and Follow the given Instructions to Reconnect.</li>
+            <li>Decide on your Preferred Subscription Package and Click on the 'connect' Button and Follow the given Instructions to Pay.</li>
+            <li>Wait for a Few Seconds as we Confrim your Payment and CONNECT you Automatically.</li>
+            <li>If you Already have an ACTIVE Subscription and have NOT been Automatically Reconnected once Back, Kindly Click on Link at the Top Right Section of the Page and Follow the given Instructions to Reconnect.</li>
         </ul>
         <p><strong>Note:</strong> A Subscription Package is Linked to a Single Device/Mac Address and Expires After the Period Stated.</p>
         <p><strong>Incase of any Difficulties, </strong><a onclick="openPopup('contacts-popup')" id="contacts-link">Click Here</a><strong> to Contact us.</strong></p>
