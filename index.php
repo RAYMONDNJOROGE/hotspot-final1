@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rayngerhotspot</title>
 </head>
@@ -719,6 +718,2477 @@ footer{
     box-shadow: 2px 2px 2px 3px blue;
     width: 100%;
     margin-top: 10px;
+}
+
+/*Queries*/
+@media (min-width: 320px) {
+    header{
+    position: fixed;
+    box-shadow: 2px 2px 2px blue;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 50px;
+    background-color: black;
+    width: 100%;
+}
+#h1-header{
+    font-size: 1.2em;
+    font-weight: 500;
+    color: white;
+    margin: auto;
+}
+#link-header{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+#link-description{
+    color: white;
+    font-size: 1em;
+}
+.no-scroll {
+    overflow: hidden;
+}
+#active-link{
+    padding-left: 5px;
+    color: blue;
+    font-size: 1em;
+}
+#intro1{
+    color: black;
+    margin-top: 54px;
+    display: block;
+    text-align: center;
+    line-height: 22px;
+    
+}
+#intro1-h1{
+    font-size: 1.4em;
+    padding-bottom: 0;
+}
+#intro1-h2{
+    font-size: 1.3em;
+}
+#intro2{
+    width: 90%;
+    display: block;
+    color: black;
+    font-size: 1em;
+    padding-bottom: 10px;
+}
+#main-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.boxes{
+    text-align: center;
+    width: 150px;
+    height: 140px;
+    background-color: black;
+    box-shadow: 2px 2px 2px blue;
+    color: white;
+}
+.h1-box{
+    font-size: 1.4em;
+    padding-top: 10px;
+}
+.h2-box{
+    padding-top: 10px;
+    font-size: 1.4em;
+    font-weight: 400;
+}
+.box-button{
+    height: 25px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px blue;
+    width: 60px;
+    font-size: 1em;
+    font-weight: 400;
+}
+#active-input::placeholder{
+    padding-left: 10px;
+    font-size: 1em;
+}
+#active-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-active-pop{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-active-pop{
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#label-rec{
+    font-size: 1.2em;
+}
+#active-input{
+    text-align: center;
+    width: 250px;
+    height: 30px;
+    font-size: 1.2em;
+    border: 2px solid black;
+}
+#recon-button{
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px black;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    width: 68px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: white;
+    margin-top: 10px;
+}
+#recon-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 15px;
+    width: 20px;
+    font-size: 0.9em;
+    color: white;
+}
+#con-input::placeholder{
+    padding-left: 10px;
+    font-size: 1em;
+}
+#stk-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-stk-error{
+    color: red; 
+    font-size: 1.2em; 
+}
+#p2-stk-error{
+    color: black;
+    font-size: 1em;
+}
+#stk-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 180px;
+    border: 3px rgb(4, 4, 140) solid;
+    color: rgb(4, 4, 140);
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-okay{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-okay{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#p1-stk-okay{
+    font-size: 1em;
+}
+#pin-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#pin-error-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#pin-error-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#p1-pin-error{
+    color: red; 
+    font-size: 1.2em; 
+}
+#p2-pin-error{
+    color: black;
+    font-size: 1em;
+}
+#stk-expired-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px red solid;
+    width: 260px;
+    height: 180px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#stk-expired-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#stk-expired-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#p1-stk-expired{
+    color: red; 
+    font-size: 1.2em; 
+}
+#p2-stk-expired{
+    color: black;
+    font-size: 1em;
+    margin-top: 5px;
+}
+#pay-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 210px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-pay{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#h1-text-pay{
+    font-size: 1.3em;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#label-pay{
+    font-size: 1.3em;
+}
+#pay-input{
+    text-align: center;
+    width: 250px;
+    height: 30px;
+    font-size: 1.3em;
+    border: 2px solid black;
+}
+#pay-button{
+    background-color: rgb(4, 140, 4);
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    width: 40px;
+    font-size: 1em;
+    box-shadow: 2px 2px 2px black;
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+}
+#pay-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 15px;
+    width: 20px;
+    font-size: 1em;
+    color: white;
+}
+#num-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 180px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-con{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-con{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#p1-num-okay{
+    font-size: 1.1em; 
+    color: blue;
+}
+#p2-num-okay{
+    color: black; 
+    font-size: 0.8em;
+}
+#pay-accepted-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 180px;
+    border: 3px green solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-accepted{
+    padding-bottom: 5px;
+}
+#h1-text-pay-accepted{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+#p1-pay-accepted{
+    font-size: 1em; 
+    color: green;
+}
+#p2-pay-accepted{
+    color: black; 
+    font-size: 0.8em;
+}
+#pay-cancel-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-cancel{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-cancel{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-cancel{
+    color: red; 
+    font-size: 1.1em; 
+}
+#p2-pay-cancel{
+    color: black;
+    font-size: 1em;
+}
+#pay-less-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-less{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-less{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-less{
+    color: red; 
+    font-size: 1.1em; 
+}
+#p2-pay-less{
+    color: black;
+    font-size: 0.8em;
+}
+#num-okay-recon-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 180px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-recon{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-recon{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#p1-num-okay-recon{
+    font-size: 1.1em; 
+    color: blue;
+}
+#p2-num-okay-recon{
+    color: black; 
+    font-size: 0.8em;
+}
+#contacts-popup{
+     display: none;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px black solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    z-index: 1000;
+}
+#contacts-h1{
+    font-size: 1.6em;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.list2{
+    font-size: 1.4em;
+}
+#contacts-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 15px;
+    width: 20px;
+    font-size: 1em;
+    color: white;
+}
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}
+.spinner{
+    margin: 5px auto;
+    margin-top: 10px;
+    width: 25px;
+    height: 25px;
+    border: 2px solid rgba(0, 0, 255, 0.2);
+    border-top-color: blue;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+#num-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-num-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-num-error{
+    color: red; 
+    font-size: 1.2em; 
+    padding-bottom: 10px;
+}
+#p2-num-error{
+    color: black;
+    font-size: 1em;
+}
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    color: white;
+    font-size: 0.6em;
+    background-color: black;
+    box-shadow: 2px 2px 2px 3px blue;
+    width: 100%;
+    margin-top: 5px;
+}
+}
+@media (min-width: 375px) {
+    header{
+    position: fixed;
+    box-shadow: 2px 2px 2px blue;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 50px;
+    background-color: black;
+    width: 100%;
+}
+#h1-header{
+    font-size: 1.2em;
+    font-weight: 500;
+    color: white;
+    margin: auto;
+}
+#link-header{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+#link-description{
+    color: white;
+    font-size: 1.1em;
+}
+.no-scroll {
+    overflow: hidden;
+}
+#active-link{
+    padding-left: 5px;
+    color: blue;
+    font-size: 1.1em;
+}
+#intro1{
+    color: black;
+    margin-top: 56px;
+    display: block;
+    text-align: center;
+    line-height: 25px; 
+}
+#intro1-h1{
+    font-size: 1.5em;
+    padding-bottom: 5px;
+}
+#intro1-h2{
+    font-size: 1.4em;
+    padding-bottom: 5px;
+}
+#intro2{
+    width: 90%;
+    display: block;
+    color: black;
+    font-size: 1.2em;
+    padding-bottom: 10px;
+}
+#main-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.boxes{
+    text-align: center;
+    width: 170px;
+    height: 160px;
+    background-color: black;
+    box-shadow: 2px 2px 2px blue;
+    color: white;
+}
+.h1-box{
+    font-size: 1.6em;
+    padding-top: 15px;
+}
+.h2-box{
+    padding-top: 15px;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+.box-button{
+    height: 25px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px blue;
+    width: 65px;
+    font-size: 1em;
+    font-weight: 400;
+}
+#active-input::placeholder{
+    padding-left: 10px;
+    font-size: 1em;
+}
+#active-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 220px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-active-pop{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-active-pop{
+    font-size: 1.4em;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#label-rec{
+    font-size: 1.3em;
+}
+#active-input{
+    text-align: center;
+    width: 250px;
+    height: 35px;
+    font-size: 1.3em;
+    border: 2px solid black;
+}
+#recon-button{
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px black;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    width: 70px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: white;
+    margin-top: 10px;
+}
+#recon-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 15px;
+    width: 25px;
+    font-size: 0.9em;
+    color: white;
+}
+#con-input::placeholder{
+    padding-left: 10px;
+    font-size: 1em;
+}
+#stk-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-stk-error{
+    color: red; 
+    font-size: 1.3em; 
+}
+#p2-stk-error{
+    color: black;
+    font-size: 1em;
+    padding-top: 10px;
+}
+#stk-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px rgb(4, 4, 140) solid;
+    color: rgb(4, 4, 140);
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-okay{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-okay{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#p1-stk-okay{
+    font-size: 1.1em;
+}
+#pin-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#pin-error-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#pin-error-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#p1-pin-error{
+    color: red; 
+    font-size: 1.3em; 
+}
+#p2-pin-error{
+    color: black;
+    font-size: 1em;
+}
+#stk-expired-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px red solid;
+    width: 300px;
+    height: 180px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#stk-expired-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#stk-expired-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#p1-stk-expired{
+    color: red; 
+    font-size: 1.3em; 
+}
+#p2-stk-expired{
+    color: black;
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+#pay-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 230px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-pay{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#h1-text-pay{
+    font-size: 1.4em;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#label-pay{
+    font-size: 1.4em;
+}
+#pay-input{
+    text-align: center;
+    width: 250px;
+    height: 35px;
+    font-size: 1.4em;
+    border: 2px solid black;
+}
+#pay-button{
+    background-color: rgb(4, 140, 4);
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    width: 50px;
+    font-size: 1em;
+    box-shadow: 2px 2px 2px black;
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+}
+#pay-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+#num-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-con{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-con{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#p1-num-okay{
+    font-size: 1.3em; 
+    color: blue;
+}
+#p2-num-okay{
+    color: black; 
+    font-size: 0.9em;
+}
+#pay-accepted-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 190px;
+    border: 3px green solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-accepted{
+    padding-bottom: 5px;
+}
+#h1-text-pay-accepted{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+#p1-pay-accepted{
+    font-size: 1.1em; 
+    color: green;
+}
+#p2-pay-accepted{
+    color: black; 
+    font-size: 0.9em;
+}
+#pay-cancel-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-cancel{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-cancel{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-cancel{
+    color: red; 
+    font-size: 1.2em; 
+}
+#p2-pay-cancel{
+    color: black;
+    font-size: 1em;
+}
+#pay-less-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 190px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-less{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-less{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-less{
+    color: red; 
+    font-size: 1.2em; 
+}
+#p2-pay-less{
+    color: black;
+    font-size: 0.8em;
+}
+#num-okay-recon-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 190px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-recon{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-recon{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#p1-num-okay-recon{
+    font-size: 1.2em; 
+    color: blue;
+}
+#p2-num-okay-recon{
+    color: black; 
+    font-size: 0.8em;
+}
+#contacts-popup{
+     display: none;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 180px;
+    border: 3px black solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    z-index: 1000;
+}
+#contacts-h1{
+    font-size: 1.7em;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.list2{
+    font-size: 1.5em;
+}
+#contacts-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}
+.spinner{
+    margin: 5px auto;
+    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(0, 0, 255, 0.2);
+    border-top-color: blue;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+#num-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-num-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-num-error{
+    color: red; 
+    font-size: 1.3em; 
+    padding-bottom: 10px;
+}
+#p2-num-error{
+    color: black;
+    font-size: 1.1em;
+}
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    color: white;
+    font-size: 0.7em;
+    background-color: black;
+    box-shadow: 2px 2px 2px 3px blue;
+    width: 100%;
+    margin-top: 5px;
+}
+
+}
+@media (min-width: 425px) {
+    header{
+    position: fixed;
+    box-shadow: 2px 2px 2px blue;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 30px;
+    background-color: black;
+    width: 100%;
+}
+#h1-header{
+    font-size: 1.1em;
+    font-weight: 500;
+    color: white;
+    margin: auto;
+    padding-left: 5px;
+}
+#link-header{
+    display: flex;
+    margin-right: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+#link-description{
+    color: white;
+    font-size: 0.9em;
+}
+.no-scroll {
+    overflow: hidden;
+}
+#active-link{
+    padding-left: 5px;
+    color: blue;
+    font-size: 0.9em;
+}
+#intro1{
+    color: black;
+    margin-top: 32px;
+    display: block;
+    text-align: center;
+    line-height: 25px; 
+}
+#intro1-h1{
+    font-size: 1.5em;
+    padding-bottom: 2px;
+}
+#intro1-h2{
+    font-size: 1.3em;
+    padding-bottom: 2px;
+}
+#intro2{
+    width: 90%;
+    display: block;
+    color: black;
+    font-size: 1.2em;
+    padding-bottom: 10px;
+}
+#main-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.boxes{
+    text-align: center;
+    width: 180px;
+    height: 170px;
+    background-color: black;
+    box-shadow: 2px 2px 2px blue;
+    color: white;
+}
+.h1-box{
+    font-size: 1.7em;
+    padding-top: 15px;
+}
+.h2-box{
+    padding-top: 15px;
+    font-size: 1.6em;
+    font-weight: 400;
+}
+.box-button{
+    height: 27px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px blue;
+    width: 70px;
+    font-size: 1em;
+    font-weight: 400;
+}
+#active-input::placeholder{
+    padding-left: 10px;
+    font-size: 1em;
+}
+#active-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 240px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-active-pop{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-active-pop{
+    font-size: 1.6em;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#label-rec{
+    font-size: 1.4em;
+}
+#active-input{
+    text-align: center;
+    width: 250px;
+    height: 35px;
+    font-size: 1.4em;
+    border: 2px solid black;
+}
+#recon-button{
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px black;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    width: 70px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+}
+#recon-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 0.9em;
+    color: white;
+}
+#con-input::placeholder{
+    padding-left: 10px;
+    font-size: 1em;
+}
+#stk-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-stk-error{
+    color: red; 
+    font-size: 1.4em; 
+}
+#p2-stk-error{
+    color: black;
+    font-size: 1.1em;
+    padding-top: 10px;
+}
+#stk-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px rgb(4, 4, 140) solid;
+    color: rgb(4, 4, 140);
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-okay{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-okay{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#p1-stk-okay{
+    font-size: 1.2em;
+}
+#pin-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#pin-error-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#pin-error-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#p1-pin-error{
+    color: red; 
+    font-size: 1.4em; 
+}
+#p2-pin-error{
+    color: black;
+    font-size: 1em;
+}
+#stk-expired-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px red solid;
+    width: 380px;
+    height: 180px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#stk-expired-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#stk-expired-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#p1-stk-expired{
+    color: red; 
+    font-size: 1.4em; 
+}
+#p2-stk-expired{
+    color: black;
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+#pay-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 240px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-pay{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#h1-text-pay{
+    font-size: 1.6em;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#label-pay{
+    font-size: 1.6em;
+}
+#pay-input{
+    text-align: center;
+    width: 250px;
+    height: 35px;
+    font-size: 1.6em;
+    border: 2px solid black;
+}
+#pay-button{
+    background-color: rgb(4, 140, 4);
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    width: 50px;
+    font-size: 1em;
+    box-shadow: 2px 2px 2px black;
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+}
+#pay-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+#num-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 200px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-con{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-con{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#p1-num-okay{
+    font-size: 1.4em; 
+    color: blue;
+}
+#p2-num-okay{
+    color: black; 
+    font-size: 0.9em;
+}
+#pay-accepted-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 190px;
+    border: 3px green solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-accepted{
+    padding-bottom: 5px;
+}
+#h1-text-pay-accepted{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+#p1-pay-accepted{
+    font-size: 1.3em; 
+    color: green;
+}
+#p2-pay-accepted{
+    color: black; 
+    font-size: 0.9em;
+}
+#pay-cancel-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-cancel{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-cancel{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-cancel{
+    color: red; 
+    font-size: 1.3em; 
+}
+#p2-pay-cancel{
+    color: black;
+    font-size: 1.1em;
+    padding-top: 10px;
+}
+#pay-less-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 190px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-less{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-less{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-less{
+    color: red; 
+    font-size: 1.4em; 
+}
+#p2-pay-less{
+    color: black;
+    font-size: 1em;
+}
+#num-okay-recon-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 200px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-recon{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-recon{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#p1-num-okay-recon{
+    font-size: 1.3em; 
+    color: blue;
+}
+#p2-num-okay-recon{
+    color: black; 
+    font-size: 0.9em;
+}
+#contacts-popup{
+     display: none;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 190px;
+    border: 3px black solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    z-index: 1000;
+}
+#contacts-h1{
+    font-size: 1.8em;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.list2{
+    font-size: 1.7em;
+}
+#contacts-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}
+.spinner{
+    margin: 5px auto;
+    margin-top: 10px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgba(0, 0, 255, 0.2);
+    border-top-color: blue;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+#num-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-num-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-num-error{
+    color: red; 
+    font-size: 1.4em; 
+    padding-bottom: 10px;
+}
+#p2-num-error{
+    color: black;
+    font-size: 1.1em;
+}
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 23px;
+    color: white;
+    font-size: 0.8em;
+    background-color: black;
+    box-shadow: 2px 2px 2px 3px blue;
+    width: 100%;
+}
+
+}
+@media (min-width: 768px) {
+    header{
+    position: fixed;
+    box-shadow: 2px 2px 2px blue;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 30px;
+    background-color: black;
+    width: 100%;
+}
+#h1-header{
+    font-size: 1.3em;
+    font-weight: 500;
+    color: white;
+    margin: 0;
+    padding-left: 5px;
+}
+#link-header{
+    display: flex;
+    margin-right: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-left: auto;
+}
+#link-description{
+    color: white;
+    font-size: 1.1em;
+}
+.no-scroll {
+    overflow: hidden;
+}
+#active-link{
+    padding-left: 5px;
+    color: blue;
+    font-size: 1.1em;
+}
+#intro1{
+    color: black;
+    margin-top: 36px;
+    display: block;
+    text-align: center;
+    line-height: 25px; 
+}
+#intro1-h1{
+    font-size: 1.7em;
+    padding-bottom: 2px;
+}
+#intro1-h2{
+    font-size: 1.3em;
+    padding-bottom: 2px;
+}
+#intro2{
+    width: 90%;
+    display: block;
+    color: black;
+    font-size: 1.2em;
+    padding-bottom: 10px;
+}
+#main-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.boxes{
+    text-align: center;
+    width: 180px;
+    height: 170px;
+    background-color: black;
+    box-shadow: 2px 2px 2px blue;
+    color: white;
+}
+.h1-box{
+    font-size: 1.7em;
+    padding-top: 15px;
+}
+.h2-box{
+    padding-top: 15px;
+    font-size: 1.6em;
+    font-weight: 400;
+}
+.box-button{
+    height: 27px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px blue;
+    width: 70px;
+    font-size: 1em;
+    font-weight: 400;
+}
+#active-input::placeholder{
+    padding-left: 10px;
+    font-size: 1em;
+}
+#active-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 240px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-active-pop{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-active-pop{
+    font-size: 1.6em;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#label-rec{
+    font-size: 1.4em;
+}
+#active-input{
+    text-align: center;
+    width: 250px;
+    height: 35px;
+    font-size: 1.4em;
+    border: 2px solid black;
+}
+#recon-button{
+    background-color: rgb(4, 140, 4);
+    box-shadow: 2px 2px 2px black;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    width: 70px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+}
+#recon-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 0.9em;
+    color: white;
+}
+#con-input::placeholder{
+    padding-left: 10px;
+    font-size: 1em;
+}
+#stk-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-stk-error{
+    color: red; 
+    font-size: 1.4em; 
+}
+#p2-stk-error{
+    color: black;
+    font-size: 1.1em;
+    padding-top: 10px;
+}
+#stk-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px rgb(4, 4, 140) solid;
+    color: rgb(4, 4, 140);
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-okay{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-okay{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#p1-stk-okay{
+    font-size: 1.2em;
+}
+#pin-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#pin-error-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#pin-error-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#p1-pin-error{
+    color: red; 
+    font-size: 1.4em; 
+}
+#p2-pin-error{
+    color: black;
+    font-size: 1em;
+}
+#stk-expired-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px red solid;
+    width: 380px;
+    height: 180px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#stk-expired-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#stk-expired-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#p1-stk-expired{
+    color: red; 
+    font-size: 1.4em; 
+}
+#p2-stk-expired{
+    color: black;
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+#pay-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 240px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-pay{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#h1-text-pay{
+    font-size: 1.6em;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#label-pay{
+    font-size: 1.6em;
+}
+#pay-input{
+    text-align: center;
+    width: 250px;
+    height: 35px;
+    font-size: 1.6em;
+    border: 2px solid black;
+}
+#pay-button{
+    background-color: rgb(4, 140, 4);
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    width: 50px;
+    font-size: 1em;
+    box-shadow: 2px 2px 2px black;
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+}
+#pay-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+#num-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 200px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-con{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-con{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#p1-num-okay{
+    font-size: 1.4em; 
+    color: blue;
+}
+#p2-num-okay{
+    color: black; 
+    font-size: 0.9em;
+}
+#pay-accepted-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 190px;
+    border: 3px green solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-accepted{
+    padding-bottom: 5px;
+}
+#h1-text-pay-accepted{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+#p1-pay-accepted{
+    font-size: 1.3em; 
+    color: green;
+}
+#p2-pay-accepted{
+    color: black; 
+    font-size: 0.9em;
+}
+#pay-cancel-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-cancel{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-cancel{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-cancel{
+    color: red; 
+    font-size: 1.3em; 
+}
+#p2-pay-cancel{
+    color: black;
+    font-size: 1.1em;
+    padding-top: 10px;
+}
+#pay-less-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 190px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-less{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-less{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-less{
+    color: red; 
+    font-size: 1.4em; 
+}
+#p2-pay-less{
+    color: black;
+    font-size: 1em;
+}
+#num-okay-recon-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 200px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-recon{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-recon{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#p1-num-okay-recon{
+    font-size: 1.3em; 
+    color: blue;
+}
+#p2-num-okay-recon{
+    color: black; 
+    font-size: 0.9em;
+}
+#contacts-popup{
+     display: none;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 190px;
+    border: 3px black solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    z-index: 1000;
+}
+#contacts-h1{
+    font-size: 1.8em;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.list2{
+    font-size: 1.7em;
+}
+#contacts-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 20px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}
+.spinner{
+    margin: 5px auto;
+    margin-top: 10px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgba(0, 0, 255, 0.2);
+    border-top-color: blue;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+#num-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-num-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-num-error{
+    color: red; 
+    font-size: 1.4em; 
+    padding-bottom: 10px;
+}
+#p2-num-error{
+    color: black;
+    font-size: 1.1em;
+}
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 23px;
+    color: white;
+    font-size: 0.8em;
+    background-color: black;
+    box-shadow: 2px 2px 2px 3px blue;
+    width: 100%;
+}
+
 }
 </style>
 <!--Style Ends-->
