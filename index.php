@@ -349,6 +349,23 @@ header{
     font-size: 1.1em;
     margin-top: 10px;
 }
+#topButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Initially hidden */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#topButton:hover {
+    background-color: #0056b3;
+}
 #pay-popup{
     display: none;
     justify-content: center;
@@ -2731,6 +2748,8 @@ footer{
         </div>
     </div>
 
+    <button id="topButton" onclick="scrollToTop()">⬆ Back to Top</button>
+    
     <!--Footer-->
     <footer>
         <p>Software Provided by Raynger Developers © 2025<br>All Rights Reserved.</p>
@@ -2885,6 +2904,18 @@ footer{
                     }
                     openPopup('num-okay-recon-pop');
                     }
+window.onscroll = function() {
+    const topButton = document.getElementById("topButton");
+    if (document.documentElement.scrollTop > 100) {
+        topButton.style.display = "block"; // Show button after scrolling
+    } else {
+        topButton.style.display = "none"; // Hide button at top
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
 </script>
 <!--Script Ends-->
 
