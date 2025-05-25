@@ -74,7 +74,7 @@ header{
     display: block;
     color: black;
     font-size: 1.3em;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 #contacts-link{
     color: blue;
@@ -117,7 +117,6 @@ header{
     border: none;
     color: white;
     background-color: rgb(4, 140, 4);
-    box-shadow: 2px 2px 2px blue;
     width: 80px;
     font-size: 1.2em;
     font-weight: 400;
@@ -149,7 +148,6 @@ header{
     font-size: 1.4em;
     font-weight: 400;
     margin-top: 5px;
-    margin-bottom: 5px;
 }
 #label-rec{
     font-size: 1.4em;
@@ -336,12 +334,10 @@ header{
     z-index: 1000;
 }
 #stk-expired-h1{
-    padding-top: 10px;
     padding-bottom: 5px;
 }
 #stk-expired-h1-text{
     font-weight: 400;
-    margin-top: 5px;
     margin-bottom: 5px;
 }
 #p1-stk-expired{
@@ -351,7 +347,7 @@ header{
 #p2-stk-expired{
     color: black;
     font-size: 1.1em;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 #pay-popup{
     display: none;
@@ -376,7 +372,6 @@ header{
     font-size: 1.7em;
     font-weight: 400;
     margin-top: 10px;
-    margin-bottom: 5px;
 }
 #label-pay{
     font-size: 1.6em;
@@ -451,8 +446,6 @@ header{
 #h1-text-num-okay-con{
     font-weight: 400;
     margin-top: 5px;
-    padding-right: 10px;
-    padding-left: 10px;
 }
 #p1-num-okay{
     font-size: 1.5em; 
@@ -577,8 +570,6 @@ header{
 #h1-text-num-okay-recon{
     font-weight: 400;
     margin-top: 5px;
-    padding-right: 10px;
-    padding-left: 10px;
 }
 #p1-num-okay-recon{
     font-size: 1.5em; 
@@ -707,80 +698,79 @@ header{
     background-color: rgb(4, 60, 4);
 }
 footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    text-align: center;
     height: 25px;
     color: white;
     font-size: 1.2em;
     background-color: black;
-    box-shadow: 2px 2px 2px 3px blue;
     width: 100%;
     margin-top: 10px;
 }
 
 /*Queries*/
 @media (min-width: 320px) {
-    header{
+header{
     position: fixed;
-    box-shadow: 2px 2px 2px blue;
+    box-shadow: 2px 2px 2px #0000ff;
     top: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    height: 50px;
-    background-color: black;
+    align-items: center;
+    height: 35px;
+    background-color: #000000;
     width: 100%;
 }
 #h1-header{
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 500;
-    color: white;
-    margin: auto;
+    color: #ffffff;
+    margin: 0;
+    padding-left: 2px;
 }
 #link-header{
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: auto;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+    display: block;
+    margin-right: 0;
+    padding-right: 0;
 }
 #link-description{
-    color: white;
-    font-size: 1em;
+    color: #ffffff;
+    font-size: 0.85em;
+    padding-right: 2px;
 }
 .no-scroll {
     overflow: hidden;
 }
 #active-link{
-    padding-left: 5px;
-    color: blue;
-    font-size: 1em;
+    color: #0000ff;
+    font-size: 0.85em;
+    font-weight: 800;
+    padding-left: 0;
+}
+#div-link{
+    text-align: center;
 }
 #intro1{
-    color: black;
-    margin-top: 54px;
+    color: #000000;
+    margin-top: 36px;
     display: block;
     text-align: center;
-    line-height: 22px;
-    
 }
 #intro1-h1{
-    font-size: 1.4em;
+    font-size: 1.3em;
     padding-bottom: 0;
 }
 #intro1-h2{
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 #intro2{
-    width: 90%;
+    width: 85%;
     display: block;
-    color: black;
-    font-size: 1em;
-    padding-bottom: 10px;
+    color: #000000;
+    font-size: 1.05em;
+}
+#ul1{
+    margin-bottom: 5px;
 }
 #main-container{
     width: 100%;
@@ -788,35 +778,32 @@ footer{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 }
 .boxes{
     text-align: center;
     width: 150px;
     height: 140px;
-    background-color: black;
-    box-shadow: 2px 2px 2px blue;
-    color: white;
+    background-color: #000000;
+    box-shadow: 2px 2px 2px #0000ff;
+    color: #ffffff;
 }
 .h1-box{
     font-size: 1.4em;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .h2-box{
-    padding-top: 10px;
+    padding-top: 20px;
     font-size: 1.4em;
     font-weight: 400;
 }
 .box-button{
     height: 25px;
     margin-top: 20px;
-    border-radius: 5px;
     border: none;
     color: white;
-    background-color: rgb(4, 140, 4);
-    box-shadow: 2px 2px 2px blue;
-    width: 60px;
-    font-size: 1em;
+    width: 55px;
+    font-size: 0.9em;
     font-weight: 400;
 }
 #active-input::placeholder{
@@ -832,39 +819,38 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 200px;
-    border: 3px black solid;
+    width: 290px;
+    height: 180px;
+    border: 3px #000000 solid;
     border-radius: 5px;
     z-index: 1000;
 }
 #h1-div-active-pop{
-    padding-top: 10px;
+    padding-top: 7px;
     padding-bottom: 5px;
 }
 #h1-text-active-pop{
     font-size: 1.2em;
     font-weight: 400;
     margin-top: 5px;
-    margin-bottom: 5px;
 }
 #label-rec{
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 #active-input{
     text-align: center;
-    width: 250px;
+    width: 200px;
     height: 30px;
     font-size: 1.2em;
-    border: 2px solid black;
+    border: 2px solid #000000;
 }
 #recon-button{
-    background-color: rgb(4, 140, 4);
+    background-color: #048c04;
     box-shadow: 2px 2px 2px black;
     border-radius: 5px;
     border: none;
-    height: 30px;
-    width: 68px;
+    height: 25px;
+    width: 70px;
     font-size: 0.9em;
     font-weight: 500;
     color: white;
@@ -882,13 +868,9 @@ footer{
     border: none;
     font-weight: 500;
     height: 15px;
-    width: 20px;
+    width: 25px;
     font-size: 0.9em;
     color: white;
-}
-#con-input::placeholder{
-    padding-left: 10px;
-    font-size: 1em;
 }
 #stk-error-pop{
     display: none;
@@ -899,15 +881,15 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 260px;
-    height: 180px;
+    width: 280px;
+    height: 140px;
     border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;
 }
 #h1-stk-error-con{
-    padding-top: 10px;
     padding-bottom: 5px;
+    padding-top: 5px;
 }
 #h1-text-stk-error-con{
     font-weight: 400;
@@ -915,11 +897,11 @@ footer{
 }
 #p1-stk-error{
     color: red; 
-    font-size: 1.2em; 
+    font-size: 1.3em; 
 }
 #p2-stk-error{
     color: black;
-    font-size: 1em;
+    font-size: 0.9em;
 }
 #stk-okay-pop{
     display: none;
@@ -930,8 +912,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 260px;
-    height: 180px;
+    width: 280px;
+    height: 150px;
     border: 3px rgb(4, 4, 140) solid;
     color: rgb(4, 4, 140);
     border-radius: 5px;
@@ -959,14 +941,14 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 260px;
-    height: 180px;
+    width: 280px;
+    height: 170px;
     border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;
 }
 #pin-error-h1{
-    padding-top: 10px;
+    padding-top: 2px;
     padding-bottom: 5px;
 }
 #pin-error-h1-text{
@@ -991,14 +973,13 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 3px red solid;
-    width: 260px;
-    height: 180px;
+    border: 3px #ff0000 solid;
+    width: 280px;
+    height: 170px;
     border-radius: 5px;
     z-index: 1000;
 }
 #stk-expired-h1{
-    padding-top: 10px;
     padding-bottom: 5px;
 }
 #stk-expired-h1-text{
@@ -1008,7 +989,7 @@ footer{
 }
 #p1-stk-expired{
     color: red; 
-    font-size: 1.2em; 
+    font-size: 1.3em; 
 }
 #p2-stk-expired{
     color: black;
@@ -1024,8 +1005,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 210px;
+    width: 290px;
+    height: 180px;
     border: 3px black solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1038,10 +1019,9 @@ footer{
     font-size: 1.3em;
     font-weight: 400;
     margin-top: 10px;
-    margin-bottom: 5px;
 }
 #label-pay{
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 #pay-input{
     text-align: center;
@@ -1074,7 +1054,7 @@ footer{
     border: none;
     font-weight: 500;
     height: 15px;
-    width: 20px;
+    width: 25px;
     font-size: 1em;
     color: white;
 }
@@ -1087,8 +1067,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 260px;
-    height: 180px;
+    width: 285px;
+    height: 170px;
     border: 3px blue solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1099,8 +1079,6 @@ footer{
 #h1-text-num-okay-con{
     font-weight: 400;
     margin-top: 5px;
-    padding-right: 10px;
-    padding-left: 10px;
 }
 #p1-num-okay{
     font-size: 1.1em; 
@@ -1108,7 +1086,7 @@ footer{
 }
 #p2-num-okay{
     color: black; 
-    font-size: 0.8em;
+    font-size: 0.75em;
 }
 #pay-accepted-pop{
     display: none;
@@ -1119,7 +1097,7 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 280px;
+    width: 290px;
     height: 180px;
     border: 3px green solid;
     border-radius: 5px;
@@ -1140,7 +1118,7 @@ footer{
 }
 #p2-pay-accepted{
     color: black; 
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 #pay-cancel-pop{
     display: none;
@@ -1151,8 +1129,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 260px;
-    height: 180px;
+    width: 280px;
+    height: 170px;
     border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1166,12 +1144,12 @@ footer{
     margin-bottom: 5px;
 }
 #p1-pay-cancel{
-    color: red; 
+    color: #ff0000; 
     font-size: 1.1em; 
 }
 #p2-pay-cancel{
-    color: black;
-    font-size: 1em;
+    color: #000000;
+    font-size: 0.8em;
 }
 #pay-less-pop{
     display: none;
@@ -1182,7 +1160,7 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 260px;
+    width: 280px;
     height: 180px;
     border: 3px red solid;
     border-radius: 5px;
@@ -1213,8 +1191,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 260px;
-    height: 180px;
+    width: 280px;
+    height: 175px;
     border: 3px blue solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1225,8 +1203,6 @@ footer{
 #h1-text-num-okay-recon{
     font-weight: 400;
     margin-top: 5px;
-    padding-right: 10px;
-    padding-left: 10px;
 }
 #p1-num-okay-recon{
     font-size: 1.1em; 
@@ -1237,13 +1213,13 @@ footer{
     font-size: 0.8em;
 }
 #contacts-popup{
-     display: none;
+    display: none;
     background-color: white;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
+    width: 295px;
     height: 180px;
     border: 3px black solid;
     border-radius: 5px;
@@ -1270,7 +1246,7 @@ footer{
     border: none;
     font-weight: 500;
     height: 15px;
-    width: 20px;
+    width: 25px;
     font-size: 1em;
     color: white;
 }
@@ -1298,7 +1274,606 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 260px;
+    width: 280px;
+    height: 160px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-num-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-num-error{
+    color: #ff0000; 
+    font-size: 1.2em; 
+    padding-bottom: 10px;
+}
+#p2-num-error{
+    color: #000000;
+    font-size: 1em;
+}
+footer{
+    display: block;
+    text-align: center;
+    height: 30px;
+    padding-top: 3px;
+    color: white;
+    font-size: 0.8em;
+    background-color: black;
+    width: 100%;
+    margin-top: 5px;
+}
+}
+@media (min-width: 350px) {
+header{
+    position: fixed;
+    box-shadow: 2px 2px 2px #0000ff;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 40px;
+    background-color: #000000;
+    width: 100%;
+}
+#h1-header{
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    padding-left: 2px;
+}
+#link-header{
+    display: block;
+    margin-right: 0;
+    padding-right: 0;
+}
+#link-description{
+    color: #ffffff;
+    font-size: 0.95em;
+    padding-right: 2px;
+}
+.no-scroll {
+    overflow: hidden;
+}
+#active-link{
+    color: #0000ff;
+    font-size: 1em;
+    font-weight: 800;
+    padding-left: 0;
+}
+#div-link{
+    text-align: center;
+}
+#intro1{
+    color: #000000;
+    margin-top: 44px;
+    display: block;
+    text-align: center;
+}
+#intro1-h1{
+    font-size: 1.4em;
+    padding-bottom: 0;
+}
+#intro1-h2{
+    font-size: 1.3em;
+}
+#intro2{
+    width: 90%;
+    display: block;
+    color: #000000;
+    font-size: 1.1em;
+}
+#ul1{
+    margin-bottom: 10px;
+}
+#main-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.boxes{
+    text-align: center;
+    width: 170px;
+    height: 160px;
+    background-color: #000000;
+    box-shadow: 2px 2px 2px #0000ff;
+    color: #ffffff;
+}
+.h1-box{
+    font-size: 1.6em;
+    padding-top: 5px;
+}
+.h2-box{
+    padding-top: 20px;
+    font-size: 1.6em;
+    font-weight: 400;
+}
+.box-button{
+    height: 30px;
+    margin-top: 20px;
+    border: none;
+    color: white;
+    width: 65px;
+    font-size: 1em;
+    font-weight: 400;
+}
+#active-input::placeholder{
+    padding-left: 10px;
+    font-size: 1em;
+}
+#active-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 185px;
+    border: 3px #000000 solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-active-pop{
+    padding-top: 7px;
+    padding-bottom: 5px;
+}
+#h1-text-active-pop{
+    font-size: 1.3em;
+    font-weight: 400;
+    margin-top: 5px;
+}
+#label-rec{
+    font-size: 1.1em;
+}
+#active-input{
+    text-align: center;
+    width: 200px;
+    height: 30px;
+    font-size: 1.2em;
+    border: 2px solid #000000;
+}
+#recon-button{
+    background-color: #048c04;
+    box-shadow: 2px 2px 2px black;
+    border-radius: 5px;
+    border: none;
+    height: 25px;
+    width: 70px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: white;
+    margin-top: 10px;
+}
+#recon-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 15px;
+    width: 25px;
+    font-size: 0.9em;
+    color: white;
+}
+#stk-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 155px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-error-con{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-error-con{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-stk-error{
+    color: red; 
+    font-size: 1.3em; 
+}
+#p2-stk-error{
+    color: black;
+    font-size: 0.9em;
+}
+#stk-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px rgb(4, 4, 140) solid;
+    color: rgb(4, 4, 140);
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-stk-okay{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-stk-okay{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#p1-stk-okay{
+    font-size: 1.1em;
+}
+#pin-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#pin-error-h1{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#pin-error-h1-text{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#p1-pin-error{
+    color: red; 
+    font-size: 1.3em; 
+}
+#p2-pin-error{
+    color: black;
+    font-size: 0.9em;
+}
+#stk-expired-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px #ff0000 solid;
+    width: 300px;
+    height: 160px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#stk-expired-h1{
+    padding-bottom: 5px;
+}
+#stk-expired-h1-text{
+    font-weight: 400;
+}
+#p1-stk-expired{
+    color: red; 
+    font-size: 1.3em; 
+}
+#p2-stk-expired{
+    color: black;
+    font-size: 1em;
+    margin-top: 5px;
+}
+#pay-popup{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 190px;
+    border: 3px black solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-div-pay{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#h1-text-pay{
+    font-size: 1.4em;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#label-pay{
+    font-size: 1.2em;
+}
+#pay-input{
+    text-align: center;
+    width: 250px;
+    height: 30px;
+    font-size: 1.3em;
+    border: 2px solid black;
+}
+#pay-button{
+    background-color: rgb(4, 140, 4);
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    width: 40px;
+    font-size: 1em;
+    box-shadow: 2px 2px 2px black;
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+}
+#pay-cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 15px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+#num-okay-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 315px;
+    height: 170px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-con{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-con{
+    font-weight: 400;
+    margin-top: 5px;
+}
+#p1-num-okay{
+    font-size: 1.2em; 
+    color: blue;
+}
+#p2-num-okay{
+    color: black; 
+    font-size: 0.8em;
+}
+#pay-accepted-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px green solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-accepted{
+    padding-bottom: 5px;
+}
+#h1-text-pay-accepted{
+    font-weight: 400;
+    margin-top: 5px;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+#p1-pay-accepted{
+    font-size: 1.1em; 
+    color: green;
+}
+#p2-pay-accepted{
+    color: black; 
+    font-size: 0.8em;
+}
+#pay-cancel-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 180px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-cancel{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-cancel{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-cancel{
+    color: red; 
+    font-size: 1.2em; 
+}
+#p2-pay-cancel{
+    color: black;
+    font-size: 0.8em;
+}
+#pay-less-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 190px;
+    border: 3px red solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-pay-less{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#h1-text-pay-less{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+#p1-pay-less{
+    color: red; 
+    font-size: 1.2em; 
+}
+#p2-pay-less{
+    color: black;
+    font-size: 0.8em;
+}
+#num-okay-recon-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 170px;
+    border: 3px blue solid;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#h1-num-okay-recon{
+    padding-bottom: 5px;
+}
+#h1-text-num-okay-recon{
+    font-weight: 400;
+    margin-top: 5px;
+}
+#p1-num-okay-recon{
+    font-size: 1.2em; 
+    color: blue;
+}
+#p2-num-okay-recon{
+    color: black; 
+    font-size: 0.8em;
+}
+#contacts-popup{
+     display: none;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 180px;
+    border: 3px black solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    z-index: 1000;
+}
+#contacts-h1{
+    font-size: 1.8em;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.list2{
+    font-size: 1.5em;
+}
+#contacts-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(140, 4, 4);
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    font-weight: 500;
+    height: 15px;
+    width: 25px;
+    font-size: 1em;
+    color: white;
+}
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}
+.spinner{
+    margin: 5px auto;
+    margin-top: 10px;
+    width: 25px;
+    height: 25px;
+    border: 2px solid rgba(0, 0, 255, 0.2);
+    border-top-color: blue;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+#num-error-pop{
+    display: none;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
     height: 180px;
     border: 3px red solid;
     border-radius: 5px;
@@ -1313,88 +1888,88 @@ footer{
     margin-bottom: 5px;
 }
 #p1-num-error{
-    color: red; 
-    font-size: 1.2em; 
+    color: #ff0000; 
+    font-size: 1.3em; 
     padding-bottom: 10px;
 }
 #p2-num-error{
-    color: black;
-    font-size: 1em;
+    color: #000000;
+    font-size: 1.1em;
 }
 footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 20px;
+    display: block;
+    text-align: center;
+    height: 35px;
+    padding-top: 3px;
     color: white;
-    font-size: 0.6em;
+    font-size: 0.9em;
     background-color: black;
-    box-shadow: 2px 2px 2px 3px blue;
     width: 100%;
     margin-top: 5px;
 }
 }
 @media (min-width: 375px) {
-    header{
+header{
     position: fixed;
-    box-shadow: 2px 2px 2px blue;
+    box-shadow: 2px 2px 2px #0000ff;
     top: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    height: 50px;
-    background-color: black;
+    align-items: center;
+    height: 40px;
+    background-color: #000000;
     width: 100%;
 }
 #h1-header{
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 500;
-    color: white;
-    margin: auto;
+    color: #ffffff;
+    margin: 0;
+    padding-left: 2px;
 }
 #link-header{
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: auto;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+    display: block;
+    margin-right: 0;
+    padding-right: 0;
 }
 #link-description{
-    color: white;
-    font-size: 1.1em;
+    color: #ffffff;
+    font-size: 0.95em;
+    padding-right: 2px;
 }
 .no-scroll {
     overflow: hidden;
 }
 #active-link{
-    padding-left: 5px;
-    color: blue;
-    font-size: 1.1em;
+    color: #0000ff;
+    font-size: 1em;
+    font-weight: 800;
+    padding-left: 0;
+}
+#div-link{
+    text-align: center;
 }
 #intro1{
-    color: black;
-    margin-top: 56px;
+    color: #000000;
+    margin-top: 44px;
     display: block;
     text-align: center;
-    line-height: 25px; 
 }
 #intro1-h1{
     font-size: 1.5em;
-    padding-bottom: 5px;
+    padding-bottom: 0;
 }
 #intro1-h2{
     font-size: 1.4em;
-    padding-bottom: 5px;
 }
 #intro2{
     width: 90%;
     display: block;
-    color: black;
+    color: #000000;
     font-size: 1.2em;
-    padding-bottom: 10px;
+}
+#ul1{
+    margin-bottom: 5px;
 }
 #main-container{
     width: 100%;
@@ -1402,33 +1977,30 @@ footer{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 }
 .boxes{
     text-align: center;
     width: 170px;
     height: 160px;
-    background-color: black;
-    box-shadow: 2px 2px 2px blue;
-    color: white;
+    background-color: #000000;
+    box-shadow: 2px 2px 2px #0000ff;
+    color: #ffffff;
 }
 .h1-box{
     font-size: 1.6em;
-    padding-top: 15px;
+    padding-top: 5px;
 }
 .h2-box{
-    padding-top: 15px;
-    font-size: 1.5em;
+    padding-top: 20px;
+    font-size: 1.6em;
     font-weight: 400;
 }
 .box-button{
-    height: 25px;
+    height: 30px;
     margin-top: 20px;
-    border-radius: 5px;
     border: none;
     color: white;
-    background-color: rgb(4, 140, 4);
-    box-shadow: 2px 2px 2px blue;
     width: 65px;
     font-size: 1em;
     font-weight: 400;
@@ -1447,37 +2019,36 @@ footer{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 350px;
-    height: 220px;
-    border: 3px black solid;
+    height: 190px;
+    border: 3px #000000 solid;
     border-radius: 5px;
     z-index: 1000;
 }
 #h1-div-active-pop{
-    padding-top: 10px;
+    padding-top: 7px;
     padding-bottom: 5px;
 }
 #h1-text-active-pop{
-    font-size: 1.4em;
+    font-size: 1.35em;
     font-weight: 400;
     margin-top: 5px;
-    margin-bottom: 5px;
 }
 #label-rec{
-    font-size: 1.3em;
+    font-size: 1.15em;
 }
 #active-input{
     text-align: center;
-    width: 250px;
-    height: 35px;
-    font-size: 1.3em;
-    border: 2px solid black;
+    width: 200px;
+    height: 30px;
+    font-size: 1.25em;
+    border: 2px solid #000000;
 }
 #recon-button{
-    background-color: rgb(4, 140, 4);
+    background-color: #048c04;
     box-shadow: 2px 2px 2px black;
     border-radius: 5px;
     border: none;
-    height: 30px;
+    height: 25px;
     width: 70px;
     font-size: 0.9em;
     font-weight: 500;
@@ -1500,10 +2071,6 @@ footer{
     font-size: 0.9em;
     color: white;
 }
-#con-input::placeholder{
-    padding-left: 10px;
-    font-size: 1em;
-}
 #stk-error-pop{
     display: none;
     justify-content: center;
@@ -1513,8 +2080,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 180px;
+    width: 310px;
+    height: 155px;
     border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1529,12 +2096,11 @@ footer{
 }
 #p1-stk-error{
     color: red; 
-    font-size: 1.3em; 
+    font-size: 1.4em; 
 }
 #p2-stk-error{
     color: black;
     font-size: 1em;
-    padding-top: 10px;
 }
 #stk-okay-pop{
     display: none;
@@ -1545,8 +2111,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 180px;
+    width: 310px;
+    height: 160px;
     border: 3px rgb(4, 4, 140) solid;
     color: rgb(4, 4, 140);
     border-radius: 5px;
@@ -1574,8 +2140,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 180px;
+    width: 310px;
+    height: 150px;
     border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1591,11 +2157,11 @@ footer{
 }
 #p1-pin-error{
     color: red; 
-    font-size: 1.3em; 
+    font-size: 1.2em; 
 }
 #p2-pin-error{
     color: black;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 #stk-expired-pop{
     display: none;
@@ -1606,19 +2172,17 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 3px red solid;
-    width: 300px;
-    height: 180px;
+    border: 3px #ff0000 solid;
+    width: 320px;
+    height: 150px;
     border-radius: 5px;
     z-index: 1000;
 }
 #stk-expired-h1{
-    padding-top: 10px;
     padding-bottom: 5px;
 }
 #stk-expired-h1-text{
     font-weight: 400;
-    margin-top: 5px;
     margin-bottom: 5px;
 }
 #p1-stk-expired{
@@ -1627,7 +2191,7 @@ footer{
 }
 #p2-stk-expired{
     color: black;
-    font-size: 1.1em;
+    font-size: 1em;
     margin-top: 5px;
 }
 #pay-popup{
@@ -1639,8 +2203,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 350px;
-    height: 230px;
+    width: 320px;
+    height: 185px;
     border: 3px black solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1652,16 +2216,16 @@ footer{
 #h1-text-pay{
     font-size: 1.4em;
     font-weight: 400;
-    margin-top: 10px;
+    margin-top: 7px;
     margin-bottom: 5px;
 }
 #label-pay{
-    font-size: 1.4em;
+    font-size: 1.1em;
 }
 #pay-input{
     text-align: center;
     width: 250px;
-    height: 35px;
+    height: 30px;
     font-size: 1.4em;
     border: 2px solid black;
 }
@@ -1669,8 +2233,8 @@ footer{
     background-color: rgb(4, 140, 4);
     border-radius: 5px;
     border: none;
-    height: 35px;
-    width: 50px;
+    height: 30px;
+    width: 40px;
     font-size: 1em;
     box-shadow: 2px 2px 2px black;
     font-weight: 500;
@@ -1688,7 +2252,7 @@ footer{
     box-shadow: 2px 2px 2px black;
     border: none;
     font-weight: 500;
-    height: 20px;
+    height: 15px;
     width: 25px;
     font-size: 1em;
     color: white;
@@ -1702,8 +2266,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 200px;
+    width: 320px;
+    height: 170px;
     border: 3px blue solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1714,16 +2278,14 @@ footer{
 #h1-text-num-okay-con{
     font-weight: 400;
     margin-top: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
 }
 #p1-num-okay{
-    font-size: 1.3em; 
+    font-size: 1.25em; 
     color: blue;
 }
 #p2-num-okay{
     color: black; 
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 #pay-accepted-pop{
     display: none;
@@ -1734,8 +2296,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 320px;
-    height: 190px;
+    width: 310px;
+    height: 180px;
     border: 3px green solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1755,7 +2317,7 @@ footer{
 }
 #p2-pay-accepted{
     color: black; 
-    font-size: 0.9em;
+    font-size: 0.85em;
 }
 #pay-cancel-pop{
     display: none;
@@ -1766,8 +2328,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 180px;
+    width: 310px;
+    height: 130px;
     border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1782,11 +2344,11 @@ footer{
 }
 #p1-pay-cancel{
     color: red; 
-    font-size: 1.2em; 
+    font-size: 1.1em; 
 }
 #p2-pay-cancel{
     color: black;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 #pay-less-pop{
     display: none;
@@ -1797,7 +2359,7 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
+    width: 310px;
     height: 190px;
     border: 3px red solid;
     border-radius: 5px;
@@ -1828,8 +2390,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 190px;
+    width: 310px;
+    height: 160px;
     border: 3px blue solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1840,11 +2402,9 @@ footer{
 #h1-text-num-okay-recon{
     font-weight: 400;
     margin-top: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
 }
 #p1-num-okay-recon{
-    font-size: 1.2em; 
+    font-size: 1.25em; 
     color: blue;
 }
 #p2-num-okay-recon{
@@ -1858,7 +2418,7 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 350px;
+    width: 330px;
     height: 180px;
     border: 3px black solid;
     border-radius: 5px;
@@ -1866,7 +2426,7 @@ footer{
     z-index: 1000;
 }
 #contacts-h1{
-    font-size: 1.7em;
+    font-size: 1.8em;
     padding-top: 5px;
     padding-bottom: 10px;
 }
@@ -1884,7 +2444,7 @@ footer{
     box-shadow: 2px 2px 2px black;
     border: none;
     font-weight: 500;
-    height: 20px;
+    height: 15px;
     width: 25px;
     font-size: 1em;
     color: white;
@@ -1897,8 +2457,8 @@ footer{
 .spinner{
     margin: 5px auto;
     margin-top: 10px;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border: 2px solid rgba(0, 0, 255, 0.2);
     border-top-color: blue;
     border-radius: 50%;
@@ -1913,8 +2473,8 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 180px;
+    width: 310px;
+    height: 160px;
     border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;
@@ -1928,1267 +2488,25 @@ footer{
     margin-bottom: 5px;
 }
 #p1-num-error{
-    color: red; 
+    color: #ff0000; 
     font-size: 1.3em; 
     padding-bottom: 10px;
 }
 #p2-num-error{
-    color: black;
+    color: #000000;
     font-size: 1.1em;
 }
 footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 20px;
-    color: white;
-    font-size: 0.7em;
-    background-color: black;
-    box-shadow: 2px 2px 2px 3px blue;
-    width: 100%;
-    margin-top: 5px;
-}
-
-}
-@media (min-width: 425px) {
-    header{
-    position: fixed;
-    box-shadow: 2px 2px 2px blue;
-    top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    height: 30px;
-    background-color: black;
-    width: 100%;
-}
-#h1-header{
-    font-size: 1.1em;
-    font-weight: 500;
-    color: white;
-    margin: auto;
-    padding-left: 5px;
-}
-#link-header{
-    display: flex;
-    margin-right: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-}
-#link-description{
-    color: white;
-    font-size: 0.9em;
-}
-.no-scroll {
-    overflow: hidden;
-}
-#active-link{
-    padding-left: 5px;
-    color: blue;
-    font-size: 0.9em;
-}
-#intro1{
-    color: black;
-    margin-top: 32px;
     display: block;
     text-align: center;
-    line-height: 25px; 
-}
-#intro1-h1{
-    font-size: 1.5em;
-    padding-bottom: 2px;
-}
-#intro1-h2{
-    font-size: 1.3em;
-    padding-bottom: 2px;
-}
-#intro2{
-    width: 90%;
-    display: block;
-    color: black;
-    font-size: 1.2em;
-    padding-bottom: 10px;
-}
-#main-container{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-.boxes{
-    text-align: center;
-    width: 180px;
-    height: 170px;
-    background-color: black;
-    box-shadow: 2px 2px 2px blue;
-    color: white;
-}
-.h1-box{
-    font-size: 1.7em;
-    padding-top: 15px;
-}
-.h2-box{
-    padding-top: 15px;
-    font-size: 1.6em;
-    font-weight: 400;
-}
-.box-button{
-    height: 27px;
-    margin-top: 20px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    background-color: rgb(4, 140, 4);
-    box-shadow: 2px 2px 2px blue;
-    width: 70px;
-    font-size: 1em;
-    font-weight: 400;
-}
-#active-input::placeholder{
-    padding-left: 10px;
-    font-size: 1em;
-}
-#active-popup{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 240px;
-    border: 3px black solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-div-active-pop{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-active-pop{
-    font-size: 1.6em;
-    font-weight: 400;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-#label-rec{
-    font-size: 1.4em;
-}
-#active-input{
-    text-align: center;
-    width: 250px;
     height: 35px;
-    font-size: 1.4em;
-    border: 2px solid black;
-}
-#recon-button{
-    background-color: rgb(4, 140, 4);
-    box-shadow: 2px 2px 2px black;
-    border-radius: 5px;
-    border: none;
-    height: 30px;
-    width: 70px;
-    font-size: 0.9em;
-    font-weight: 500;
+    padding-top: 3px;
     color: white;
-    margin-top: 15px;
-}
-#recon-cancel-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgb(140, 4, 4);
-    box-shadow: 2px 2px 2px black;
-    border: none;
-    font-weight: 500;
-    height: 20px;
-    width: 25px;
-    font-size: 0.9em;
-    color: white;
-}
-#con-input::placeholder{
-    padding-left: 10px;
     font-size: 1em;
-}
-#stk-error-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-stk-error-con{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-stk-error-con{
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-#p1-stk-error{
-    color: red; 
-    font-size: 1.4em; 
-}
-#p2-stk-error{
-    color: black;
-    font-size: 1.1em;
-    padding-top: 10px;
-}
-#stk-okay-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px rgb(4, 4, 140) solid;
-    color: rgb(4, 4, 140);
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-stk-okay{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-stk-okay{
-    font-weight: 400;
-    margin-top: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-#p1-stk-okay{
-    font-size: 1.2em;
-}
-#pin-error-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#pin-error-h1{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#pin-error-h1-text{
-    font-weight: 400;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-#p1-pin-error{
-    color: red; 
-    font-size: 1.4em; 
-}
-#p2-pin-error{
-    color: black;
-    font-size: 1em;
-}
-#stk-expired-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px red solid;
-    width: 380px;
-    height: 180px;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#stk-expired-h1{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#stk-expired-h1-text{
-    font-weight: 400;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-#p1-stk-expired{
-    color: red; 
-    font-size: 1.4em; 
-}
-#p2-stk-expired{
-    color: black;
-    font-size: 1.1em;
-    margin-top: 5px;
-}
-#pay-popup{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 240px;
-    border: 3px black solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-div-pay{
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-#h1-text-pay{
-    font-size: 1.6em;
-    font-weight: 400;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-#label-pay{
-    font-size: 1.6em;
-}
-#pay-input{
-    text-align: center;
-    width: 250px;
-    height: 35px;
-    font-size: 1.6em;
-    border: 2px solid black;
-}
-#pay-button{
-    background-color: rgb(4, 140, 4);
-    border-radius: 5px;
-    border: none;
-    height: 35px;
-    width: 50px;
-    font-size: 1em;
-    box-shadow: 2px 2px 2px black;
-    font-weight: 500;
-    color: white;
-    margin-top: 15px;
-}
-#pay-cancel-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgb(140, 4, 4);
-    box-shadow: 2px 2px 2px black;
-    border: none;
-    font-weight: 500;
-    height: 20px;
-    width: 25px;
-    font-size: 1em;
-    color: white;
-}
-#num-okay-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 200px;
-    border: 3px blue solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-num-okay-con{
-    padding-bottom: 5px;
-}
-#h1-text-num-okay-con{
-    font-weight: 400;
-    margin-top: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-#p1-num-okay{
-    font-size: 1.4em; 
-    color: blue;
-}
-#p2-num-okay{
-    color: black; 
-    font-size: 0.9em;
-}
-#pay-accepted-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 190px;
-    border: 3px green solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-pay-accepted{
-    padding-bottom: 5px;
-}
-#h1-text-pay-accepted{
-    font-weight: 400;
-    margin-top: 5px;
-    padding-right: 1px;
-    padding-left: 1px;
-}
-#p1-pay-accepted{
-    font-size: 1.3em; 
-    color: green;
-}
-#p2-pay-accepted{
-    color: black; 
-    font-size: 0.9em;
-}
-#pay-cancel-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-pay-cancel{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-pay-cancel{
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-#p1-pay-cancel{
-    color: red; 
-    font-size: 1.3em; 
-}
-#p2-pay-cancel{
-    color: black;
-    font-size: 1.1em;
-    padding-top: 10px;
-}
-#pay-less-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 190px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-pay-less{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-pay-less{
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-#p1-pay-less{
-    color: red; 
-    font-size: 1.4em; 
-}
-#p2-pay-less{
-    color: black;
-    font-size: 1em;
-}
-#num-okay-recon-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 200px;
-    border: 3px blue solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-num-okay-recon{
-    padding-bottom: 5px;
-}
-#h1-text-num-okay-recon{
-    font-weight: 400;
-    margin-top: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-#p1-num-okay-recon{
-    font-size: 1.3em; 
-    color: blue;
-}
-#p2-num-okay-recon{
-    color: black; 
-    font-size: 0.9em;
-}
-#contacts-popup{
-     display: none;
-    background-color: white;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 190px;
-    border: 3px black solid;
-    border-radius: 5px;
-    padding-left: 10px;
-    z-index: 1000;
-}
-#contacts-h1{
-    font-size: 1.8em;
-    padding-top: 5px;
-    padding-bottom: 10px;
-}
-.list2{
-    font-size: 1.7em;
-}
-#contacts-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgb(140, 4, 4);
-    box-shadow: 2px 2px 2px black;
-    border: none;
-    font-weight: 500;
-    height: 20px;
-    width: 25px;
-    font-size: 1em;
-    color: white;
-}
-@keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-}
-.spinner{
-    margin: 5px auto;
-    margin-top: 10px;
-    width: 35px;
-    height: 35px;
-    border: 2px solid rgba(0, 0, 255, 0.2);
-    border-top-color: blue;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-#num-error-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-num-error-con{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-num-error-con{
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-#p1-num-error{
-    color: red; 
-    font-size: 1.4em; 
-    padding-bottom: 10px;
-}
-#p2-num-error{
-    color: black;
-    font-size: 1.1em;
-}
-footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 23px;
-    color: white;
-    font-size: 0.8em;
-    background-color: black;
-    box-shadow: 2px 2px 2px 3px blue;
-    width: 100%;
-}
-
-}
-@media (min-width: 768px) {
-    header{
-    position: fixed;
-    box-shadow: 2px 2px 2px blue;
-    top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    height: 30px;
     background-color: black;
     width: 100%;
-}
-#h1-header{
-    font-size: 1.3em;
-    font-weight: 500;
-    color: white;
-    margin: 0;
-    padding-left: 5px;
-}
-#link-header{
-    display: flex;
-    margin-right: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    margin-left: auto;
-}
-#link-description{
-    color: white;
-    font-size: 1.1em;
-}
-.no-scroll {
-    overflow: hidden;
-}
-#active-link{
-    padding-left: 5px;
-    color: blue;
-    font-size: 1.1em;
-}
-#intro1{
-    color: black;
-    margin-top: 36px;
-    display: block;
-    text-align: center;
-    line-height: 25px; 
-}
-#intro1-h1{
-    font-size: 1.7em;
-    padding-bottom: 2px;
-}
-#intro1-h2{
-    font-size: 1.3em;
-    padding-bottom: 2px;
-}
-#intro2{
-    width: 90%;
-    display: block;
-    color: black;
-    font-size: 1.2em;
-    padding-bottom: 10px;
-}
-#main-container{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-.boxes{
-    text-align: center;
-    width: 180px;
-    height: 170px;
-    background-color: black;
-    box-shadow: 2px 2px 2px blue;
-    color: white;
-}
-.h1-box{
-    font-size: 1.7em;
-    padding-top: 15px;
-}
-.h2-box{
-    padding-top: 15px;
-    font-size: 1.6em;
-    font-weight: 400;
-}
-.box-button{
-    height: 27px;
-    margin-top: 20px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    background-color: rgb(4, 140, 4);
-    box-shadow: 2px 2px 2px blue;
-    width: 70px;
-    font-size: 1em;
-    font-weight: 400;
-}
-#active-input::placeholder{
-    padding-left: 10px;
-    font-size: 1em;
-}
-#active-popup{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 240px;
-    border: 3px black solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-div-active-pop{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-active-pop{
-    font-size: 1.6em;
-    font-weight: 400;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-#label-rec{
-    font-size: 1.4em;
-}
-#active-input{
-    text-align: center;
-    width: 250px;
-    height: 35px;
-    font-size: 1.4em;
-    border: 2px solid black;
-}
-#recon-button{
-    background-color: rgb(4, 140, 4);
-    box-shadow: 2px 2px 2px black;
-    border-radius: 5px;
-    border: none;
-    height: 30px;
-    width: 70px;
-    font-size: 0.9em;
-    font-weight: 500;
-    color: white;
-    margin-top: 15px;
-}
-#recon-cancel-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgb(140, 4, 4);
-    box-shadow: 2px 2px 2px black;
-    border: none;
-    font-weight: 500;
-    height: 20px;
-    width: 25px;
-    font-size: 0.9em;
-    color: white;
-}
-#con-input::placeholder{
-    padding-left: 10px;
-    font-size: 1em;
-}
-#stk-error-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-stk-error-con{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-stk-error-con{
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-#p1-stk-error{
-    color: red; 
-    font-size: 1.4em; 
-}
-#p2-stk-error{
-    color: black;
-    font-size: 1.1em;
-    padding-top: 10px;
-}
-#stk-okay-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px rgb(4, 4, 140) solid;
-    color: rgb(4, 4, 140);
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-stk-okay{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-stk-okay{
-    font-weight: 400;
-    margin-top: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-#p1-stk-okay{
-    font-size: 1.2em;
-}
-#pin-error-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#pin-error-h1{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#pin-error-h1-text{
-    font-weight: 400;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-#p1-pin-error{
-    color: red; 
-    font-size: 1.4em; 
-}
-#p2-pin-error{
-    color: black;
-    font-size: 1em;
-}
-#stk-expired-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px red solid;
-    width: 380px;
-    height: 180px;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#stk-expired-h1{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#stk-expired-h1-text{
-    font-weight: 400;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-#p1-stk-expired{
-    color: red; 
-    font-size: 1.4em; 
-}
-#p2-stk-expired{
-    color: black;
-    font-size: 1.1em;
     margin-top: 5px;
 }
-#pay-popup{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 240px;
-    border: 3px black solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-div-pay{
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-#h1-text-pay{
-    font-size: 1.6em;
-    font-weight: 400;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-#label-pay{
-    font-size: 1.6em;
-}
-#pay-input{
-    text-align: center;
-    width: 250px;
-    height: 35px;
-    font-size: 1.6em;
-    border: 2px solid black;
-}
-#pay-button{
-    background-color: rgb(4, 140, 4);
-    border-radius: 5px;
-    border: none;
-    height: 35px;
-    width: 50px;
-    font-size: 1em;
-    box-shadow: 2px 2px 2px black;
-    font-weight: 500;
-    color: white;
-    margin-top: 15px;
-}
-#pay-cancel-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgb(140, 4, 4);
-    box-shadow: 2px 2px 2px black;
-    border: none;
-    font-weight: 500;
-    height: 20px;
-    width: 25px;
-    font-size: 1em;
-    color: white;
-}
-#num-okay-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 200px;
-    border: 3px blue solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-num-okay-con{
-    padding-bottom: 5px;
-}
-#h1-text-num-okay-con{
-    font-weight: 400;
-    margin-top: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-#p1-num-okay{
-    font-size: 1.4em; 
-    color: blue;
-}
-#p2-num-okay{
-    color: black; 
-    font-size: 0.9em;
-}
-#pay-accepted-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 190px;
-    border: 3px green solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-pay-accepted{
-    padding-bottom: 5px;
-}
-#h1-text-pay-accepted{
-    font-weight: 400;
-    margin-top: 5px;
-    padding-right: 1px;
-    padding-left: 1px;
-}
-#p1-pay-accepted{
-    font-size: 1.3em; 
-    color: green;
-}
-#p2-pay-accepted{
-    color: black; 
-    font-size: 0.9em;
-}
-#pay-cancel-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-pay-cancel{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-pay-cancel{
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-#p1-pay-cancel{
-    color: red; 
-    font-size: 1.3em; 
-}
-#p2-pay-cancel{
-    color: black;
-    font-size: 1.1em;
-    padding-top: 10px;
-}
-#pay-less-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 190px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-pay-less{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-pay-less{
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-#p1-pay-less{
-    color: red; 
-    font-size: 1.4em; 
-}
-#p2-pay-less{
-    color: black;
-    font-size: 1em;
-}
-#num-okay-recon-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 200px;
-    border: 3px blue solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-num-okay-recon{
-    padding-bottom: 5px;
-}
-#h1-text-num-okay-recon{
-    font-weight: 400;
-    margin-top: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-#p1-num-okay-recon{
-    font-size: 1.3em; 
-    color: blue;
-}
-#p2-num-okay-recon{
-    color: black; 
-    font-size: 0.9em;
-}
-#contacts-popup{
-     display: none;
-    background-color: white;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 190px;
-    border: 3px black solid;
-    border-radius: 5px;
-    padding-left: 10px;
-    z-index: 1000;
-}
-#contacts-h1{
-    font-size: 1.8em;
-    padding-top: 5px;
-    padding-bottom: 10px;
-}
-.list2{
-    font-size: 1.7em;
-}
-#contacts-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgb(140, 4, 4);
-    box-shadow: 2px 2px 2px black;
-    border: none;
-    font-weight: 500;
-    height: 20px;
-    width: 25px;
-    font-size: 1em;
-    color: white;
-}
-@keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-}
-.spinner{
-    margin: 5px auto;
-    margin-top: 10px;
-    width: 35px;
-    height: 35px;
-    border: 2px solid rgba(0, 0, 255, 0.2);
-    border-top-color: blue;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-#num-error-pop{
-    display: none;
-    justify-content: center;
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px;
-    height: 180px;
-    border: 3px red solid;
-    border-radius: 5px;
-    z-index: 1000;
-}
-#h1-num-error-con{
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-#h1-text-num-error-con{
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-#p1-num-error{
-    color: red; 
-    font-size: 1.4em; 
-    padding-bottom: 10px;
-}
-#p2-num-error{
-    color: black;
-    font-size: 1.1em;
-}
-footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 23px;
-    color: white;
-    font-size: 0.8em;
-    background-color: black;
-    box-shadow: 2px 2px 2px 3px blue;
-    width: 100%;
-}
-
 }
 </style>
 <!--Style Ends-->
@@ -3215,9 +2533,9 @@ footer{
         </div>
         <div id="link-header">
                 <div>
-                    <p id="link-description" >Active Subscription?</p>
+                    <p id="link-description">Active Subscription?</p>
                 </div>
-                <div>
+                <div id="div-link">
                     <a id="active-link" onclick="openPopup('active-popup')">Click Here</a>
                 </div>
         </div>
@@ -3230,10 +2548,10 @@ footer{
     </div>
     
     <div id="intro2" >
-        <ul style="list-style-type:square">
-            <li>Decide on your Preferred Subscription Package and Click on the 'connect' Button and Follow the given Instructions to Pay.</li>
-            <li>Wait for a Few Seconds as we Confrim your Payment and CONNECT you Automatically.</li>
-            <li>If you Already have an ACTIVE Subscription and have NOT been Automatically Reconnected once Back, Kindly Click on Link at the Top Right Section of the Page and Follow the given Instructions to Reconnect.</li>
+        <ul style="list-style-type:square" id="ul1">
+            <li>Decide on your Preferred Subscription Package and Click on the 'connect' Button and to Pay and Subscribe.</li>
+            <li>Wait for a Few Seconds as we Confirm your Payment and CONNECT you Automatically.</li>
+            <li>If you Already have an ACTIVE Subscription and have NOT been Automatically Reconnected once Back, Kindly Click on Link at the Top Right Section of the Page and Follow to Reconnect.</li>
         </ul>
         <p><strong>Note:</strong> A Subscription Package is Linked to a Single Device/Mac Address and Expires After the Period Stated.</p>
         <p><strong>Incase of any Difficulties, </strong><a onclick="openPopup('contacts-popup')" id="contacts-link">Click Here</a><strong> to Contact us.</strong></p>
@@ -3295,11 +2613,11 @@ footer{
         <form type="submit" autocomplete="off" onsubmit="return checkActive(event)">
 
             <div id="h1-div-active-pop">
-                <h1 id="h1-text-active-pop">Kindly Input the Phone Number you Paid with Including your Country Code e.g 254...</h1>
+                <h1 id="h1-text-active-pop">Kindly Input the Phone Number you Paid with Below.</h1>
             </div>
 
                 <label for="active-input" id="label-rec">Phone Number:</label><br>
-                <input type="number" placeholder="e.g 254123456789" id="active-input" required>
+                <input type="number" placeholder="Input Here" id="active-input" required>
          
                 <div>
                     <button id="recon-button" type="submit">reconnect</button>
@@ -3343,11 +2661,11 @@ footer{
         <form type="submit" autocomplete="off" onsubmit="return handlePaymentSubmit(event)">
 
             <div id="h1-div-pay">
-                <h1 id="h1-text-pay">Kindly Input your Phone Number (Including your Country Code e.g 254...) to Pay</h1>
+                <h1 id="h1-text-pay">Kindly Input your Phone Number Below to Pay.</h1>
             </div>
 
                 <label for="pay-input" id="label-pay">Phone Number:</label><br>
-                <input type="number" placeholder="e.g 254123456789" id="pay-input" required>
+                <input type="number" placeholder="Enter Here" id="pay-input" required>
          
                 <div>
                     <button id="pay-button" type="submit">pay</button>
@@ -3415,7 +2733,7 @@ footer{
 
     <!--Footer-->
     <footer>
-        <p>Software Provided by Raynger Developers © 2025 &#124; All Rights Reserved.</p>
+        <p>Software Provided by Raynger Developers © 2025<br>All Rights Reserved.</p>
     </footer>
 </body>
 <!--Body Ends-->
@@ -3462,19 +2780,19 @@ footer{
             closePopup('pay-popup');
 
     const phone = document.getElementById("pay-input").value.trim();
-    if (!/^254\d{9}$/.test(phone)) {
+    if (!/^07\d{8}$/.test(phone)) {
         openPopup('num-error-pop');
         setTimeout(() => closePopup('num-error-pop'), 3000);
         return;
     }
-
+    const formattedPhone = "254" + phone.substring(1);
     openPopup('num-okay-pop');
 
     try {
         const res = await fetch("pay.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams({ phone, amount: selectedAmount, submit: 1 })
+            body: new URLSearchParams({ phone: formattedPhone, amount: selectedAmount, submit: 1 })
         });
 
         const { ResponseCode, CheckoutRequestID } = await res.json();
@@ -3560,7 +2878,7 @@ footer{
 
                         const phone = document.getElementById("active-input").value.trim();
 
-                        if (!/^254\d{9}$/.test(phone)) {
+                        if (!/^07\d{9}$/.test(phone)) {
                         openPopup('num-error-pop');
                         setTimeout(() => closePopup('num-error-pop'), 3000);
                         return;
