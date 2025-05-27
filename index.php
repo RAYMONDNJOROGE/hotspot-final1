@@ -4398,7 +4398,7 @@ footer{
         <div class="boxes">
             <h1 class="h1-box">1-Week Vybz</h1>
             <h2 class="h2-box">@Ksh. 200</h2>
-            <button type="button" class="box-button" onclick="handlePayment(event, 200);">connect</button>
+            <button type="button" class="box-button" onclick="handlePayment(event, 4500);">connect</button>
 
         </div>
 
