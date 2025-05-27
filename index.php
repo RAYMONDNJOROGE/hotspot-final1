@@ -820,7 +820,7 @@ header{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 290px;
-    height: 180px;
+    height: 165px;
     border: 3px #000000 solid;
     border-radius: 5px;
     z-index: 1000;
@@ -854,7 +854,7 @@ header{
     font-size: 0.9em;
     font-weight: 500;
     color: white;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 #recon-cancel-button{
     display: flex;
@@ -882,7 +882,7 @@ header{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 280px;
-    height: 140px;
+    height: 130px;
     border: 3px red solid;
     border-radius: 5px;
     z-index: 1000;
@@ -904,7 +904,7 @@ header{
     font-size: 0.9em;
 }
 #stk-okay-pop{
-    display: none;
+    display: block;
     justify-content: center;
     background-color: white;
     text-align: center;
@@ -913,7 +913,7 @@ header{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 280px;
-    height: 150px;
+    height: 140px;
     border: 3px rgb(4, 4, 140) solid;
     color: rgb(4, 4, 140);
     border-radius: 5px;
@@ -4541,8 +4541,8 @@ footer{
         const overlay = document.getElementById('overlay');
         const body = document.body;
     
-        popup.style.display = 'block';
-        overlay.style.display = 'block';
+        popup.style.display = 'flex';
+        overlay.style.display = 'flex';
     
         body.classList.add('no-scroll');
         const phoneInput = document.getElementById("pay-input");
