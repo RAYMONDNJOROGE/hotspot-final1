@@ -1005,6 +1005,7 @@ header{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease, transform 0.4s ease;
     width: 290px;
     height: 180px;
     border: 3px black solid;
